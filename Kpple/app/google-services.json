@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "580270610639",
+    "firebase_url": "https://ingsoft2-65cc5.firebaseio.com",
+    "project_id": "ingsoft2-65cc5",
+    "storage_bucket": "ingsoft2-65cc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580270610639:android:ccbcca5ebec21a86",
+        "android_client_info": {
+          "package_name": "co.edu.konranlorenz.kpple"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580270610639-d8e2vb0u2t9jr2dv874d7c248041b1so.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATwNnI4mGhkZc0hyot0CotBaVfSMVzyQE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
