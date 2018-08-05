@@ -1,17 +1,13 @@
 package activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import co.edu.konranlorenz.kpple.R;
-import entities.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,38 +16,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference userReference = database.getReference("User");
 
-        userReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String nombre;
-                int cedula;
-                nombre = dataSnapshot.getValue(User.class).getNombre();
-                cedula = dataSnapshot.getValue(User.class).getCedula();
-                Log.i("MainActivity", "hola perros");
-            }
+    }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.login_menu_main:
+                Intent intentl = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intentl);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
