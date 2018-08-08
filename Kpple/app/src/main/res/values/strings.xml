@@ -29,6 +29,7 @@
     <!-- Strings de Login y Registro -->
     <string name="button_register">Registrarse</string>
     <string name="sign_here">Already registered? Sign in here</string>
+    <string name="title_activity_profile">activity_profile</string>
 
     <!--                           -->
 </resources>
