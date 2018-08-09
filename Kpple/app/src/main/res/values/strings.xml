@@ -20,16 +20,24 @@
     <string name="auth_failed">Authentication failed</string>
     <string name="signed_out">Signed Out</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
-
-    <!-- Strings del menú Superior -->
-    <string name="login_item_menu">Sign in</string>
-    <string name="title_activity_register">Sign In</string>
-    <!--                           -->
+     <!--                            -->
 
     <!-- Strings de Login y Registro -->
     <string name="button_register">Registrarse</string>
     <string name="sign_here">Already registered? Sign in here</string>
     <string name="title_activity_profile">activity_profile</string>
-
     <!--                           -->
+
+    <!-- Strings del menú Superior -->
+    <string name="logout_item_menu">Cerrar Sesión</string>
+    <string name="profile_item_menu">Mi Perfil</string>
+    <string name="title_activity_register">Sign in</string>
+    <!--                           -->
+
+    <!-- Strings del fragment post   -->
+    <string name="post_profile">Posts</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--                             -->
 </resources>
