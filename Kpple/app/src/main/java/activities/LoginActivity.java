@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +30,7 @@ import co.edu.konranlorenz.kpple.R;
  * A login screen that offers login via email/password.
  */
 
-public class LoginActivity extends MainActivity implements View.OnClickListener  {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener  {
 
 private static final String TAG = "EmailPassword";
 
@@ -46,7 +49,8 @@ private static final String TAG = "EmailPassword";
         setContentView(R.layout.activity_login);
 
         // Redirección a la vista de nuevo usuario
-        Button btn = (Button) findViewById(R.id.register_button);
+
+        TextView btn = (TextView) findViewById(R.id.register_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,8 +60,6 @@ private static final String TAG = "EmailPassword";
         });
 
         // Views
-        mStatusTextView = findViewById(R.id.status);
-        mDetailTextView = findViewById(R.id.detail);
         mEmailField = findViewById(R.id.field_email);
         mPasswordField = findViewById(R.id.field_password);
 
@@ -68,6 +70,8 @@ private static final String TAG = "EmailPassword";
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
     }
+
+
 
     // [START on_start_check_user]
     @Override
@@ -87,7 +91,7 @@ private static final String TAG = "EmailPassword";
             return;
         }
 
-        showProgressDialog();
+
 
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
@@ -111,7 +115,7 @@ private static final String TAG = "EmailPassword";
                         if (!task.isSuccessful()) {
                           mStatusTextView.setText(R.string.auth_failed);
                        }
-                        hideProgressDialog();
+
                         // [END_EXCLUDE]
                     }
                 });
@@ -148,13 +152,13 @@ private static final String TAG = "EmailPassword";
         int i = v.getId();
         if (i == R.id.singin_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-            startActivity(intent);
+
         }
     }
 
     private void updateUI(FirebaseUser user) {
-        hideProgressDialog();
+
+       /**
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
@@ -162,6 +166,7 @@ private static final String TAG = "EmailPassword";
         } else {
            mStatusTextView.setText(R.string.signed_out);
         }
+        */
     }
 
 }
