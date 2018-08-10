@@ -29,8 +29,12 @@
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="activities.activity_form_register"
-            android:label="Register Form">
+        android:name="activities.activity_form_register"
+        android:label="Register Form">
+    </activity>
+        <activity
+            android:name="activities.ProfileActivity"
+            android:label="Profile">
         </activity>
     </application>
 

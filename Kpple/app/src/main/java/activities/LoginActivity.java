@@ -34,8 +34,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 private static final String TAG = "EmailPassword";
 
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
 
@@ -92,7 +90,6 @@ private static final String TAG = "EmailPassword";
         }
 
 
-
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -103,6 +100,8 @@ private static final String TAG = "EmailPassword";
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+                            Intent intentp = new Intent(LoginActivity.this,ProfileActivity.class);
+                            startActivity(intentp);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -113,9 +112,9 @@ private static final String TAG = "EmailPassword";
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-                          mStatusTextView.setText(R.string.auth_failed);
-                       }
-
+                            Toast toast2 = Toast.makeText(getApplicationContext(),"Autenticación Fallida", Toast.LENGTH_SHORT);
+                            toast2.show();
+                        }
                         // [END_EXCLUDE]
                     }
                 });
@@ -157,8 +156,7 @@ private static final String TAG = "EmailPassword";
     }
 
     private void updateUI(FirebaseUser user) {
-
-       /**
+        /*
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
@@ -167,6 +165,14 @@ private static final String TAG = "EmailPassword";
            mStatusTextView.setText(R.string.signed_out);
         }
         */
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
     }
 
 }
