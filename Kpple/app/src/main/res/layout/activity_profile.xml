@@ -15,8 +15,7 @@
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
-        app:srcCompat="@drawable/fondoprofile"
-        android:layout_alignParentLeft="true" />
+        app:srcCompat="@drawable/fondoprofile" />
 
     <ImageView
         android:id="@+id/imageView2"

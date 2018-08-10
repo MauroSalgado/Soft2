@@ -24,16 +24,17 @@
      <!--                            -->
 
     <!-- Strings de Login y Registro -->
-    <string name="button_register">Registrarse</string>
+    <string name="button_register">Register</string>
     <string name="sign_here">Already registered? Sign in here</string>
     <string name="title_activity_profile">activity_profile</string>
     <string name="text_o">Ó</string>
+    <string name="sign_up">Sign Up</string>
     <!--                           -->
 
     <!-- Strings del menú Superior -->
     <string name="logout_item_menu">Cerrar Sesión</string>
     <string name="profile_item_menu">Mi Perfil</string>
-    <string name="title_activity_register">Sign in</string>
+    <string name="title_activity_register">Sign up</string>
     <!--                           -->
 
     <!-- Strings del fragment post   -->
