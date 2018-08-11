@@ -3,6 +3,9 @@ package activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         txtDisplayName = (TextView) findViewById(R.id.txtDisplayName);
 
         loadUserInformation();
+        invalidateOptionsMenu();
     }
 
     @Override
@@ -47,7 +51,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void loadUserInformation() {
         final FirebaseUser user = mAuth.getCurrentUser();
-
         if (user != null) {
             if (user.getPhotoUrl().toString() != null) {
                 Glide.with(this)
@@ -58,5 +61,34 @@ public class ProfileActivity extends AppCompatActivity {
                 txtDisplayName.setText(user.getDisplayName());
             }
         }
+    }
+
+    private void signOut() {
+        mAuth.signOut();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item_menu) {
+        int id = item_menu.getItemId();
+        if (id == R.id.logout_menu_main) {
+            signOut();
+            Intent intent = new Intent(getBaseContext(),LoginActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item_menu);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        MenuItem cerrarsesion = (MenuItem) menu.findItem(R.id.logout_menu_main);
+        if(mAuth.getCurrentUser() != null){
+            cerrarsesion.setVisible(true);
+        }else{
+            cerrarsesion.setVisible(false);
+        }
+
+        return true;
     }
 }

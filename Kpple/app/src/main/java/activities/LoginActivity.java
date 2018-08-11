@@ -173,6 +173,20 @@ private static final String TAG = "EmailPassword";
         */
 
     }
+    private void signOut() {
+        mAuth.signOut();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item_menu) {
+        int id = item_menu.getItemId();
+        if (id == R.id.logout_menu_main) {
+            signOut();
+            Intent intent = new Intent(getBaseContext(),LoginActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item_menu);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
