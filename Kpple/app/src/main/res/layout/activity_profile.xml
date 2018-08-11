@@ -16,7 +16,8 @@
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         app:srcCompat="@drawable/fondoprofile"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:background="@color/black"/>
 
     <ImageView
         android:id="@+id/imgProfile"
@@ -61,7 +62,8 @@
         android:layout_toEndOf="@+id/txtDisplayName"
         app:srcCompat="@drawable/post"
         android:layout_marginLeft="-90dp"
-        android:layout_toRightOf="@+id/txtDisplayName" />
+        android:layout_toRightOf="@+id/txtDisplayName"
+        android:onClick="onClick"/>
 
     <ImageView
         android:id="@+id/img_profile_gallery"
@@ -72,16 +74,20 @@
         android:layout_marginEnd="101dp"
         app:srcCompat="@drawable/gallery"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="101dp" />
+        android:layout_marginRight="101dp"
+        android:onClick="onClick"/>
 
     <ImageView
         android:id="@+id/img_profile_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imgProfile"
-        android:layout_alignEnd="@+id/txtNick"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="137dp"
         app:srcCompat="@drawable/info_profile"
-        android:layout_alignRight="@+id/txtNick" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="137dp"
+        android:onClick="onClick"/>
 
     <FrameLayout
         android:id="@+id/profile_fragment_container"

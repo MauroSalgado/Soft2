@@ -1,11 +1,14 @@
 package activities;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,8 +18,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import co.edu.konranlorenz.kpple.R;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener {
 
+    PostFragment postFragment;
+    GalleryFragment galleryFragment;
+    InfoFragment infoFragment;
     ImageView post, gallery, imgProfile;
     TextView txtDisplayName;
 
@@ -28,8 +34,11 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         mAuth = FirebaseAuth.getInstance();
 
-        PostFragment fragment1 = new PostFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.profile_fragment_container, fragment1);
+        postFragment = new PostFragment();
+        galleryFragment = new GalleryFragment();
+        infoFragment = new InfoFragment();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.profile_fragment_container, postFragment).commit();
 
         post = (ImageView) findViewById(R.id.img_profile_post);
         gallery = (ImageView) findViewById(R.id.img_profile_gallery);
@@ -90,5 +99,26 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    public void onClick(View view) {
+        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        switch (view.getId()){
+            case R.id.img_profile_gallery:
+                transaction.replace(R.id.profile_fragment_container,galleryFragment);
+                break;
+            case R.id.img_profile_info:
+                transaction.replace(R.id.profile_fragment_container,infoFragment);
+                break;
+            case R.id.img_profile_post:
+                transaction.replace(R.id.profile_fragment_container,postFragment);
+                break;
+        }
+        transaction.commit();
     }
 }

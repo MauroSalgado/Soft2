@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activities.PostFragment"
-    android:background="@color/colorQuarter">
+    tools:context="activities.GalleryFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -13,7 +11,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:gravity="center"
-        android:text="@string/post_profile"
+        android:text="@string/gallery_profile"
         android:textSize="19sp"
         android:textStyle="bold" />
 
