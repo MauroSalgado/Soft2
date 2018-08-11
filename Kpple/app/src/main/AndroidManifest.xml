@@ -15,23 +15,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activities.LoginActivity">
+
+        <activity android:name="activities.SplashKpple">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="activities.LoginActivity"></activity>
         <activity
             android:name="activities.RegisterActivity"
             android:label="@string/title_activity_register" />
         <activity
-        android:name="activities.activity_form_register"
-        android:label="Register Form">
-    </activity>
+            android:name="activities.activity_form_register"
+            android:label="Register Form"></activity>
         <activity
             android:name="activities.ProfileActivity"
-            android:label="Profile">
-        </activity>
+            android:label="Profile"></activity>
+
     </application>
 
 </manifest>
