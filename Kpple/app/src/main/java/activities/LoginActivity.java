@@ -77,7 +77,13 @@ private static final String TAG = "EmailPassword";
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+        if (currentUser != null && currentUser.getDisplayName()!=null){
+            finish();
+            startActivity(new Intent(this, ProfileActivity.class));
+            //updateUI(currentUser);
+        }
+
+
     }
     // [END on_start_check_user]
 
@@ -102,6 +108,7 @@ private static final String TAG = "EmailPassword";
                             updateUI(user);
                             Intent intentp = new Intent(LoginActivity.this,ProfileActivity.class);
                             startActivity(intentp);
+                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -151,7 +158,6 @@ private static final String TAG = "EmailPassword";
         int i = v.getId();
         if (i == R.id.singin_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-
         }
     }
 

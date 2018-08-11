@@ -34,8 +34,6 @@ public class activity_form_register extends AppCompatActivity {
     private static final int CHOOSE_IMAGE = 101;
     ImageView imgProfile;
     EditText profileName;
-    EditText coup1Name;
-    EditText coupl2Name;
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
@@ -51,8 +49,6 @@ public class activity_form_register extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         imgProfile = (ImageView) findViewById(R.id.imgProfile);
         profileName = (EditText) findViewById(R.id.editTxtDisplayName);
-        coup1Name = (EditText) findViewById(R.id.editTxtCoup2);
-        coupl2Name = (EditText) findViewById(R.id.editTxtCoup2);
         progressBar = findViewById(R.id.progressbar);
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
@@ -77,21 +73,9 @@ public class activity_form_register extends AppCompatActivity {
             profileName.requestFocus();
             return;
         }
-        String nameC1 = coup1Name.getText().toString();
-        if(nameC1.isEmpty()){
-            coup1Name.setError("Name Requiered");
-            coup1Name.requestFocus();
-            return;
-        }
-        String nameC2 = coup1Name.getText().toString();
-        if(nameC2.isEmpty()){
-            coup1Name.setError("Name Requiered");
-            coup1Name.requestFocus();
-            return;
-        }
 
         FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null && profImageUrl != null){
+        if(user != null && profImageUrl != null){
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(displayName)
                     .setPhotoUri(Uri.parse(profImageUrl))
@@ -102,6 +86,7 @@ public class activity_form_register extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(getBaseContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getBaseContext(), ProfileActivity.class));
                             }
                         }
                     });

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -57,8 +58,16 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
             Toast.makeText(this, "Please enter mail", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this,"Please enter a valid email", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(TextUtils.isEmpty(pass)){
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (pass.length() < 6) {
+            Toast.makeText(this, "Minimum lenght of password should be 6", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -85,7 +94,6 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
         if(v == btnRegister){
             registerUser();
         }
-
         if (v == txtViewSignIn){
             startActivity(new Intent(getBaseContext(), LoginActivity.class));
         }

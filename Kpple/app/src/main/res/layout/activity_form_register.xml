@@ -48,18 +48,6 @@
         android:layout_height="wrap_content"
         android:hint="Enter Display Name" />
 
-    <EditText
-        android:id="@+id/editTxtCoup1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Couple 1 Name" />
-
-    <EditText
-        android:id="@+id/editTxtCoup2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Couple 2 Name" />
-
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
