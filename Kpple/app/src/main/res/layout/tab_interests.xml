@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Trio"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <io.ghyeok.stickyswitch.widget.StickySwitch
+        android:id="@+id/stcSwTrio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        app:ss_animationDuration="600"
+        app:ss_animationType="line"
+        app:ss_iconPadding="14dp"
+        app:ss_iconSize="6dp"
+        app:ss_leftIcon="@drawable/ic_clear"
+        app:ss_leftText="No"
+        app:ss_rightIcon="@drawable/ic_add"
+        app:ss_rightText="Yes"
+        app:ss_selectedTextSize="14sp"
+        app:ss_sliderBackgroundColor="@color/colorAccent"
+        app:ss_switchColor="@color/colorSecondary"
+        app:ss_textColor="@color/colorPrimary"
+        app:ss_textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txtMovies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Vouyerism"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <io.ghyeok.stickyswitch.widget.StickySwitch
+        android:id="@+id/stcSwMovies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtMovies"
+        app:ss_animationDuration="600"
+        app:ss_animationType="line"
+        app:ss_iconPadding="14dp"
+        app:ss_iconSize="6dp"
+        app:ss_leftIcon="@drawable/ic_clear"
+        app:ss_leftText="No"
+        app:ss_rightIcon="@drawable/ic_add"
+        app:ss_rightText="Yes"
+        app:ss_selectedTextSize="14sp"
+        app:ss_sliderBackgroundColor="@color/colorAccent"
+        app:ss_switchColor="@color/colorSecondary"
+        app:ss_textColor="@color/colorPrimary"
+        app:ss_textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txtParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="139dp"
+        android:text="Sadism"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <io.ghyeok.stickyswitch.widget.StickySwitch
+        android:id="@+id/stcSwParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtParty"
+        app:ss_animationDuration="600"
+        app:ss_animationType="line"
+        app:ss_iconPadding="14dp"
+        app:ss_iconSize="6dp"
+        app:ss_leftIcon="@drawable/ic_clear"
+        app:ss_leftText="No"
+        app:ss_rightIcon="@drawable/ic_add"
+        app:ss_rightText="Yes"
+        app:ss_selectedTextSize="14sp"
+        app:ss_sliderBackgroundColor="@color/colorAccent"
+        app:ss_switchColor="@color/colorSecondary"
+        app:ss_textColor="@color/colorPrimary"
+        app:ss_textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txtPark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="208dp"
+        android:text="Fetichism"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <io.ghyeok.stickyswitch.widget.StickySwitch
+        android:id="@+id/stcSwPark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtPark"
+        app:ss_animationDuration="600"
+        app:ss_animationType="line"
+        app:ss_iconPadding="14dp"
+        app:ss_iconSize="6dp"
+        app:ss_leftIcon="@drawable/ic_clear"
+        app:ss_leftText="No"
+        app:ss_rightIcon="@drawable/ic_add"
+        app:ss_rightText="Yes"
+        app:ss_selectedTextSize="14sp"
+        app:ss_sliderBackgroundColor="@color/colorAccent"
+        app:ss_switchColor="@color/colorSecondary"
+        app:ss_textColor="@color/colorPrimary"
+        app:ss_textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txtVideoCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="277dp"
+        android:text="Masoquism"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <io.ghyeok.stickyswitch.widget.StickySwitch
+        android:id="@+id/stcSwVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtVideoCall"
+        app:ss_animationDuration="600"
+        app:ss_animationType="line"
+        app:ss_iconPadding="14dp"
+        app:ss_iconSize="6dp"
+        app:ss_leftIcon="@drawable/ic_clear"
+        app:ss_leftText="No"
+        app:ss_rightIcon="@drawable/ic_add"
+        app:ss_rightText="Yes"
+        app:ss_selectedTextSize="14sp"
+        app:ss_sliderBackgroundColor="@color/colorAccent"
+        app:ss_switchColor="@color/colorSecondary"
+        app:ss_textColor="@color/colorPrimary"
+        app:ss_textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txtSwinger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="346dp"
+        android:text="Exhibicionism"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <io.ghyeok.stickyswitch.widget.StickySwitch
+        android:id="@+id/stcSwSwinger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtSwinger"
+        app:ss_animationDuration="600"
+        app:ss_animationType="line"
+        app:ss_iconPadding="14dp"
+        app:ss_iconSize="6dp"
+        app:ss_leftIcon="@drawable/ic_clear"
+        app:ss_leftText="No"
+        app:ss_rightIcon="@drawable/ic_add"
+        app:ss_rightText="Yes"
+        app:ss_selectedTextSize="14sp"
+        app:ss_sliderBackgroundColor="@color/colorAccent"
+        app:ss_switchColor="@color/colorSecondary"
+        app:ss_textColor="@color/colorPrimary"
+        app:ss_textSize="12sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stcSwSwinger"
+        android:background="@color/colorPrimary"
+        android:text="Next"
+        android:textColor="@color/cardview_light_background"
+        android:textStyle="bold" />
+</RelativeLayout>
