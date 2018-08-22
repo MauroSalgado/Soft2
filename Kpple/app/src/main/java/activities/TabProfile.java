@@ -18,7 +18,7 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_profile, container, false);
-        TextInputEditText txtDate = (TextInputEditText)view.findViewById(R.id.txtBirthDate);
+        txtDate = (TextInputEditText)view.findViewById(R.id.txtBirthDate);
         txtDate.setOnClickListener(this);
         return view;
     }
@@ -27,12 +27,12 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txtBirthDate:
-                showDatePickerDialog(txtDate);
+                showDatePickerDialog();
                 break;
         }
     }
 
-    private void showDatePickerDialog(final EditText txtDate) {
+    private void showDatePickerDialog() {
         //DatePickerFragment newFragment = new DatePickerFragment();
         DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
