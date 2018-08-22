@@ -35,22 +35,12 @@
     <string name="logout_item_menu">Cerrar Sesión</string>
     <string name="profile_item_menu">Mi Perfil</string>
     <string name="title_activity_register">Sign up</string>
-    <!--            -->
+    <!--                           -->
+
+    <!-- Strings del fragment post   -->
+    <string name="post_profile">Posts</string>
+    <string name="info_profile">Information</string>
     <string name="gallery_profile">Gallery</string>
-
-    <!-- Strings del fragment Info   -->
-    <string name="info_label_country">País: </string>
-    <string name="info_label_city">Ciudad: </string>
-    <string name="info_label_sexo">Sexo: </string>
-    <string name="info_label_birydate">Fecha de Nacimiento: </string>
-    <string name="info_label_idioma">Idioma: </string>
-    <string name="info_hobbies">Hobbies</string>
-    <string name="info_interest">Interéses</string>
-    <string name="info_name_profile">Andrés Marcelo Jimenez</string>
-
-    <!--          -->
-
-    <!-- Strings del  -->
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
