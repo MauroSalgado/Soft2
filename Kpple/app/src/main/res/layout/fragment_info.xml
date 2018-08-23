@@ -160,13 +160,67 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:id="@+id/info_icon_voyerismo"
+            android:layout_below="@+id/profile_text_interest"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/icon_voyery" />
+        <ImageView
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:id="@+id/info_icon_trio"
+            android:layout_below="@+id/profile_text_interest"
+            android:layout_toRightOf="@+id/info_icon_voyerismo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/default_under_x2"
+            android:src="@drawable/icon_trio" />
+        <ImageView
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:id="@+id/info_icon_sadismo"
+            android:layout_below="@+id/profile_text_interest"
+            android:layout_toRightOf="@+id/info_icon_trio"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/default_under_x2"
+            android:src="@drawable/icon_sadismo" />
+        <ImageView
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:id="@+id/info_icon_fetichismo"
+            android:layout_below="@+id/profile_text_interest"
+            android:layout_toRightOf="@+id/info_icon_sadismo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/default_under_x2"
+            android:src="@drawable/icon_fetichismo" />
+        <ImageView
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:id="@+id/info_icon_masoquismo"
+            android:layout_below="@+id/profile_text_interest"
+            android:layout_toRightOf="@+id/info_icon_fetichismo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/default_under_x2"
+            android:src="@drawable/icon_masoquismo" />
+        <ImageView
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:id="@+id/info_icon_exhibicionismo"
+            android:layout_below="@+id/profile_text_interest"
+            android:layout_toRightOf="@+id/info_icon_masoquismo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/default_under_x2"
+            android:src="@drawable/icon_exhibiocismo" />
+
         <TextView
             android:id="@+id/profile_text_hobby"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:layout_marginLeft="@dimen/default_7x_double"
-            android:layout_marginTop="@dimen/default_2x_double"
+            android:layout_marginTop="@dimen/default_6x_double"
             android:layout_below="@+id/profile_text_interest"
             android:text="@string/info_profile_hobbies"
             android:textSize="20sp"
