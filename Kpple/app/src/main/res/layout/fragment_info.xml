@@ -25,10 +25,10 @@
             android:id="@+id/profile_txview_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/default_double"
-            android:layout_marginLeft="@dimen/default_double"
             android:layout_below="@+id/profile_text_name"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_marginTop="@dimen/default_double"
+            android:gravity="center"
             android:text="@string/info_label_country"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -38,62 +38,62 @@
             android:id="@+id/profile_text_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/default_double"
-            android:layout_marginLeft="@dimen/default_double"
             android:layout_below="@+id/profile_text_name"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_marginTop="@dimen/default_double"
             android:layout_toRightOf="@+id/profile_txview_country"
+            android:gravity="center"
             android:text="@string/info_text_country"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/profile_textview_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/profile_txview_country"
+            android:layout_marginLeft="@dimen/default_double"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:gravity="center"
             android:text="@string/info_label_city"
             android:textSize="17sp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/default_double" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/profile_text_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/default_double"
             android:layout_below="@+id/profile_text_country"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_toRightOf="@+id/profile_textview_city"
+            android:gravity="center"
             android:text="@string/info_text_city"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/profile_textview_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/profile_textview_city"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:gravity="center"
             android:text="@string/info_label_sex"
             android:textSize="17sp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/default_double" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/profile_text_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/default_double"
             android:layout_below="@+id/profile_text_city"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_toRightOf="@+id/profile_textview_sex"
+            android:gravity="center"
             android:text="@string/info_text_sex"
             android:textSize="17sp" />
 
@@ -101,129 +101,187 @@
             android:id="@+id/profile_textview_birthdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/profile_textview_sex"
+            android:layout_marginLeft="@dimen/default_double"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:gravity="center"
             android:text="@string/info_label_birthdate"
             android:textSize="17sp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/default_double" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/profile_text_birthdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/default_double"
             android:layout_below="@+id/profile_text_sex"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_toRightOf="@+id/profile_textview_birthdate"
+            android:gravity="center"
             android:text="@string/info_text_birthdate"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/profile_textview_languaje"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/profile_textview_birthdate"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:gravity="center"
             android:text="@string/info_label_languaje"
             android:textSize="17sp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="30dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/profile_text_languaje"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/default_double"
             android:layout_below="@+id/profile_text_birthdate"
+            android:layout_marginLeft="@dimen/default_double"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_toRightOf="@+id/profile_textview_languaje"
+            android:gravity="center"
             android:text="@string/info_text_languaje"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/profile_text_interest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:layout_below="@+id/profile_text_languaje"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/default_7x_double"
             android:layout_marginTop="@dimen/default_2x_double"
-            android:layout_below="@+id/profile_text_languaje"
             android:text="@string/info_profile_interest"
+            android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <ImageView
+        <RelativeLayout
+            android:id="@+id/info_relative_icon"
+            android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/info_icon_voyerismo"
-            android:layout_below="@+id/profile_text_interest"
-            android:layout_marginLeft="@dimen/default_double"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/icon_voyery" />
-        <ImageView
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/info_icon_trio"
-            android:layout_below="@+id/profile_text_interest"
-            android:layout_toRightOf="@+id/info_icon_voyerismo"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="@dimen/default_under_x2"
-            android:src="@drawable/icon_trio" />
-        <ImageView
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/info_icon_sadismo"
-            android:layout_below="@+id/profile_text_interest"
-            android:layout_toRightOf="@+id/info_icon_trio"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="@dimen/default_under_x2"
-            android:src="@drawable/icon_sadismo" />
-        <ImageView
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/info_icon_fetichismo"
-            android:layout_below="@+id/profile_text_interest"
-            android:layout_toRightOf="@+id/info_icon_sadismo"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="@dimen/default_under_x2"
-            android:src="@drawable/icon_fetichismo" />
-        <ImageView
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/info_icon_masoquismo"
-            android:layout_below="@+id/profile_text_interest"
-            android:layout_toRightOf="@+id/info_icon_fetichismo"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="@dimen/default_under_x2"
-            android:src="@drawable/icon_masoquismo" />
-        <ImageView
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/info_icon_exhibicionismo"
-            android:layout_below="@+id/profile_text_interest"
-            android:layout_toRightOf="@+id/info_icon_masoquismo"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="@dimen/default_under_x2"
-            android:src="@drawable/icon_exhibiocismo" />
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_text_interest">
+
+            <ImageView
+                android:id="@+id/info_icon_voyerismo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/icon_voyery" />
+
+            <ImageView
+                android:id="@+id/info_icon_trio"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_voyerismo"
+                android:src="@drawable/icon_trio" />
+
+            <ImageView
+                android:id="@+id/info_icon_sadismo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_trio"
+                android:src="@drawable/icon_sadismo" />
+
+            <ImageView
+                android:id="@+id/info_icon_fetichismo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_sadismo"
+                android:src="@drawable/icon_fetichismo" />
+
+            <ImageView
+                android:id="@+id/info_icon_masoquismo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_fetichismo"
+                android:src="@drawable/icon_masoquismo" />
+
+            <ImageView
+                android:id="@+id/info_icon_exhibicionismo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_masoquismo"
+                android:src="@drawable/icon_exhibiocismo" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/profile_text_hobby"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:layout_below="@+id/profile_text_interest"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/default_7x_double"
             android:layout_marginTop="@dimen/default_6x_double"
-            android:layout_below="@+id/profile_text_interest"
             android:text="@string/info_profile_hobbies"
+            android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/info_relative_icon_hobbies"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_text_hobby">
+
+            <ImageView
+                android:id="@+id/info_icon_coffee"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/icon_cafe"/>
+
+            <ImageView
+                android:id="@+id/info_icon_trip"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_coffee"
+                android:src="@drawable/icon_trip" />
+
+            <ImageView
+                android:id="@+id/info_icon_cine"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_trip"
+                android:src="@drawable/icon_cine" />
+
+            <ImageView
+                android:id="@+id/info_icon_cam"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_cine"
+                android:src="@drawable/icon_web_cam" />
+
+            <ImageView
+                android:id="@+id/info_icon_party"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_cam"
+                android:src="@drawable/icon_party" />
+
+            <ImageView
+                android:id="@+id/info_icon_swinguer"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/default_under_x2"
+                android:layout_toRightOf="@+id/info_icon_party"
+                android:src="@drawable/icon_swiguer" />
+        </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>
