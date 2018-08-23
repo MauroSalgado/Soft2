@@ -69,7 +69,7 @@ public class activity_form_register extends AppCompatActivity {
     private void saveUserInformation() {
         String displayName= profileName.getText().toString();
         if(displayName.isEmpty()){
-            profileName.setError("Name Requiered");
+            profileName.setError("Name Required");
             profileName.requestFocus();
             return;
         }
