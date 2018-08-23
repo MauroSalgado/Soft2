@@ -4,4 +4,13 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="defaul_1x">8dp</dimen>
+    <dimen name="default_medium">24dp</dimen>
+    <dimen name="default_double">32dp</dimen>
+    <dimen name="default_2x_double">40dp</dimen>
+    <dimen name="default_3x_double">48dp</dimen>
+    <dimen name="default_4x_double">56dp</dimen>
+    <dimen name="default_5x_double">64dp</dimen>
+    <dimen name="default_6x_double">72dp</dimen>
+    <dimen name="default_7x_double">80dp</dimen>
 </resources>
