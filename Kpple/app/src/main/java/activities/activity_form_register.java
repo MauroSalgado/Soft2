@@ -28,6 +28,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 
 import co.edu.konranlorenz.kpple.R;
+import co.edu.konranlorenz.kpple.tab_profile_controller;
 
 public class activity_form_register extends AppCompatActivity {
 
@@ -86,7 +87,7 @@ public class activity_form_register extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(getBaseContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getBaseContext(), ProfileActivity.class));
+                                startActivity(new Intent(getBaseContext(), tab_profile_controller.class));
                             }
                         }
                     });

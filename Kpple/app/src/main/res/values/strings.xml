@@ -82,5 +82,11 @@
         <item>Washington</item>
         <item>Madrid</item>
     </string-array>
+
+    <string-array name="languages">
+        <item>Español</item>
+        <item>Inglés</item>
+    </string-array>
+
     <!--                             -->
 </resources>

@@ -41,7 +41,7 @@
             android:id="@+id/txtBirthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
+            android:focusable="true"
             android:clickable="true"
             android:hint="Birth Date"
             android:inputType="date"/>
@@ -75,13 +75,21 @@
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="26dp" />
 
+    <Spinner
+        android:id="@+id/spnLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/languages">
+    </Spinner>
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="26dp" />
     <Button
         android:id="@+id/btnSaveProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/stcSwSwinger"
         android:background="@color/colorPrimary"
         android:text="Next"
         android:textColor="@color/cardview_light_background"
