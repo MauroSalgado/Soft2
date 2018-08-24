@@ -1,12 +1,20 @@
 package activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
 
 import co.edu.konranlorenz.kpple.R;
 
@@ -18,7 +26,7 @@ import co.edu.konranlorenz.kpple.R;
  * Use the {@link GalleryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GalleryFragment extends Fragment {
+public class GalleryFragment extends android.support.v4.app.Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,11 +36,14 @@ public class GalleryFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private FirebaseAuth usuarioAuth;
+
     private OnFragmentInteractionListener mListener;
 
     public GalleryFragment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -54,17 +65,40 @@ public class GalleryFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+  /*      ImageButton btnprofile = getActivity().findViewById(R.id.Button_profile);
+
+        btnprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                manager.beginTransaction().add(R.id.profile_fragment_container, new PhotoProfile()).commit();
+            }
+        });
+
+
+*/
+
+        usuarioAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = usuarioAuth.getCurrentUser();
+        String id = user.getUid();
+
+        FirebaseStorage storage = FirebaseStorage.getInstance("/"+id+"/profile");
         return inflater.inflate(R.layout.fragment_gallery, container, false);
     }
 
@@ -92,6 +126,8 @@ public class GalleryFragment extends Fragment {
         mListener = null;
     }
 
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -106,4 +142,7 @@ public class GalleryFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+
 }

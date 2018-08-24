@@ -18,11 +18,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 import co.edu.konranlorenz.kpple.R;
 
-public class ProfileActivity extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener {
+public class ProfileActivity extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
 
     PostFragment postFragment;
     GalleryFragment galleryFragment;
     InfoFragment infoFragment;
+    PhotoProfile photoProfileFragment;
     ImageView post, gallery, imgProfile;
     TextView txtDisplayName;
 
@@ -37,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
         postFragment = new PostFragment();
         galleryFragment = new GalleryFragment();
         infoFragment = new InfoFragment();
+        photoProfileFragment = new PhotoProfile();
 
         getSupportFragmentManager().beginTransaction().add(R.id.profile_fragment_container, postFragment).commit();
 

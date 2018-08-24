@@ -1,4 +1,4 @@
-package co.edu.konranlorenz.kpple;
+package activities;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,16 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import co.edu.konranlorenz.kpple.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link fragment_galley_profile.OnFragmentInteractionListener} interface
+ * {@link PhotoProfile.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link fragment_galley_profile#newInstance} factory method to
+ * Use the {@link PhotoProfile#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_galley_profile extends Fragment {
+public class PhotoProfile extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +31,7 @@ public class fragment_galley_profile extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public fragment_galley_profile() {
+    public PhotoProfile() {
         // Required empty public constructor
     }
 
@@ -39,11 +41,11 @@ public class fragment_galley_profile extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_galley_profile.
+     * @return A new instance of fragment PhotoProfile.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_galley_profile newInstance(String param1, String param2) {
-        fragment_galley_profile fragment = new fragment_galley_profile();
+    public static PhotoProfile newInstance(String param1, String param2) {
+        PhotoProfile fragment = new PhotoProfile();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +66,7 @@ public class fragment_galley_profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_galley_profile, container, false);
+        return inflater.inflate(R.layout.fragment_photo_profile, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -79,10 +81,8 @@ public class fragment_galley_profile extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+        } else throw new RuntimeException(context.toString()
+                + " must implement OnFragmentInteractionListener");
     }
 
     @Override
