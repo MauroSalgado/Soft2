@@ -201,7 +201,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/stcSwSwinger"
         android:background="@color/colorPrimary"
-        android:text="Next"
+        android:text="Save"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />
 

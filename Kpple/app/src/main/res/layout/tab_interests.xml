@@ -48,7 +48,7 @@
         android:textStyle="bold" />
 
     <io.ghyeok.stickyswitch.widget.StickySwitch
-        android:id="@+id/stcSwMovies"
+        android:id="@+id/stcSwVouyer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -80,7 +80,7 @@
         android:textStyle="bold" />
 
     <io.ghyeok.stickyswitch.widget.StickySwitch
-        android:id="@+id/stcSwParty"
+        android:id="@+id/stcSwSadism"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -112,7 +112,7 @@
         android:textStyle="bold" />
 
     <io.ghyeok.stickyswitch.widget.StickySwitch
-        android:id="@+id/stcSwPark"
+        android:id="@+id/stcSwFetichism"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -144,7 +144,7 @@
         android:textStyle="bold" />
 
     <io.ghyeok.stickyswitch.widget.StickySwitch
-        android:id="@+id/stcSwVideo"
+        android:id="@+id/stcSwMasoquism"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -197,6 +197,7 @@
         app:ss_textSize="12sp" />
 
     <Button
+        android:id="@+id/btnSaveInterest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/stcSwSwinger"
