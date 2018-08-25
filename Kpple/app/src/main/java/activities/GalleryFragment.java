@@ -114,6 +114,14 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
         photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/1660_iconTAG_.png");
         photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/1732_landscapeTAG0_.png");
         photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/2429_landscapeTAG3_.png");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/perfil.png");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/perritu2.jpg");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/profilepics/1535185483207.jpg");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/1871_iconTAG_.png");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/2548_portraitTAG1_ (1).png");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/default_75.png");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/Imagen13.png");
+
         String id ="4Fy1OMGn9lOSkSkZctpjAgTp1Mp2";
         Pictures pictures = new Pictures(id,photoProfile,photoProfile);
         myRefPictures.child(id).setValue(pictures);
