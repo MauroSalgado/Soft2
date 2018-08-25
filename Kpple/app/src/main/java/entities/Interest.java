@@ -6,12 +6,12 @@ public class Interest {
 
     private String name;
     private String url;
-    private List<User> list_users;
+    private List<String> list_users;
 
     public Interest() {
     }
 
-    public Interest(String name, String url, List<User> list_users) {
+    public Interest(String name, String url, List<String> list_users) {
         this.name = name;
         this.url = url;
         this.list_users = list_users;
@@ -33,11 +33,11 @@ public class Interest {
         this.url = url;
     }
 
-    public List<User> getList_users() {
+    public List<String> getList_users() {
         return list_users;
     }
 
-    public void setList_users(List<User> list_users) {
+    public void setList_users(List<String> list_users) {
         this.list_users = list_users;
     }
 }
