@@ -2,21 +2,38 @@ package activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
+
+import adapters.GalleryAdapter;
 import co.edu.konranlorenz.kpple.R;
+import entities.Pictures;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,13 +52,15 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private GridView gridView;
+    private GalleryAdapter adapter;
 
     private FirebaseAuth usuarioAuth;
 
     private OnFragmentInteractionListener mListener;
 
     public GalleryFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -88,17 +107,42 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 manager.beginTransaction().add(R.id.profile_fragment_container, new PhotoProfile()).commit();
             }
+        });*/
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Pictures");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                Pictures picture = new Pictures();
+                String id;
+                id = dataSnapshot.getValue(Pictures.class).getId_user();
+                Log.i("GalleryActivity",id);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
+        /* gridView = (GridView)getView().findViewById(R.id.grid_pictures_profile);
+        adapter = new GalleryAdapter(getContext(),) */
 
-
-*/
-
-        usuarioAuth = FirebaseAuth.getInstance();
-
-        FirebaseUser user = usuarioAuth.getCurrentUser();
-        String id = user.getUid();
-
-        FirebaseStorage storage = FirebaseStorage.getInstance("/"+id+"/profile");
         return inflater.inflate(R.layout.fragment_gallery, container, false);
     }
 

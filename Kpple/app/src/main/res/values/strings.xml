@@ -38,18 +38,18 @@
     <!--                           -->
 
     <!-- Strings del fragment Info   -->
-    <string name="info_profile_name">Andrés Fernando Lopez</string>
+    <string name="info_profile_name">Cargando...</string>
     <string name="info_label_name">Nombre:</string>
     <string name="info_label_country">País:</string>
-    <string name="info_text_country">Colombia</string>
+    <string name="info_text_country"></string>
     <string name="info_label_city">Ciudad:</string>
-    <string name="info_text_city">Bogotá</string>
+    <string name="info_text_city"></string>
     <string name="info_label_sex">Sex:</string>
-    <string name="info_text_sex">Masculino</string>
+    <string name="info_text_sex"></string>
     <string name="info_label_languaje">Idioma:</string>
-    <string name="info_text_languaje">Español</string>
+    <string name="info_text_languaje"></string>
     <string name="info_label_birthdate">Fecha de Nacimiento:</string>
-    <string name="info_text_birthdate">07/04/1990</string>
+    <string name="info_text_birthdate"></string>
     <string name="info_profile_hobbies">Hobbies</string>
     <string name="info_profile_interest">Interéses</string>
     <!--                             -->
