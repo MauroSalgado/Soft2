@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
                         if (task.isSuccessful()){
                             progressBar.setVisibility(ProgressBar.INVISIBLE);
                             Toast.makeText(RegisterActivity.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getBaseContext(), activity_form_register.class));
+                            startActivity(new Intent(getBaseContext(), ActivityFormRegister.class));
                         }else{
                             Toast.makeText(RegisterActivity.this, "Could not register. Please try again", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(ProgressBar.INVISIBLE);

@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 import co.edu.konranlorenz.kpple.R;
-import co.edu.konranlorenz.kpple.tab_profile_controller;
+import co.edu.konranlorenz.kpple.TabProfileController;
 
 /**
  * A login screen that offers login via email/password.
@@ -79,9 +79,8 @@ private static final String TAG = "EmailPassword";
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null && currentUser.getDisplayName()!=null){
             finish();
-            //startActivity(new Intent(this, ProfileActivity.class));
-            startActivity(new Intent(this, tab_profile_controller.class));
-            //updateUI(currentUser);
+            startActivity(new Intent(this, ProfileActivity.class));
+            //startActivity(new Intent(this, TabProfileController.class));
         }
 
 

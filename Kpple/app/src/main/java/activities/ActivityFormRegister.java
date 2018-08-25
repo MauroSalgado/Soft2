@@ -3,17 +3,16 @@ package activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,9 +27,9 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 
 import co.edu.konranlorenz.kpple.R;
-import co.edu.konranlorenz.kpple.tab_profile_controller;
+import co.edu.konranlorenz.kpple.TabProfileController;
 
-public class activity_form_register extends AppCompatActivity {
+public class ActivityFormRegister extends AppCompatActivity {
 
     private static final int CHOOSE_IMAGE = 101;
     ImageView imgProfile;
@@ -87,7 +86,7 @@ public class activity_form_register extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(getBaseContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getBaseContext(), tab_profile_controller.class));
+                                startActivity(new Intent(getBaseContext(), TabProfileController.class));
                             }
                         }
                     });

@@ -2,67 +2,72 @@ package entities;
 
 public class User {
 
-    private String id_user;
-    private String ciudad;
-    private String pais;
-    private String sexo;
-    private String fecha_nacimiento;
+    private String idUser;
+    private String city;
+    private String country;
+    private String sex;
+    private String birthday;
     private String nickname;
-    private String nombre;
-    private String idioma;
+    private String name;
+    private String language;
+    private String code;
+    private Boolean active;
 
     public User() {
     }
 
-    public User(String id_user, String ciudad, String pais, String sexo, String fecha_nacimiento, String nickname, String nombre, String idioma) {
-        this.id_user = id_user;
-        this.ciudad = ciudad;
-        this.pais = pais;
-        this.sexo = sexo;
-        this.fecha_nacimiento = fecha_nacimiento;
+    public User(String idUser, String city, String country, String sex, String birthday,
+                String nickname, String name, String language, String code, Boolean active) {
+        this.idUser = idUser;
+        this.city = city;
+        this.country = country;
+        this.sex = sex;
+        this.birthday = birthday;
         this.nickname = nickname;
-        this.nombre = nombre;
-        this.idioma = idioma;
+        this.name = name;
+        this.language = language;
+        this.code = code;
+        this.active = active;
     }
 
-    public String getId_user() {
-        return id_user;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(String id_user) {
-        this.id_user = id_user;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getCity() {
+        return city;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getPais() {
-        return pais;
+    public String getCountry() {
+        return country;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getSex() {
+        return sex;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getNickname() {
@@ -73,19 +78,35 @@ public class User {
         this.nickname = nickname;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getIdioma() {
-        return idioma;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

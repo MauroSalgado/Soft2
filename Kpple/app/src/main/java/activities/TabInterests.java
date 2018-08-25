@@ -24,7 +24,7 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
     StickySwitch stcSwSadism;
     StickySwitch stcSwFetichism;
     StickySwitch stcSwMasoquism;
-    StickySwitch stcSwSwinger;
+    StickySwitch stcExhibicionism;
     Button btnSaveInterest;
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -36,18 +36,11 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
         View view = inflater.inflate(R.layout.tab_interests, container, false);
         refUser = FirebaseDatabase.getInstance().getReference("Interest");
         stcSwTrio = (StickySwitch) view.findViewById(R.id.stcSwTrio);
-        //stcSwTrio.setOnClickListener(this);
         stcSwVouyer = (StickySwitch) view.findViewById(R.id.stcSwVouyer);
-        //stcSwVouyer.setOnClickListener(this);
         stcSwSadism = (StickySwitch) view.findViewById(R.id.stcSwSadism);
-        //stcSwSadism.setOnClickListener(this);
         stcSwFetichism = (StickySwitch) view.findViewById(R.id.stcSwFetichism);
-        //stcSwFetichism.setOnClickListener(this);
         stcSwMasoquism = (StickySwitch) view.findViewById(R.id.stcSwMasoquism);
-        //stcSwMasoquism.setOnClickListener(this);
-        stcSwSwinger = (StickySwitch) view.findViewById(R.id.stcSwSwinger);
-        //stcSwSwinger.setOnClickListener(this);
-
+        stcExhibicionism = (StickySwitch) view.findViewById(R.id.stcExhibicionism);
         btnSaveInterest = (Button) view.findViewById(R.id.btnSaveInterest);
         btnSaveInterest.setOnClickListener(this);
         return view;
@@ -65,7 +58,7 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
                 refUser.child("Sadism").child(user.getUid()).setValue(stcSwSadism.getText());
                 refUser.child("Fetichism").child(user.getUid()).setValue(stcSwFetichism.getText());
                 refUser.child("Masoquism").child(user.getUid()).setValue(stcSwMasoquism.getText());
-                refUser.child("Swinger").child(user.getUid()).setValue(stcSwSwinger.getText());
+                refUser.child("Exhibicionism").child(user.getUid()).setValue(stcExhibicionism.getText());
 
                 Toast.makeText(getContext(), "Interest Saved. Please continue to Hobbies", Toast.LENGTH_SHORT).show();
                 btnSaveInterest.setVisibility(View.INVISIBLE);

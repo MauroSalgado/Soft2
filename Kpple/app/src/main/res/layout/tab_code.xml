@@ -19,7 +19,8 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
         android:gravity="center_vertical">
 
         <android.support.design.widget.TextInputEditText
@@ -27,11 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
+            android:cursorVisible="true"
+            android:ems="15"
+            android:focusedByDefault="true"
             android:gravity="center"
-            android:hint="Do you have a code? Get in here"
-            android:text="00000"
+            android:hint="Do you have a code? Put in here"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="80sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
     </android.support.design.widget.TextInputLayout>
 
@@ -40,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="228dp"
         android:text="Generate a new CODE" />
 
     <ImageView
@@ -49,7 +53,8 @@
         android:layout_height="47dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="175dp"
+        android:clickable="true"
         app:srcCompat="@android:drawable/checkbox_on_background" />
 
     <Button
@@ -57,9 +62,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="78dp"
         android:background="@color/colorPrimary"
-        android:text="Next"
+        android:text="Save"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />
 

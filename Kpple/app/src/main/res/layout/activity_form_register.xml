@@ -10,7 +10,7 @@
     android:layout_marginRight="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginBottom="16dp"
-    tools:context="activities.activity_form_register">
+    tools:context="activities.ActivityFormRegister">
 
     <TextView
         android:layout_width="match_parent"

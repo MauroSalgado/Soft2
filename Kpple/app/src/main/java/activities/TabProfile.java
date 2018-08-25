@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import co.edu.konranlorenz.kpple.R;
 import entities.User;
 
-public class TabProfile extends android.support.v4.app.Fragment implements View.OnClickListener{
+public class TabProfile extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     TextInputEditText txtInpName;
     Spinner spnSex;
@@ -50,7 +50,7 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
                 saveProfile();
             }
         });
-        txtBirthDate = (TextInputEditText)view.findViewById(R.id.txtBirthDate);
+        txtBirthDate = (TextInputEditText) view.findViewById(R.id.txtBirthDate);
         txtBirthDate.setOnClickListener(this);
         return view;
     }
@@ -65,15 +65,14 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
     }
 
     private void saveProfile() {
-        String name= txtInpName.getText().toString();
-        if(name.isEmpty()){
+        String name = txtInpName.getText().toString();
+        if (name.isEmpty()) {
             txtInpName.setError("Name Required");
             txtInpName.requestFocus();
             return;
         }
 
         FirebaseUser user = mAuth.getCurrentUser();
-        String idDB = refUser.push().getKey();
         String id = user.getUid();
         String city = spnCity.getSelectedItem().toString();
         String country = spnCountry.getSelectedItem().toString();
@@ -82,22 +81,21 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
         String nick = user.getDisplayName().toString();
         String language = spnLanguage.getSelectedItem().toString();
 
-        User newUser = new User(id, city, country, sex, date, nick, name, language);
+        User newUser = new User(id, city, country, sex, date, nick, name, language, "",false);
 
-        refUser.child(idDB).setValue(newUser);
+        refUser.child(id).setValue(newUser);
         btnSaveProfile.setVisibility(View.INVISIBLE);
         Toast.makeText(getContext(), "Profile Saved. Please continue to Interest", Toast.LENGTH_SHORT).show();
     }
 
     private void showDatePickerDialog() {
-        //DatePickerFragment newFragment = new DatePickerFragment();
         DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                final String selectedDate = day + " / " + (month + 1) + " / " + year;
                 txtBirthDate.setText(selectedDate);
             }
         });
-        newFragment.show(getActivity().getFragmentManager(),"datePicker");
+        newFragment.show(getActivity().getFragmentManager(), "datePicker");
     }
 }

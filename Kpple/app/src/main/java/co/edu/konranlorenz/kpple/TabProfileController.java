@@ -22,7 +22,7 @@ import activities.TabCode;
 import activities.TabHobbies;
 import activities.TabProfile;
 
-public class tab_profile_controller extends AppCompatActivity {
+public class TabProfileController extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide

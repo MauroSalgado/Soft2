@@ -27,13 +27,13 @@
             android:name="activities.RegisterActivity"
             android:label="@string/title_activity_register" />
         <activity
-            android:name="activities.activity_form_register"
+            android:name="activities.ActivityFormRegister"
             android:label="Register Form" />
         <activity
             android:name="activities.ProfileActivity"
             android:label="Profile" />
         <activity
-            android:name=".tab_profile_controller"
+            android:name=".TabProfileController"
             android:label="@string/title_activity_tab_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

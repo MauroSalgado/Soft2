@@ -176,7 +176,7 @@
         android:textStyle="bold" />
 
     <io.ghyeok.stickyswitch.widget.StickySwitch
-        android:id="@+id/stcSwSwinger"
+        android:id="@+id/stcExhibicionism"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -200,7 +200,8 @@
         android:id="@+id/btnSaveInterest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/stcSwSwinger"
+        android:layout_below="@+id/stcExhibicionism"
+        android:layout_centerHorizontal="true"
         android:background="@color/colorPrimary"
         android:text="Next"
         android:textColor="@color/cardview_light_background"
