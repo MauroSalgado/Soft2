@@ -24,12 +24,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import adapters.GalleryAdapter;
 import co.edu.konranlorenz.kpple.R;
@@ -54,10 +57,15 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
     private String mParam2;
     private GridView gridView;
     private GalleryAdapter adapter;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private DatabaseReference myRefPictures;
 
     private FirebaseAuth usuarioAuth;
 
     private OnFragmentInteractionListener mListener;
+
+    private String tag = "LOGDBUG";
 
     public GalleryFragment() {
 
@@ -97,41 +105,30 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
-  /*      ImageButton btnprofile = getActivity().findViewById(R.id.Button_profile);
-
-        btnprofile.setOnClickListener(new View.OnClickListener() {
+        final View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+        gridView = (GridView)view.findViewById(R.id.grid_pictures_profile);
+        database = FirebaseDatabase.getInstance();
+        myRefPictures = database.getReference("Pictures");
+        List<String> photoProfile = new ArrayList<>();
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/1660_iconTAG_.png");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/1732_landscapeTAG0_.png");
+        photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/2429_landscapeTAG3_.png");
+        String id ="4Fy1OMGn9lOSkSkZctpjAgTp1Mp2";
+        Pictures pictures = new Pictures(id,photoProfile,photoProfile);
+        myRefPictures.child(id).setValue(pictures);
+        myRefPictures.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                manager.beginTransaction().add(R.id.profile_fragment_container, new PhotoProfile()).commit();
-            }
-        });*/
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Pictures");
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        mDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                Pictures picture = new Pictures();
-                String id;
-                id = dataSnapshot.getValue(Pictures.class).getId_user();
-                Log.i("GalleryActivity",id);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot.exists()) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        ArrayList<String> lista = (ArrayList<String>) ds.getValue(Pictures.class).getPhotos_profile();
+                        adapter= new GalleryAdapter(getContext(),lista);
+                        gridView.setAdapter(adapter);
+                        Log.i(tag,""+ lista.size());
+                    }
+                }
 
             }
 
@@ -140,10 +137,11 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
 
             }
         });
-        /* gridView = (GridView)getView().findViewById(R.id.grid_pictures_profile);
-        adapter = new GalleryAdapter(getContext(),) */
 
-        return inflater.inflate(R.layout.fragment_gallery, container, false);
+
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

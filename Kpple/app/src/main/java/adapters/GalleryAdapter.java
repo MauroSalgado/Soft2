@@ -42,11 +42,9 @@ import entities.Pictures;
 public class GalleryAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<ImageView> arrayList;
-    private DatabaseReference mDatabase;
-    private FirebaseAuth mAuth;
+    private ArrayList<String> arrayList;
 
-    public GalleryAdapter(Context context, ArrayList<ImageView> arrayList) {
+    public GalleryAdapter(Context context, ArrayList<String> arrayList) {
         this.context=context;
         this.arrayList=arrayList;
     }
@@ -75,19 +73,17 @@ public class GalleryAdapter extends BaseAdapter {
         // Se trae el imageview de del item
         final ImageView imgprofile = (ImageView) view.findViewById(R.id.imgView_grid_profile);
 
-        // Se Obtiene el Uid del usuario actual
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        String uid = currentUser.getUid();
-
-        //Se obtiene la referencia del documenyo de pictures
 
 
+        //Se obtiene la referencia del documento de pictures
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://beguide-200800.appspot.com/galeria/lourdes.jpg");
+        StorageReference storageRef = storage.getReferenceFromUrl(arrayList.get(i));
+        Log.i("TAGHP","hola hps");
+        Log.i("TAG",arrayList.get(i));
+
 
         try {
-            final File localFile = File.createTempFile("images", "png");
+            final File localFile = File.createTempFile("images", "jpg");
             storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
