@@ -17,9 +17,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import co.edu.konranlorenz.kpple.R;
 import entities.User;
 
@@ -40,7 +37,6 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_profile, container, false);
-        //mAuth = FirebaseAuth.getInstance();
         refUser = FirebaseDatabase.getInstance().getReference("User");
         txtInpName = (TextInputEditText) view.findViewById(R.id.txtInpName);
         spnSex = (Spinner) view.findViewById(R.id.spnSex);
@@ -65,8 +61,6 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
             case R.id.txtBirthDate:
                 showDatePickerDialog();
                 break;
-            case R.id.btnSaveProfile:
-                saveProfile();
         }
     }
 
@@ -79,6 +73,7 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
         }
 
         FirebaseUser user = mAuth.getCurrentUser();
+        String idDB = refUser.push().getKey();
         String id = user.getUid();
         String city = spnCity.getSelectedItem().toString();
         String country = spnCountry.getSelectedItem().toString();
@@ -89,9 +84,9 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
 
         User newUser = new User(id, city, country, sex, date, nick, name, language);
 
-        //refUser.child(id).setValue(newUser);
-        refUser.push().setValue(newUser);
-        Toast.makeText(getContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+        refUser.child(idDB).setValue(newUser);
+        btnSaveProfile.setVisibility(View.INVISIBLE);
+        Toast.makeText(getContext(), "Profile Saved. Please continue to Interest", Toast.LENGTH_SHORT).show();
     }
 
     private void showDatePickerDialog() {
