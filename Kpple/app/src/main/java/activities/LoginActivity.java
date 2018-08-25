@@ -80,7 +80,12 @@ private static final String TAG = "EmailPassword";
         if (currentUser != null && currentUser.getDisplayName()!=null){
             finish();
             startActivity(new Intent(this, ProfileActivity.class));
+<<<<<<< HEAD
             //startActivity(new Intent(this, TabProfileController.class));
+=======
+            //startActivity(new Intent(this, tab_profile_controller.class));
+            //updateUI(currentUser);
+>>>>>>> da66bbaa3f87463e08ad1139392ee05082aeb341
         }
 
 
