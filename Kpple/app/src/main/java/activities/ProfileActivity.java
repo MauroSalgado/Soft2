@@ -117,7 +117,9 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
                 transaction.replace(R.id.profile_fragment_container,infoFragment);
                 break;
             case R.id.img_profile_post:
-                transaction.replace(R.id.profile_fragment_container,postFragment);
+                Intent intent = new Intent(ProfileActivity.this, PostViewer.class);
+                startActivity(intent);
+                //transaction.replace(R.id.profile_fragment_container,postFragment);
                 break;
         }
         transaction.commit();

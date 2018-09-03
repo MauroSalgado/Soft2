@@ -67,15 +67,15 @@ public class ActivityFormRegister extends AppCompatActivity {
     }
 
     private void saveUserInformation() {
-        String displayName= profileName.getText().toString();
-        if(displayName.isEmpty()){
+        String displayName = profileName.getText().toString();
+        if (displayName.isEmpty()) {
             profileName.setError("Name Required");
             profileName.requestFocus();
             return;
         }
 
         FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null && profImageUrl != null){
+        if (user != null && profImageUrl != null) {
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(displayName)
                     .setPhotoUri(Uri.parse(profImageUrl))
@@ -84,7 +84,7 @@ public class ActivityFormRegister extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 Toast.makeText(getBaseContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getBaseContext(), TabProfileController.class));
                             }
@@ -97,7 +97,7 @@ public class ActivityFormRegister extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CHOOSE_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == CHOOSE_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             uriProfileImage = data.getData();
             try {
@@ -113,31 +113,33 @@ public class ActivityFormRegister extends AppCompatActivity {
     }
 
     private void uploadImageFBStorage() {
-        StorageReference profImgref =
-                FirebaseStorage.getInstance().getReference("profilepics/"+ System.currentTimeMillis()+".jpg");
-        if(uriProfileImage != null){
+        final StorageReference profImgref =
+                FirebaseStorage.getInstance().getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
+        if (uriProfileImage != null) {
             progressBar.setVisibility(View.VISIBLE);
-            profImgref.putFile(uriProfileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    progressBar.setVisibility(View.GONE);
-                    profImageUrl = taskSnapshot.getDownloadUrl().toString();
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            profImgref
+                    .putFile(uriProfileImage)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressBar.setVisibility(View.GONE);
+                            profImageUrl = taskSnapshot.getDownloadUrl().toString();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
 
-    private void showImageChooser(){
+    private void showImageChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Select profile image"),CHOOSE_IMAGE);
+        startActivityForResult(Intent.createChooser(intent, "Select profile image"), CHOOSE_IMAGE);
     }
 }
