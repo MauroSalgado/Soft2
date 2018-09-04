@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "580270610639-sqsf8nep3m8fv41ct23mp5cje5vf0sjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.konranlorenz.kpple",
+            "certificate_hash": "02d64abf433eb3cac0f39de39ed3e694018e467c"
+          }
+        },
+        {
+          "client_id": "580270610639-062ujrbnnncnooddph297smlbjstum83.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.konranlorenz.kpple",
+            "certificate_hash": "9dc554e60e0917c9e7e13add77441fe53cd0b9af"
+          }
+        },
+        {
           "client_id": "580270610639-d8e2vb0u2t9jr2dv874d7c248041b1so.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +45,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580270610639-d8e2vb0u2t9jr2dv874d7c248041b1so.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
