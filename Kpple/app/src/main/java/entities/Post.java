@@ -6,18 +6,18 @@ public class Post {
     private String datePost;
     private String urlImage;
     private String urlVideo;
-    private String textPost;
+    private String txtPost;
 
     public Post() {
     }
 
-    public Post(String idPost, String idUser, String datePost, String urlImage, String urlVideo, String textPost) {
+    public Post(String idPost, String idUser, String datePost, String urlImage, String urlVideo, String txtPost) {
         this.idPost = idPost;
         this.idUser = idUser;
         this.datePost = datePost;
         this.urlImage = urlImage;
         this.urlVideo = urlVideo;
-        this.textPost = textPost;
+        this.txtPost = txtPost;
     }
 
     public String getIdPost() {
@@ -60,11 +60,11 @@ public class Post {
         this.urlVideo = urlVideo;
     }
 
-    public String getTextPost() {
-        return textPost;
+    public String getTxtPost() {
+        return txtPost;
     }
 
-    public void setTextPost(String textPost) {
-        this.textPost = textPost;
+    public void setTxtPost(String txtPost) {
+        this.txtPost = txtPost;
     }
 }
