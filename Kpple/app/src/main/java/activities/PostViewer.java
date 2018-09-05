@@ -51,7 +51,6 @@ public class PostViewer extends AppCompatActivity {
         String userId = user.getUid();
         String url = "Post/" + userId;
 
-<<<<<<< HEAD
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(url);
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,21 +61,6 @@ public class PostViewer extends AppCompatActivity {
                 }
                 mAdapter = new PostAdapter(PostViewer.this, mPosts);
                 mRecyclerView.setAdapter(mAdapter);
-=======
-        String url = "Post/"+user.getUid();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Post/4Fy1OMGn9lOSkSkZctpjAgTp1Mp2/0WpUMWwcsDW7iPVuoHUnxWKI7RH2");
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    //Post post = postSnapshot.getValue(Post.class);
-                    //mPosts.add(post);
-
-                    String nombre = dataSnapshot.child("txtPost").getValue().toString();
-                    Log.i("TAG_DEBUG",nombre);
-                }
-                //mAdapter = new PostAdapter(PostViewer.this, mPosts);
->>>>>>> 4e720b6f9b51e77cead625d70dce0a61746a7019
             }
 
             @Override
