@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Adapter;
 import android.widget.Toast;
 
@@ -49,15 +50,18 @@ public class PostViewer extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
 
         String url = "Post/"+user.getUid();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference(url);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Post/4Fy1OMGn9lOSkSkZctpjAgTp1Mp2/0WpUMWwcsDW7iPVuoHUnxWKI7RH2");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    Post post = postSnapshot.getValue(Post.class);
-                    mPosts.add(post);
+                    //Post post = postSnapshot.getValue(Post.class);
+                    //mPosts.add(post);
+
+                    String nombre = dataSnapshot.child("txtPost").getValue().toString();
+                    Log.i("TAG_DEBUG",nombre);
                 }
-                mAdapter = new PostAdapter(PostViewer.this, mPosts);
+                //mAdapter = new PostAdapter(PostViewer.this, mPosts);
             }
 
             @Override

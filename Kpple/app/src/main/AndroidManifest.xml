@@ -36,7 +36,9 @@
             android:name=".TabProfileController"
             android:label="@string/title_activity_tab_profile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="activities.PostViewer"></activity>
+        <activity android:name="activities.PostViewer" />
+        <activity android:name="activities.PublicationPostActivity"
+            android:label="@string/title_post_activity"></activity>
     </application>
 
 </manifest>
