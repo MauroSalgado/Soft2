@@ -37,6 +37,13 @@
     <string name="title_activity_register">Sign up</string>
     <!--                           -->
 
+    <!-- Srtring de publicacion POST -->
+    <string name="hint_postActivity">¿Qué estás pensando?</string>
+    <string name="title_post_activity">Crear Publicación</string>
+
+    <!--                             -->
+
+
     <!-- Strings del fragment Info   -->
     <string name="info_profile_name">Cargando...</string>
     <string name="info_label_name">Nombre:</string>
