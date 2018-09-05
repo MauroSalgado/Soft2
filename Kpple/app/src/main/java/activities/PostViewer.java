@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Adapter;
 import android.widget.Toast;
 
@@ -30,9 +31,9 @@ public class PostViewer extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private PostAdapter mAdapter;
 
-    private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef, refUser;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
+    private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
     private List<Post> mPosts;
 
     @Override
@@ -45,19 +46,21 @@ public class PostViewer extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mPosts = new ArrayList<>();
-        refUser = FirebaseDatabase.getInstance().getReference("User");
-        FirebaseUser user = mAuth.getCurrentUser();
 
-        String url = "Post/"+user.getUid();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userId = user.getUid();
+        String url = "Post/" + userId;
+
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(url);
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Post post = postSnapshot.getValue(Post.class);
                     mPosts.add(post);
                 }
                 mAdapter = new PostAdapter(PostViewer.this, mPosts);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             @Override
