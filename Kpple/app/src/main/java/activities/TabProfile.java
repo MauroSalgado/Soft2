@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import co.edu.konranlorenz.kpple.R;
 import entities.User;
@@ -85,7 +86,8 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
 
         refUser.child(id).setValue(newUser);
         btnSaveProfile.setVisibility(View.INVISIBLE);
-        Toast.makeText(getContext(), "Profile Saved. Please continue to Interest", Toast.LENGTH_SHORT).show();
+        FancyToast.makeText(getContext(), "Profile Saved. Please continue to Interest", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+
     }
 
     private void showDatePickerDialog() {

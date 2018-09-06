@@ -20,5 +20,6 @@ public class SplashKpple extends AppCompatActivity {
                 startActivity(new Intent(SplashKpple.this, LoginActivity.class));
             }
         },2000);
+        finish();
     }
 }

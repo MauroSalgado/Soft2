@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +32,9 @@ public class PostViewer extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private PostAdapter mAdapter;
 
-    private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef, refUser;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
+    private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
     private List<Post> mPosts;
 
     @Override
@@ -46,27 +47,26 @@ public class PostViewer extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mPosts = new ArrayList<>();
-        refUser = FirebaseDatabase.getInstance().getReference("User");
-        FirebaseUser user = mAuth.getCurrentUser();
 
-        String url = "Post/"+user.getUid();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Post/4Fy1OMGn9lOSkSkZctpjAgTp1Mp2/0WpUMWwcsDW7iPVuoHUnxWKI7RH2");
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userId = user.getUid();
+        String url = "Post/" + userId;
+
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference(url);
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    //Post post = postSnapshot.getValue(Post.class);
-                    //mPosts.add(post);
-
-                    String nombre = dataSnapshot.child("txtPost").getValue().toString();
-                    Log.i("TAG_DEBUG",nombre);
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Post post = postSnapshot.getValue(Post.class);
+                    mPosts.add(post);
                 }
-                //mAdapter = new PostAdapter(PostViewer.this, mPosts);
+                mAdapter = new PostAdapter(PostViewer.this, mPosts);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(PostViewer.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                FancyToast.makeText(PostViewer.this, databaseError.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
             }
         });
     }

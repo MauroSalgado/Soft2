@@ -1,6 +1,7 @@
 package activities;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 
 import co.edu.konranlorenz.kpple.R;
@@ -63,6 +65,7 @@ private static final String TAG = "EmailPassword";
 
         // Buttons
         findViewById(R.id.singin_button).setOnClickListener(this);
+        findViewById(R.id.forgot_password).setOnClickListener(this);
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
@@ -112,15 +115,13 @@ private static final String TAG = "EmailPassword";
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            FancyToast.makeText(LoginActivity.this, "Authentication failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
                             updateUI(null);
                         }
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-                            Toast toast2 = Toast.makeText(getApplicationContext(),"Autenticación Fallida", Toast.LENGTH_SHORT);
-                            toast2.show();
+                            FancyToast.makeText(LoginActivity.this, "Authentication failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
                         }
                         // [END_EXCLUDE]
                     }
@@ -152,12 +153,52 @@ private static final String TAG = "EmailPassword";
     }
 
     /*-------------------Login-----------------------*/
+    private boolean validateTxtEmail() {
+        boolean valid = true;
+
+        String email = mEmailField.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            mEmailField.setError("Required.");
+            valid = false;
+        } else {
+            mEmailField.setError(null);
+        }
+        return valid;
+    }
+
+    /*-------------------Reset Password-----------------------*/
+
+    private void recoverPass(String email) {
+        if (!validateTxtEmail()) {
+            return;
+        }
+
+        mAuth = FirebaseAuth.getInstance();
+        String emailAddress = mEmailField.getText().toString();
+
+        mAuth.sendPasswordResetEmail(emailAddress)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Email sent");
+                            Toast.makeText(getApplicationContext(), "Mail sent with instructions", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Failed Email", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    /*-------------------Login-----------------------*/
 
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.singin_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        }
+        if (i == R.id.forgot_password) {
+            recoverPass(mEmailField.getText().toString());
         }
     }
 

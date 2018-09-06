@@ -23,6 +23,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.io.IOException;
 
@@ -85,7 +86,7 @@ public class ActivityFormRegister extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(getBaseContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                                FancyToast.makeText(getBaseContext(), "Profile Updated", FancyToast.LENGTH_SHORT, FancyToast.INFO, true).show();
                                 startActivity(new Intent(getBaseContext(), TabProfileController.class));
                             }
                         }
@@ -130,7 +131,8 @@ public class ActivityFormRegister extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressBar.setVisibility(View.GONE);
-                            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            FancyToast.makeText(getBaseContext(), e.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+
                         }
                     });
         }
