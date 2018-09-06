@@ -1,9 +1,9 @@
 package activities;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -183,12 +183,9 @@ private static final String TAG = "EmailPassword";
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Email sent");
-                          //  AlertDialog.Builder myBuilder = new AlertDialog.Builder(this);
-                           // myBuilder.setMessage("El Sistema enviará un mensaje con las instrucciones a seguir al buzón de correo electrónico..!");
-                            //myBuilder.setTitle("Notification");
-
-                           //AlertDialog  dialog = myBuilder.create();
-                            //dialog.show();
+                            Toast.makeText(getApplicationContext(), "Mail sent with instructions", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Failed Email", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
