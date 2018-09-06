@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,7 @@ public class PostViewer extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(PostViewer.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                FancyToast.makeText(PostViewer.this, databaseError.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
             }
         });
     }

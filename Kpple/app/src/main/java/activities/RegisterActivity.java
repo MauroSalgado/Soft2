@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import co.edu.konranlorenz.kpple.R;
 
@@ -55,19 +56,19 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
         String pass = ediTxtPass.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this, "Please enter mail", Toast.LENGTH_SHORT).show();
+            FancyToast.makeText(this, "Please enter mail", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(this,"Please enter a valid email", Toast.LENGTH_SHORT).show();
+            FancyToast.makeText(this, "Please enter a valid mail", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
             return;
         }
         if(TextUtils.isEmpty(pass)){
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+            FancyToast.makeText(this, "Please enter password", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
             return;
         }
         if (pass.length() < 6) {
-            Toast.makeText(this, "Minimum lenght of password should be 6", Toast.LENGTH_SHORT).show();
+            FancyToast.makeText(this, "Minimum lenght of password should be 6", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
             return;
         }
 
@@ -78,10 +79,10 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             progressBar.setVisibility(ProgressBar.INVISIBLE);
-                            Toast.makeText(RegisterActivity.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
+                            FancyToast.makeText(RegisterActivity.this, "Registered Succesfully", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
                             startActivity(new Intent(getBaseContext(), ActivityFormRegister.class));
                         }else{
-                            Toast.makeText(RegisterActivity.this, "Could not register. Please try again", Toast.LENGTH_SHORT).show();
+                            FancyToast.makeText(RegisterActivity.this, "Could not register. Please try again", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
                             progressBar.setVisibility(ProgressBar.INVISIBLE);
                         }
 
