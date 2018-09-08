@@ -41,11 +41,11 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
         setContentView(R.layout.activity_register);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        btnRegister = (Button) findViewById(R.id.email_sign_in_button);
-        ediTxtMail = (EditText) findViewById(R.id.email);
-        ediTxtPass = (EditText) findViewById(R.id.password);
-        txtViewSignIn = (TextView) findViewById(R.id.txtSingUp);
-        progressBar = (ProgressBar) findViewById(R.id.login_progress);
+        btnRegister = findViewById(R.id.email_sign_in_button);
+        ediTxtMail = findViewById(R.id.email);
+        ediTxtPass = findViewById(R.id.password);
+        txtViewSignIn = findViewById(R.id.txtSingUp);
+        progressBar = findViewById(R.id.login_progress);
 
         btnRegister.setOnClickListener(this);
         txtViewSignIn.setOnClickListener(this);

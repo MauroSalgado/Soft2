@@ -67,11 +67,11 @@ public class GalleryAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null){
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.item_gridv_gallery,null);
         }
         // Se trae el imageview de del item
-        final ImageView imgprofile = (ImageView) view.findViewById(R.id.imgView_grid_profile);
+        final ImageView imgprofile = view.findViewById(R.id.imgView_grid_profile);
 
 
 

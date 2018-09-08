@@ -39,19 +39,19 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_profile, container, false);
         refUser = FirebaseDatabase.getInstance().getReference("User");
-        txtInpName = (TextInputEditText) view.findViewById(R.id.txtInpName);
-        spnSex = (Spinner) view.findViewById(R.id.spnSex);
-        spnCountry = (Spinner) view.findViewById(R.id.spnCountry);
-        spnCity = (Spinner) view.findViewById(R.id.spnCity);
-        spnLanguage = (Spinner) view.findViewById(R.id.spnLanguage);
-        btnSaveProfile = (Button) view.findViewById(R.id.btnSaveProfile);
+        txtInpName = view.findViewById(R.id.txtInpName);
+        spnSex = view.findViewById(R.id.spnSex);
+        spnCountry = view.findViewById(R.id.spnCountry);
+        spnCity = view.findViewById(R.id.spnCity);
+        spnLanguage = view.findViewById(R.id.spnLanguage);
+        btnSaveProfile = view.findViewById(R.id.btnSaveProfile);
         btnSaveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveProfile();
             }
         });
-        txtBirthDate = (TextInputEditText) view.findViewById(R.id.txtBirthDate);
+        txtBirthDate = view.findViewById(R.id.txtBirthDate);
         txtBirthDate.setOnClickListener(this);
         return view;
     }

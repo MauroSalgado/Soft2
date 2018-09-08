@@ -48,8 +48,8 @@ public class ActivityFormRegister extends AppCompatActivity {
         setContentView(R.layout.activity_form_register);
 
         mAuth = FirebaseAuth.getInstance();
-        imgProfile = (ImageView) findViewById(R.id.imgProfile);
-        profileName = (EditText) findViewById(R.id.editTxtDisplayName);
+        imgProfile = findViewById(R.id.imgProfile);
+        profileName = findViewById(R.id.editTxtDisplayName);
         progressBar = findViewById(R.id.progressbar);
 
         imgProfile.setOnClickListener(new View.OnClickListener() {

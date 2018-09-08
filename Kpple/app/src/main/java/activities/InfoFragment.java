@@ -84,12 +84,12 @@ public class InfoFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-        final TextView nombre = (TextView) view.findViewById(R.id.profile_text_name);
-        final TextView ciudad = (TextView) view.findViewById(R.id.profile_text_city);
-        final TextView pais = (TextView) view.findViewById(R.id.profile_text_country);
-        final TextView idioma = (TextView) view.findViewById(R.id.profile_text_languaje);
-        final TextView fecha = (TextView) view.findViewById(R.id.profile_text_birthdate);
-        final TextView sexo = (TextView) view.findViewById(R.id.profile_text_sex);
+        final TextView nombre = view.findViewById(R.id.profile_text_name);
+        final TextView ciudad = view.findViewById(R.id.profile_text_city);
+        final TextView pais = view.findViewById(R.id.profile_text_country);
+        final TextView idioma = view.findViewById(R.id.profile_text_languaje);
+        final TextView fecha = view.findViewById(R.id.profile_text_birthdate);
+        final TextView sexo = view.findViewById(R.id.profile_text_sex);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();
         final String idU = user.getUid();

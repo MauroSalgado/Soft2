@@ -107,7 +107,7 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
                              Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.fragment_gallery, container, false);
-        gridView = (GridView)view.findViewById(R.id.grid_pictures_profile);
+        gridView = view.findViewById(R.id.grid_pictures_profile);
         database = FirebaseDatabase.getInstance();
         myRefPictures = database.getReference("Pictures");
         List<String> photoProfile = new ArrayList<>();

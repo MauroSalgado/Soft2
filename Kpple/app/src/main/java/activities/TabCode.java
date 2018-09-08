@@ -41,10 +41,10 @@ public class TabCode extends android.support.v4.app.Fragment implements View.OnC
         View view = inflater.inflate(R.layout.tab_code, container, false);
         refUser = FirebaseDatabase.getInstance().getReference("User");
         refTokens= FirebaseDatabase.getInstance().getReference("Tokens");
-        imgNewCode = (ImageView) view.findViewById(R.id.imgNewCode);
+        imgNewCode = view.findViewById(R.id.imgNewCode);
         imgNewCode.setOnClickListener(this);
-        txtCode = (TextInputEditText) view.findViewById(R.id.txtCode);
-        btnSaveCode = (Button) view.findViewById(R.id.btnSaveCode);
+        txtCode = view.findViewById(R.id.txtCode);
+        btnSaveCode = view.findViewById(R.id.btnSaveCode);
         btnSaveCode.setOnClickListener(this);
 
         return view;

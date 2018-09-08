@@ -35,13 +35,13 @@ public class TabHobbies extends android.support.v4.app.Fragment implements View.
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_hobbies, container, false);
         refUser = FirebaseDatabase.getInstance().getReference("Hobbies");
-        stcSwCoffee = (StickySwitch) view.findViewById(R.id.stcSwCoffee);
-        stcSwMovies = (StickySwitch) view.findViewById(R.id.stcSwMovies);
-        stcSwParty = (StickySwitch) view.findViewById(R.id.stcSwParty);
-        stcSwPark = (StickySwitch) view.findViewById(R.id.stcSwPark);
-        stcSwVideo = (StickySwitch) view.findViewById(R.id.stcSwVideo);
-        stcSwSwinger = (StickySwitch) view.findViewById(R.id.stcSwSwinger);
-        btnSaveHobbies = (Button) view.findViewById(R.id.btnSaveHobbies);
+        stcSwCoffee = view.findViewById(R.id.stcSwCoffee);
+        stcSwMovies = view.findViewById(R.id.stcSwMovies);
+        stcSwParty = view.findViewById(R.id.stcSwParty);
+        stcSwPark = view.findViewById(R.id.stcSwPark);
+        stcSwVideo = view.findViewById(R.id.stcSwVideo);
+        stcSwSwinger = view.findViewById(R.id.stcSwSwinger);
+        btnSaveHobbies = view.findViewById(R.id.btnSaveHobbies);
         btnSaveHobbies.setOnClickListener(this);
         return view;
     }

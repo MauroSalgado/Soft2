@@ -41,10 +41,10 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
 
         getSupportFragmentManager().beginTransaction().add(R.id.profile_fragment_container, infoFragment).commit();
 
-        post = (ImageView) findViewById(R.id.img_profile_post);
-        gallery = (ImageView) findViewById(R.id.img_profile_gallery);
-        imgProfile = (ImageView) findViewById(R.id.imgProfile);
-        txtDisplayName = (TextView) findViewById(R.id.txtDisplayName);
+        post = findViewById(R.id.img_profile_post);
+        gallery = findViewById(R.id.img_profile_gallery);
+        imgProfile = findViewById(R.id.imgProfile);
+        txtDisplayName = findViewById(R.id.txtDisplayName);
 
         loadUserInformation();
         invalidateOptionsMenu();
@@ -92,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
-        MenuItem cerrarsesion = (MenuItem) menu.findItem(R.id.logout_menu_main);
+        MenuItem cerrarsesion = menu.findItem(R.id.logout_menu_main);
         if(mAuth.getCurrentUser() != null){
             cerrarsesion.setVisible(true);
         }else{

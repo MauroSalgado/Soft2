@@ -50,7 +50,7 @@ private static final String TAG = "EmailPassword";
 
         // Redirección a la vista de nuevo usuario
 
-        TextView btn = (TextView) findViewById(R.id.register_button);
+        TextView btn = findViewById(R.id.register_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

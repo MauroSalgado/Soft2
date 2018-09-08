@@ -36,13 +36,13 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_interests, container, false);
         refUser = FirebaseDatabase.getInstance().getReference("Interest");
-        stcSwTrio = (StickySwitch) view.findViewById(R.id.stcSwTrio);
-        stcSwVouyer = (StickySwitch) view.findViewById(R.id.stcSwVouyer);
-        stcSwSadism = (StickySwitch) view.findViewById(R.id.stcSwSadism);
-        stcSwFetichism = (StickySwitch) view.findViewById(R.id.stcSwFetichism);
-        stcSwMasoquism = (StickySwitch) view.findViewById(R.id.stcSwMasoquism);
-        stcExhibicionism = (StickySwitch) view.findViewById(R.id.stcExhibicionism);
-        btnSaveInterest = (Button) view.findViewById(R.id.btnSaveInterest);
+        stcSwTrio = view.findViewById(R.id.stcSwTrio);
+        stcSwVouyer = view.findViewById(R.id.stcSwVouyer);
+        stcSwSadism = view.findViewById(R.id.stcSwSadism);
+        stcSwFetichism = view.findViewById(R.id.stcSwFetichism);
+        stcSwMasoquism = view.findViewById(R.id.stcSwMasoquism);
+        stcExhibicionism = view.findViewById(R.id.stcExhibicionism);
+        btnSaveInterest = view.findViewById(R.id.btnSaveInterest);
         btnSaveInterest.setOnClickListener(this);
         return view;
     }
