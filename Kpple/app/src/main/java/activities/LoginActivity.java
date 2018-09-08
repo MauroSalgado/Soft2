@@ -182,9 +182,9 @@ private static final String TAG = "EmailPassword";
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Email sent");
-                            Toast.makeText(getApplicationContext(), "Mail sent with instructions", Toast.LENGTH_SHORT).show();
+                            FancyToast.makeText(LoginActivity.this, "Mail sent with instructions", FancyToast.LENGTH_SHORT, FancyToast.INFO,true).show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Failed Email", Toast.LENGTH_SHORT).show();
+                            FancyToast.makeText(LoginActivity.this, "Email no Register in the APP", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
                         }
                     }
                 });
