@@ -1,5 +1,8 @@
 package activities;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,6 +56,15 @@ public class PostViewer extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         String userId = user.getUid();
         String url = "Post/" + userId;
+
+        FloatingActionButton fab = findViewById(R.id.fab_button_float);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PostViewer.this, PublicationPostActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(url);
         mDatabaseRef.addValueEventListener(new ValueEventListener() {

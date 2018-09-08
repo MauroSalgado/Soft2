@@ -23,6 +23,13 @@
     <string name="firebase_status_fmt">Firebase User: %s</string>
     <!--                            -->
 
+    <!-- Strings Dialog URLVIDEO-->
+    <string name="dialog_textview_url">Url del video:</string>
+    <string name="dialog_hint_url">Introduce la url..</string>
+    <string name="dialog_button_url">Aceptar</string>
+    <string name="dialog_buttonEx_url">Cancelar</string>
+    <!--                -->
+
     <!-- Strings de Login y Registro -->
     <string name="button_register">Register</string>
     <string name="sign_here">Already registered? Sign in here</string>
@@ -38,7 +45,7 @@
     <!--                           -->
 
     <!-- Srtring de publicacion POST -->
-    <string name="hint_postActivity">¿Qué estás pensando?</string>
+    <string name="hint_postActivity">Escribe tu publicación...</string>
     <string name="title_post_activity">Crear Publicación</string>
 
     <!--                             -->

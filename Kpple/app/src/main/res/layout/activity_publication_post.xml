@@ -44,7 +44,8 @@
             android:ems="10"
             android:hint="@string/hint_postActivity"
             android:inputType="textMultiLine"
-            android:minLines="12" />
+            android:textSize="18sp"
+            android:minLines="8" />
 
         <View
             android:id="@+id/dividerpost1"

@@ -1,12 +1,13 @@
 package activities;
 
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,14 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.shashank.sony.fancytoastlib.FancyToast;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
+import java.util.Calendar;
 
 import co.edu.konranlorenz.kpple.R;
 import entities.Post;
 
-public class PublicationPostActivity extends AppCompatActivity {
+public class PublicationPostActivity extends AppCompatActivity implements DialogUrlgFragment.OnFragmentInteractionListener {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
@@ -39,13 +41,15 @@ public class PublicationPostActivity extends AppCompatActivity {
     private Button mBotonUploadPost;
     private EditText mEditTextPost;
     private ImageView mImageViewPost;
+    private ImageButton mBotonVideo;
     private DatabaseReference mDatabaseRef;
     private ProgressBar mProgressBarPost;
 
     private Uri mImageUri;
 
-    private String urlImage;
-    private String textPost;
+    private String urlImage="";
+    private String textPost="";
+    private String urlVideo="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,7 @@ public class PublicationPostActivity extends AppCompatActivity {
         mEditTextPost = findViewById(R.id.editText_public_Post);
         mImageViewPost = findViewById(R.id.image_public_post);
         mProgressBarPost = findViewById(R.id.progressBar_public_post);
+        mBotonVideo = findViewById(R.id.btn_post_video);
 
         mBotonPicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +73,15 @@ public class PublicationPostActivity extends AppCompatActivity {
         mBotonUploadPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                guardarPost();
+            }
+        });
 
+        mBotonVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogUrlgFragment newFragment = new DialogUrlgFragment();
+                newFragment.show(getSupportFragmentManager(), "missiles");
             }
         });
     }
@@ -80,13 +93,17 @@ public class PublicationPostActivity extends AppCompatActivity {
         startActivityForResult(intent,PICK_IMAGE_REQUEST);
     }
 
-    private void guardarPost(String fecha, String urlImage, String urlVideo, String textPost){
-
+    private void guardarPost(){
+        this.textPost = mEditTextPost.getText().toString();
+        Calendar cfecha = Calendar.getInstance();
+        String strFechacfecha=cfecha.toString();
         final String idU = GetId();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Post/"+idU);
         String code = mDatabaseRef.push().getKey();
-        Post post = new Post(code,idU,"07/08/2018",this.urlImage,this.urlImage, "Mi primer post");
+        Post post = new Post(code,idU,strFechacfecha,this.urlImage,this.urlVideo, this.textPost);
         mDatabaseRef.child(code).setValue(post);
+        FancyToast.makeText(getBaseContext(), "Publicación Subida con éxito.", FancyToast.LENGTH_SHORT, FancyToast.INFO, true).show();
+
     }
 
     @Override
@@ -110,10 +127,11 @@ public class PublicationPostActivity extends AppCompatActivity {
         return idU;
     }
 
+
+
     private void uploadImageFBStorage() {
         String idU = GetId();
-        final StorageReference profImgref =
-                FirebaseStorage.getInstance().getReference("/" + idU  + "/post");
+        final StorageReference profImgref = FirebaseStorage.getInstance().getReference("/" + idU  + "/post");
         if (mImageUri != null) {
             mProgressBarPost.setVisibility(View.VISIBLE);
             profImgref
@@ -133,5 +151,10 @@ public class PublicationPostActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
