@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import co.edu.konranlorenz.kpple.R;
 import io.ghyeok.stickyswitch.widget.StickySwitch;
@@ -60,7 +61,7 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
                 refUser.child("Masoquism").child(user.getUid()).setValue(stcSwMasoquism.getText());
                 refUser.child("Exhibicionism").child(user.getUid()).setValue(stcExhibicionism.getText());
 
-                Toast.makeText(getContext(), "Interest Saved. Please continue to Hobbies", Toast.LENGTH_SHORT).show();
+                FancyToast.makeText(getContext(), "Interest Saved. Please continue to Hobbies", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
                 btnSaveInterest.setVisibility(View.INVISIBLE);
                 break;
         }

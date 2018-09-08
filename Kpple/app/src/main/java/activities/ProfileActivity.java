@@ -39,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
         infoFragment = new InfoFragment();
         photoProfileFragment = new PhotoProfile();
 
-        getSupportFragmentManager().beginTransaction().add(R.id.profile_fragment_container, postFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.profile_fragment_container, infoFragment).commit();
 
         post = (ImageView) findViewById(R.id.img_profile_post);
         gallery = (ImageView) findViewById(R.id.img_profile_gallery);

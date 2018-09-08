@@ -1,22 +1,29 @@
 package adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.util.Util;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.shashank.sony.fancytoastlib.FancyToast;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import activities.LoginActivity;
 import co.edu.konranlorenz.kpple.R;
 import entities.Post;
 
@@ -37,12 +44,33 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        Post postCurrent = mPosts.get(position);
+    public void onBindViewHolder(@NonNull final ImageViewHolder holder, int position) {
+        final Post postCurrent = mPosts.get(position);
         holder.txtPost.setText(postCurrent.getTxtPost());
         StorageReference mStorageRef;
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mStorageRef.getDownloadUrl();
+        holder.imgPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!postCurrent.getUrlVideo().isEmpty()){
+                    Uri uri = Uri.parse(postCurrent.getUrlVideo());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    final Snackbar sbVideo= Snackbar.make(view, "Go to the video", Snackbar.LENGTH_SHORT);
+                    sbVideo.getView().setBackgroundColor(ContextCompat.getColor((view.getContext()),R.color.colorPrimary));
+                    sbVideo.setActionTextColor(view.getResources().getColor(R.color.white));
+                    sbVideo.show();
+                    sbVideo.setAction("GO", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Uri uri = Uri.parse(postCurrent.getUrlVideo());
+                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                            view.getContext().startActivity(intent);
+                        }
+                    });
+                }
+            }
+        });
         Glide.with(mContext)
                 .load(postCurrent.getUrlImage())
                 .into(holder.imgPost);

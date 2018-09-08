@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import co.edu.konranlorenz.kpple.R;
 import io.ghyeok.stickyswitch.widget.StickySwitch;
@@ -58,7 +59,7 @@ public class TabHobbies extends android.support.v4.app.Fragment implements View.
                 refUser.child("VideoCall").child(user.getUid()).setValue(stcSwVideo.getText());
                 refUser.child("Swinger").child(user.getUid()).setValue(stcSwSwinger.getText());
 
-                Toast.makeText(getContext(), "Hobbies Saved. Please continue to Code", Toast.LENGTH_SHORT).show();
+                FancyToast.makeText(getContext(), "Hobbies Saved. Please continue to Code", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
                 btnSaveHobbies.setVisibility(View.INVISIBLE);
                 break;
         }
