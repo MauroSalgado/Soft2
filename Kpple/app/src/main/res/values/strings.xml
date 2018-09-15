@@ -30,6 +30,13 @@
     <string name="dialog_buttonEx_url">Cancelar</string>
     <!--                -->
 
+    <!-- Strings Dialog URLVIDEO-->
+    <string name="tab_main_home">Home</string>
+    <string name="tab_main_info">Info</string>
+    <string name="tab_main_post">Posts</string>
+    <string name="tab_main_gallery">Gallery</string>
+    <!--                        -->
+
     <!-- Strings de Login y Registro -->
     <string name="button_register">Register</string>
     <string name="sign_here">Already registered? Sign in here</string>
@@ -101,6 +108,7 @@
         <item>Español</item>
         <item>Inglés</item>
     </string-array>
+    <string name="title_activity_tab_prinpal_contoller">TabPrinpalContoller</string>
 
     <!--                             -->
 </resources>
