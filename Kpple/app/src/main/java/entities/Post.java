@@ -7,21 +7,21 @@ public class Post {
     private String urlImage;
     private String urlVideo;
     private String txtPost;
-    private int likes;
+    private int like;
     private int dislike;
 
     public Post() {
     }
 
     public Post(String idPost, String idUser, String datePost, String urlImage, String urlVideo,
-                String txtPost, int likes, int dislike) {
+                String txtPost, int like, int dislike) {
         this.idPost = idPost;
         this.idUser = idUser;
         this.datePost = datePost;
         this.urlImage = urlImage;
         this.urlVideo = urlVideo;
         this.txtPost = txtPost;
-        this.likes = likes;
+        this.like = like;
         this.dislike = dislike;
     }
 
@@ -29,12 +29,12 @@ public class Post {
         return idPost;
     }
 
-    public int getLikes() {
-        return likes;
+    public int getLike() {
+        return like;
     }
 
-    public void setLikes(int likes) {
-        this.likes = likes;
+    public void setLike(int like) {
+        this.like = like;
     }
 
     public int getDislike() {

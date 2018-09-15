@@ -97,7 +97,7 @@ public class PublicationPostActivity extends AppCompatActivity implements Dialog
         final String idU = GetId();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Post/"+idU);
         String code = mDatabaseRef.push().getKey();
-        Post post = new Post(code,idU,strFechacfecha,this.urlImage,this.urlVideo, this.textPost);
+        Post post = new Post(code,idU,strFechacfecha,this.urlImage,this.urlVideo, this.textPost,0,0);
         mDatabaseRef.child(code).setValue(post);
         FancyToast.makeText(getBaseContext(), "Publicación Subida con éxito.", FancyToast.LENGTH_SHORT, FancyToast.INFO, true).show();
 

@@ -42,6 +42,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
     public void onBindViewHolder(@NonNull final ImageViewHolder holder, int position) {
         final Post postCurrent = mPosts.get(position);
         holder.txtPost.setText(postCurrent.getTxtPost());
+        String like = Integer.toString(postCurrent.getLike());
+        holder.txtLike.setText(like);
+        String dislike = Integer.toString(postCurrent.getDislike());
+        holder.txtDislike.setText(dislike);
         StorageReference mStorageRef;
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mStorageRef.getDownloadUrl();
@@ -78,11 +82,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
     public class ImageViewHolder extends RecyclerView.ViewHolder{
         public TextView txtPost;
+        public TextView txtLike;
+        public TextView txtDislike;
         public ImageView imgPost;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
             txtPost = itemView.findViewById(R.id.txtPost);
+            txtLike = itemView.findViewById(R.id.txtNumLikes);
+            txtDislike = itemView.findViewById(R.id.txtNumDislike);
             imgPost = itemView.findViewById(R.id.imgPost);
         }
     }
