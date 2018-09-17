@@ -68,6 +68,7 @@ public class PostViewer extends AppCompatActivity {
                 }
                 mAdapter = new PostAdapter(PostViewer.this, mPosts);
                 mRecyclerView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
