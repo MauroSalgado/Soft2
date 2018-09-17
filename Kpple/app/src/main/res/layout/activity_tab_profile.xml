@@ -36,25 +36,25 @@
                 android:id="@+id/tabProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_1" />
+                android:text="@string/tab_profile" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabActivities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_2" />
+                android:text="@string/tab_interest" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabHobbies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_3" />
+                android:text="@string/tab_hobbies" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_4"/>
+                android:text="@string/tab_code"/>
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
