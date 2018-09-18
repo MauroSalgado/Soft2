@@ -43,7 +43,7 @@
             android:name="activities.PublicationPostActivity"
             android:label="@string/title_post_activity" />
         <activity
-            android:name=".FriendProfile"
+            android:name=".FriendProfileController"
             android:label="@string/title_activity_friend_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
