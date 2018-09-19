@@ -113,6 +113,10 @@
     <string name="tab_couple_post">Post</string>
     <string name="tab_couple_gallery">Gallery</string>
     <string name="tab_couple_info">Info</string>
+    <string name="title_activity_tab_principal_controller">TabPrincipalController</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
 
     <!--                             -->
 </resources>

@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import co.edu.konranlorenz.kpple.R;
+import co.edu.konranlorenz.kpple.TabPrincipalController;
 
 /**
  * A login screen that offers login via email/password.
@@ -78,7 +79,7 @@ private static final String TAG = "EmailPassword";
         if (currentUser != null && currentUser.getDisplayName()!=null){
             finish();
             //startActivity(new Intent(this, PublicationPostActivity.class));
-            startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, TabPrincipalController.class));
         }
 
 

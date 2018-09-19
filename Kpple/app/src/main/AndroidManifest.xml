@@ -45,6 +45,10 @@
         <activity
             android:name=".FriendProfileController"
             android:label="@string/title_activity_friend_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TabPrincipalController"
+            android:label="@string/title_activity_tab_principal_controller"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

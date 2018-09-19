@@ -1,5 +1,7 @@
 package co.edu.konranlorenz.kpple;
 
+import android.net.Uri;
+import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +20,12 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class TabPrincipalContoller extends AppCompatActivity {
+import activities.GalleryFragment;
+import activities.InfoFragment;
+import activities.PhotoProfile;
+import activities.PostFragment;
+
+public class TabPrincipalController extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -38,7 +45,7 @@ public class TabPrincipalContoller extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab_principal_contoller);
+        setContentView(R.layout.activity_tab_principal_controller);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,14 +57,19 @@ public class TabPrincipalContoller extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
 
     }
 
@@ -65,7 +77,7 @@ public class TabPrincipalContoller extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tab_prinpal_contoller, menu);
+        getMenuInflater().inflate(R.menu.menu_tab_principal_controller, menu);
         return true;
     }
 
@@ -82,6 +94,11 @@ public class TabPrincipalContoller extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**
@@ -112,7 +129,7 @@ public class TabPrincipalContoller extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_tab_principal_contoller, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_tab_principal_controller, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -133,13 +150,27 @@ public class TabPrincipalContoller extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            switch (position){
+                case 0:
+                    InfoFragment infoFragment = new InfoFragment();
+                    return infoFragment;
+                case 1:
+                    InfoFragment infoFragment2 = new InfoFragment();
+                    return infoFragment2;
+                case 2:
+                    GalleryFragment galleryFragment = new GalleryFragment();
+                    return galleryFragment;
+                case 3:
+                    GalleryFragment galleryFragment2 = new GalleryFragment();
+                    return galleryFragment2;
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
     }
 }
