@@ -46,7 +46,7 @@
         android:id="@+id/editTxtDisplayName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Display Name" />
+        android:hint="@string/displayname" />
 
     <Button
         android:id="@+id/buttonSave"
@@ -57,7 +57,7 @@
         android:background="@drawable/rounded_button_solid"
         android:paddingLeft="55dp"
         android:paddingRight="55dp"
-        android:text="Save"
+        android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="@color/cardview_light_background" />
 

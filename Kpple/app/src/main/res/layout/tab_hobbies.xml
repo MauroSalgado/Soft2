@@ -11,7 +11,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Drink Coffee"
+        android:text="@string/drinkcoffee"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:text="Movies"
+        android:text="@string/movies"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="139dp"
-        android:text="Party"
+        android:text="@string/party"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="208dp"
-        android:text="Park"
+        android:text="@string/park"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -138,7 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="277dp"
-        android:text="Video Call"
+        android:text="@string/video_Call"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -170,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="346dp"
-        android:text="Swinger"
+        android:text="@string/swinger"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -202,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/stcSwSwinger"
         android:background="@color/colorPrimary"
-        android:text="Save"
+        android:text="@string/save"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />
 
