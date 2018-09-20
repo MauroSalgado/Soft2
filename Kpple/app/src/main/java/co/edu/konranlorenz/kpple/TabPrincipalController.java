@@ -24,6 +24,7 @@ import activities.GalleryFragment;
 import activities.InfoFragment;
 import activities.PhotoProfile;
 import activities.PostFragment;
+import activities.PostViewerFragment;
 
 public class TabPrincipalController extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
 
@@ -155,8 +156,8 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
                     InfoFragment infoFragment = new InfoFragment();
                     return infoFragment;
                 case 1:
-                    InfoFragment infoFragment2 = new InfoFragment();
-                    return infoFragment2;
+                    PostViewerFragment postViewer = new PostViewerFragment();
+                    return postViewer;
                 case 2:
                     GalleryFragment galleryFragment = new GalleryFragment();
                     return galleryFragment;
