@@ -1,23 +1,30 @@
 package co.edu.konranlorenz.kpple;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import activities.GalleryFragment;
+import activities.InfoFragment;
+import activities.PostViewerFragment;
+import activities.TabBlank;
 
 public class FriendProfileController extends AppCompatActivity {
 
@@ -30,6 +37,9 @@ public class FriendProfileController extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ImageView imgCouple;
+    private TextView txtFriendName;
+    FirebaseAuth mAuth;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -40,6 +50,8 @@ public class FriendProfileController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_profile);
+
+        mAuth = FirebaseAuth.getInstance();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,6 +68,25 @@ public class FriendProfileController extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+        imgCouple = findViewById(R.id.imgCouple);
+        txtFriendName = findViewById(R.id.txtFriendName);
+
+        loadUserInformation();
+
+    }
+
+    private void loadUserInformation() {
+        final FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            if (user.getPhotoUrl().toString() != null) {
+                Glide.with(getBaseContext())
+                        .load(user.getPhotoUrl().toString())
+                        .into(imgCouple);
+            }
+            if (user.getDisplayName() != null) {
+                txtFriendName.setText(user.getDisplayName());
+            }
+        }
     }
 
 
@@ -88,6 +119,7 @@ public class FriendProfileController extends AppCompatActivity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private static final String MESSAGE_KEY= "user";
 
         public PlaceholderFragment() {
         }
@@ -107,6 +139,8 @@ public class FriendProfileController extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            Intent intent = getActivity().getIntent();
+            String userId = intent.getStringExtra(MESSAGE_KEY);
             View rootView = inflater.inflate(R.layout.fragment_friend_profile, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
@@ -130,12 +164,14 @@ public class FriendProfileController extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position){
                 case 0:
-
-                    break;
+                    PostViewerFragment postViewer = new PostViewerFragment();
+                    return postViewer;
                 case 1:
-                    break;
+                    TabBlank tab1= new TabBlank();
+                    return tab1;
                 case 2:
-                    break;
+                    TabBlank tab2= new TabBlank();
+                    return tab2;
             }
             return null;
         }

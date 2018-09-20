@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
 
 public class ProfileActivity extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
@@ -82,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
         int id = item_menu.getItemId();
         if (id == R.id.logout_menu_main) {
             signOut();
-            Intent intent = new Intent(getBaseContext(),LoginActivity.class);
+            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item_menu);
@@ -93,12 +94,11 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         MenuItem cerrarsesion = menu.findItem(R.id.logout_menu_main);
-        if(mAuth.getCurrentUser() != null){
+        if (mAuth.getCurrentUser() != null) {
             cerrarsesion.setVisible(true);
-        }else{
+        } else {
             cerrarsesion.setVisible(false);
         }
-
         return true;
     }
 
@@ -109,17 +109,17 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
 
     public void onClick(View view) {
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.img_profile_gallery:
-                transaction.replace(R.id.profile_fragment_container,galleryFragment);
+                transaction.replace(R.id.profile_fragment_container, galleryFragment);
                 break;
             case R.id.img_profile_info:
-                transaction.replace(R.id.profile_fragment_container,infoFragment);
+                transaction.replace(R.id.profile_fragment_container, infoFragment);
                 break;
             case R.id.img_profile_post:
-                Intent intent = new Intent(ProfileActivity.this, PostViewer.class);
+                Intent intent = new Intent(ProfileActivity.this, FriendProfileController.class);
+                //Intent intent = new Intent(ProfileActivity.this, PostViewer.class);
                 startActivity(intent);
-                //transaction.replace(R.id.profile_fragment_container,postFragment);
                 break;
         }
         transaction.commit();

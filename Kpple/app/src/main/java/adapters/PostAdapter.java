@@ -12,16 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -37,6 +32,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
     public PostAdapter(Context mContext, List<Post> mPosts) {
         this.mContext = mContext;
         this.mPosts = mPosts;
+    }
+
+    public void setData(List<Post> newPost){
+        this.mPosts.clear();
+        mPosts.addAll(newPost);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -60,8 +61,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         holder.txtLike.setText(like);
         String dislike = Integer.toString(postCurrent.getDislike());
         holder.txtDislike.setText(dislike);
-
-
 
         StorageReference mStorageRef;
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -88,17 +87,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         holder.imgLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int addLike = postCurrent.getLike()+1;
+                int addLike = postCurrent.getLike() + 1;
                 refPost.child(user).child(postID).child("like").setValue(addLike);
                 holder.txtLike.setText(String.valueOf(addLike));
+                setData(mPosts);
             }
         });
         holder.imgDislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int addDislike = postCurrent.getDislike()+1;
+                int addDislike = postCurrent.getDislike() + 1;
                 refPost.child(user).child(postID).child("dislike").setValue(addDislike);
                 holder.txtDislike.setText(String.valueOf(addDislike));
+                setData(mPosts);
             }
         });
         Glide.with(mContext)

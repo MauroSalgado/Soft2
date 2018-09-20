@@ -2,11 +2,14 @@ package activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +27,7 @@ import adapters.PostAdapter;
 import co.edu.konranlorenz.kpple.R;
 import entities.Post;
 
-public class PostViewer extends AppCompatActivity {
+public class PostViewerFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private PostAdapter mAdapter;
@@ -35,30 +38,34 @@ public class PostViewer extends AppCompatActivity {
     private List<Post> mPosts;
     private final static String MESSAGE_KEY = "null";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_viewer);
+    public PostViewerFragment() {
+    }
 
-        mRecyclerView = findViewById(R.id.recViewPost);
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.activity_post_viewer, container, false);
+        mRecyclerView = v.findViewById(R.id.recViewPost);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mPosts = new ArrayList<>();
-        Intent intent = getIntent();
+        Intent intent = getActivity().getIntent();
         String userId = intent.getStringExtra(MESSAGE_KEY);
-        if(userId.equals("null")){
+        if (userId == null) {
             FirebaseUser user = mAuth.getCurrentUser();
             userId = user.getUid();
         }
 
         String url = "Post/" + userId;
 
-        FloatingActionButton fab = findViewById(R.id.fab_button_float);
+        FloatingActionButton fab = v.findViewById(R.id.fab_button_float);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PostViewer.this, PublicationPostActivity.class);
+                Intent intent = new Intent(getActivity(), PublicationPostActivity.class);
                 startActivity(intent);
             }
         });
@@ -71,14 +78,16 @@ public class PostViewer extends AppCompatActivity {
                     Post post = postSnapshot.getValue(Post.class);
                     mPosts.add(post);
                 }
-                mAdapter = new PostAdapter(PostViewer.this, mPosts);
+                mAdapter = new PostAdapter(getActivity(), mPosts);
                 mRecyclerView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                FancyToast.makeText(PostViewer.this, databaseError.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                FancyToast.makeText(getActivity(), databaseError.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
             }
         });
+        return v;
     }
 }
