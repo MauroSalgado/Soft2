@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kpple</string>
+    <string name="title_activity_login">se connecter</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_log_in">identifier</string>
+    <string name="action_sign_in">se connecter</string>
+    <string name="action_sign_in_short">se connecter</string>
+    <string name="error_invalid_email">Cette adresse email est invalide</string>
+    <string name="error_invalid_password">Ce mot de passe est trop court</string>
+    <string name="error_incorrect_password">Ce mot de passe est incorrect</string>
+    <string name="error_field_required">Ce champ est requis</string>
+    <string name="permission_rationale">"Les autorisations de contacts sont nécessaires pour fournir le courrier électronique
+         finitions."
+    </string>
+    <string name="login_forgot_pass">Mot de passe oublié?</string>
+    <string name="emailpassword_status_fmt">Utilisateur de messagerie: %1$s (verified: %2$b)</string>
+    <string name="sign_out">se connecter</string>
+    <string name="auth_failed">Authentification échouée</string>
+    <string name="signed_out">Se déconnecter</string>
+    <string name="displayname">Entrez le nom daffichage</string>
+    <string name="save">sauvegarder</string>
+    <string name="msj">Avez-vous un code? Mettez ici</string>
+    <string name="newCode">Générer un nouveau code</string>
+    <string name="drinkcoffee">Boire du café</string>
+    <string name="movies">Films</string>
+    <string name="party">Fête</string>
+    <string name="park">Parc</string>
+    <string name="video_Call">Appel vidéo</string>
+    <string name="swinger">Swinger</string>
+    <string name="trio">Trio</string>
+    <string name="vouyerism">Voyeurisme</string>
+    <string name="sadism">Sadisme</string>
+    <string name="Fetichism">Fétichisme</string>
+    <string name="masoquism">Masochisme</string>
+    <string name="exhibicionism">Exposition</string>
+
+
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <!--                            -->
+
+    <!-- Strings Dialog URLVIDEO-->
+    <string name="dialog_textview_url">Url de la vidéo:</string>
+    <string name="dialog_hint_url">Entrez url..</string>
+    <string name="dialog_button_url">Accepter</string>
+    <string name="dialog_buttonEx_url">Annuler</string>
+    <!--                -->
+
+    <!-- Strings Dialog URLVIDEO-->
+    <string name="tab_main_home">Accueil</string>
+    <string name="tab_main_info">Info</string>
+    <string name="tab_main_post">Des postes</string>
+    <string name="tab_main_gallery">Galerie</string>
+    <!--                        -->
+
+    <!-- Strings de Login y Registro -->
+    <string name="button_register">registre</string>
+    <string name="sign_here">Déjà enregistré? Se connecter ici</string>
+    <string name="title_activity_profile">activity_profile</string>
+    <string name="text_o">Ó</string>
+    <string name="sign_up">S inscrire</string>
+    <!--                           -->
+
+    <!-- Strings del menú Superior -->
+        <string name="logout_item_menu">Fermer la session</string>
+    <string name="profile_item_menu">Mon profil</string>
+    <string name="title_activity_register">S inscrire</string>
+    <!--                           -->
+
+    <!-- Srtring de publicacion POST -->
+    <string name="hint_postActivity">Ecrivez votre publication...</string>
+    <string name="title_post_activity">Créer une publication</string>
+
+    <!--                             -->
+
+
+    <!-- Strings del fragment Info   -->
+    <string name="info_profile_name">Chargement...</string>
+    <string name="info_label_name">prénom:</string>
+    <string name="info_label_country">Pays:</string>
+    <string name="info_text_country"></string>
+    <string name="info_label_city">Ville:</string>
+    <string name="info_text_city"></string>
+    <string name="info_label_sex">Sexe:</string>
+    <string name="info_text_sex"></string>
+    <string name="info_label_languaje">La langue:</string>
+    <string name="info_text_languaje"></string>
+    <string name="info_label_birthdate">Date de naissance:</string>
+    <string name="info_text_birthdate"></string>
+    <string name="info_profile_hobbies">Loisirs</string>
+    <string name="info_profile_interest">Intérêts</string>
+    <!--                             -->
+
+    <string name="post_profile">Des postes</string>
+
+    <string name="gallery_profile">Galerie</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour fragment blanc</string>
+    <string name="title_activity_tab_profile">Profil</string>
+    <string name="tab_profile">Profil</string>
+    <string name="tab_interest">Intérêts</string>
+    <string name="tab_hobbies">Loisirs</string>
+    <string name="tab_code">Code</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="section_format">Bonjour tout le monde de la section: %1$d</string>
+    <string-array name="sex">
+        <item>Mâle</item>
+        <item>Femelle</item>
+    </string-array>
+    <string-array name="countries">
+        <item>Colombia</item>
+        <item>États Unis</item>
+        <item>Espagne</item>
+    </string-array>
+
+    <string-array name="cities">
+        <item>Bogota</item>
+        <item>Washington</item>
+        <item>Madrid</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>Espanol</item>
+        <item>Anglais</item>
+    </string-array>
+    <string name="title_activity_tab_prinpal_contoller">TabPrinpalContoller</string>
+    <string name="title_activity_friend_profile">FriendProfile</string>
+    <string name="tab_couple_post">Poster</string>
+    <string name="tab_couple_gallery">Galerie</string>
+    <string name="tab_couple_info">Info</string>
+    <string name="title_activity_tab_principal_controller">TabPrincipalController</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+</resources>
