@@ -1,5 +1,6 @@
 package co.edu.konranlorenz.kpple;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -20,12 +21,17 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import activities.GalleryFragment;
 import activities.InfoFragment;
+import activities.LoginActivity;
 import activities.PhotoProfile;
 import activities.PostFragment;
 
 public class TabPrincipalController extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
+
+    FirebaseAuth mAuth;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -71,30 +77,34 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
             }
         });
 
+        // [START initialize_auth]
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tab_principal_controller, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+    private void signOut() {
+        mAuth.signOut();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public boolean onOptionsItemSelected(MenuItem item_menu) {
+        int id = item_menu.getItemId();
+        if (id == R.id.logout_menu_main) {
+            signOut();
+            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+            startActivity(intent);
         }
-
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item_menu);
     }
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -140,6 +150,8 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
+
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -155,14 +167,14 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
                     InfoFragment infoFragment = new InfoFragment();
                     return infoFragment;
                 case 1:
-                    InfoFragment infoFragment2 = new InfoFragment();
-                    return infoFragment2;
-                case 2:
                     GalleryFragment galleryFragment = new GalleryFragment();
                     return galleryFragment;
-                case 3:
+                case 2:
                     GalleryFragment galleryFragment2 = new GalleryFragment();
                     return galleryFragment2;
+                case 3:
+                    InfoFragment infoFragment2 = new InfoFragment();
+                    return infoFragment2;
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
