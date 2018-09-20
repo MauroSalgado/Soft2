@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
-            android:text="Post"
+            android:text="@string/post_profile"
             android:textSize="16sp" />
 
         <ImageView

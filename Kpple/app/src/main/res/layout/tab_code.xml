@@ -32,7 +32,7 @@
             android:ems="15"
             android:focusedByDefault="true"
             android:gravity="center"
-            android:hint="Do you have a code? Put in here"
+            android:hint="@string/msj"
             android:text=""
             android:textColor="@color/white"
             android:textSize="25sp"
@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="228dp"
-        android:text="Generate a new CODE" />
+        android:text="@string/newCode" />
 
     <ImageView
         android:id="@+id/imgNewCode"
@@ -65,7 +65,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="78dp"
         android:background="@color/colorPrimary"
-        android:text="Save"
+        android:text="@string/save"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />
 

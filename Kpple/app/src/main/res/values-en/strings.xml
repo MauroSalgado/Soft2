@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kpple</string>
     <string name="title_activity_login">Sign in</string>
@@ -43,9 +44,9 @@
 
     <!-- Strings Dialog URLVIDEO-->
     <string name="dialog_textview_url">Url del video:</string>
-    <string name="dialog_hint_url">Introduce la url..</string>
-    <string name="dialog_button_url">Aceptar</string>
-    <string name="dialog_buttonEx_url">Cancelar</string>
+    <string name="dialog_hint_url">Enter the url..</string>
+    <string name="dialog_button_url">OK</string>
+    <string name="dialog_buttonEx_url">Cancel</string>
     <!--                -->
 
     <!-- Strings Dialog URLVIDEO-->
@@ -64,33 +65,33 @@
     <!--                           -->
 
     <!-- Strings del menú Superior -->
-    <string name="logout_item_menu">Cerrar Sesión</string>
-    <string name="profile_item_menu">Mi Perfil</string>
+    <string name="logout_item_menu">Sign off</string>
+    <string name="profile_item_menu">My profile</string>
     <string name="title_activity_register">Sign up</string>
     <!--                           -->
 
     <!-- Srtring de publicacion POST -->
-    <string name="hint_postActivity">Escribe tu publicación...</string>
-    <string name="title_post_activity">Crear Publicación</string>
+    <string name="hint_postActivity">Write your publication...</string>
+    <string name="title_post_activity">Create Publication</string>
 
     <!--                             -->
 
 
     <!-- Strings del fragment Info   -->
-    <string name="info_profile_name">Cargando...</string>
-    <string name="info_label_name">Nombre:</string>
-    <string name="info_label_country">País:</string>
+    <string name="info_profile_name">Loading...</string>
+    <string name="info_label_name">Name:</string>
+    <string name="info_label_country">Country:</string>
     <string name="info_text_country"></string>
-    <string name="info_label_city">Ciudad:</string>
+    <string name="info_label_city">City:</string>
     <string name="info_text_city"></string>
     <string name="info_label_sex">Sex:</string>
     <string name="info_text_sex"></string>
-    <string name="info_label_languaje">Idioma:</string>
+    <string name="info_label_languaje">Languaje:</string>
     <string name="info_text_languaje"></string>
-    <string name="info_label_birthdate">Fecha de Nacimiento:</string>
+    <string name="info_label_birthdate">Birthdate:</string>
     <string name="info_text_birthdate"></string>
     <string name="info_profile_hobbies">Hobbies</string>
-    <string name="info_profile_interest">Interéses</string>
+    <string name="info_profile_interest">Interests</string>
     <!--                             -->
 
     <string name="post_profile">Posts</string>
@@ -112,8 +113,8 @@
     </string-array>
     <string-array name="countries">
         <item>Colombia</item>
-        <item>Estados Unidos</item>
-        <item>España</item>
+        <item>U.S</item>
+        <item>Spain</item>
     </string-array>
 
     <string-array name="cities">
@@ -123,8 +124,8 @@
     </string-array>
 
     <string-array name="languages">
-        <item>Español</item>
-        <item>Inglés</item>
+        <item>Spanish</item>
+        <item>English</item>
     </string-array>
     <string name="title_activity_tab_prinpal_contoller">TabPrinpalContoller</string>
     <string name="title_activity_friend_profile">FriendProfile</string>
