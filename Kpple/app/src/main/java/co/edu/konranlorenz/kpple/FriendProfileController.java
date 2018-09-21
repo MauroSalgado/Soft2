@@ -18,8 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import activities.GalleryFragment;
 import activities.InfoFragment;
@@ -53,6 +56,7 @@ public class FriendProfileController extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -76,6 +80,7 @@ public class FriendProfileController extends AppCompatActivity {
     }
 
     private void loadUserInformation() {
+
         final FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             if (user.getPhotoUrl().toString() != null) {
@@ -139,8 +144,7 @@ public class FriendProfileController extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            Intent intent = getActivity().getIntent();
-            String userId = intent.getStringExtra(MESSAGE_KEY);
+
             View rootView = inflater.inflate(R.layout.fragment_friend_profile, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));

@@ -31,6 +31,7 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
     Button btnSaveProfile;
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseUser user = mAuth.getCurrentUser();
     private DatabaseReference refUser;
 
     @Nullable
@@ -72,7 +73,6 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
             return;
         }
 
-        FirebaseUser user = mAuth.getCurrentUser();
         String id = user.getUid();
         String city = spnCity.getSelectedItem().toString();
         String country = spnCountry.getSelectedItem().toString();
@@ -80,8 +80,9 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
         String date = txtBirthDate.getText().toString();
         String nick = user.getDisplayName().toString();
         String language = spnLanguage.getSelectedItem().toString();
+        String urlImgProfile = user.getPhotoUrl().toString();
 
-        User newUser = new User(id, city, country, sex, date, nick, name, language, "",false);
+        User newUser = new User(id, city, country, sex, date, nick, name, language, "",false, urlImgProfile);
 
         refUser.child(id).setValue(newUser);
         btnSaveProfile.setVisibility(View.INVISIBLE);

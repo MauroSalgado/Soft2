@@ -12,12 +12,13 @@ public class User {
     private String language;
     private String code;
     private Boolean active;
+    private String urlImgProfile;
 
     public User() {
     }
 
     public User(String idUser, String city, String country, String sex, String birthday,
-                String nickname, String name, String language, String code, Boolean active) {
+                String nickname, String name, String language, String code, Boolean active, String urlImgProfile) {
         this.idUser = idUser;
         this.city = city;
         this.country = country;
@@ -28,6 +29,7 @@ public class User {
         this.language = language;
         this.code = code;
         this.active = active;
+        this.urlImgProfile = urlImgProfile;
     }
 
     public String getIdUser() {
@@ -108,5 +110,13 @@ public class User {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public String getUrlImgProfile() {
+        return urlImgProfile;
+    }
+
+    public void setUrlImgProfile(String urlImgProfile) {
+        this.urlImgProfile = urlImgProfile;
     }
 }

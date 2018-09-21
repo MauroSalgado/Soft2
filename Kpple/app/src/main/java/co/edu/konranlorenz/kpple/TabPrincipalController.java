@@ -168,17 +168,11 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
                     InfoFragment infoFragment = new InfoFragment();
                     return infoFragment;
                 case 1:
-<<<<<<< HEAD
                     PostViewerFragment postViewer = new PostViewerFragment();
                     return postViewer;
                 case 2:
-=======
->>>>>>> 179deb228cb3241ed9703d0ea63c33a59abc176c
                     GalleryFragment galleryFragment = new GalleryFragment();
                     return galleryFragment;
-                case 2:
-                    GalleryFragment galleryFragment2 = new GalleryFragment();
-                    return galleryFragment2;
                 case 3:
                     InfoFragment infoFragment2 = new InfoFragment();
                     return infoFragment2;
