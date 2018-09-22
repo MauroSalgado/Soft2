@@ -30,6 +30,7 @@ import activities.PhotoProfile;
 import activities.PostFragment;
 import activities.PostViewerFragment;
 import activities.ProfileActivity;
+import activities.Recycler_cardview_person;
 
 public class TabPrincipalController extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
 
@@ -166,8 +167,8 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position){
                 case 0:
-                    InfoFragment infoFragment = new InfoFragment();
-                    return infoFragment;
+                    Recycler_cardview_person cardview_person = new Recycler_cardview_person();
+                    return cardview_person;
                 case 1:
                     PostViewerFragment postViewer = new PostViewerFragment();
                     return postViewer;

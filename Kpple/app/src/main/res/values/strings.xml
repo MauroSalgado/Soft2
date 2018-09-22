@@ -137,5 +137,11 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
 
+    <string name="card_textview_likes">Likes:</string>
+    <string name="card_textview_likes_values">15</string>
+    <string name="name_card">Jhon Watson</string>
+    <string name="card_post">Post:</string>
+    <string name="card_post_values">5</string>
+
     <!--                             -->
 </resources>
