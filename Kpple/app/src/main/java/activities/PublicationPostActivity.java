@@ -44,9 +44,9 @@ public class PublicationPostActivity extends AppCompatActivity implements Dialog
 
     private Uri mImageUri;
 
-    private String urlImage="";
-    private String textPost="";
-    private String urlVideo="";
+    private String urlImage = "";
+    private String textPost = "";
+    private String urlVideo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,21 +83,21 @@ public class PublicationPostActivity extends AppCompatActivity implements Dialog
         });
     }
 
-    private void openFileChooser(){
+    private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,PICK_IMAGE_REQUEST);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
-    private void guardarPost(){
+    private void guardarPost() {
         this.textPost = mEditTextPost.getText().toString();
         Calendar cfecha = Calendar.getInstance();
-        String strFechacfecha=cfecha.toString();
+        String strFechacfecha = cfecha.toString();
         final String idU = GetId();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Post/"+idU);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Post/" + idU);
         String code = mDatabaseRef.push().getKey();
-        Post post = new Post(code,idU,strFechacfecha,this.urlImage,this.urlVideo, this.textPost,0,0);
+        Post post = new Post(code, idU, strFechacfecha, this.urlImage, this.urlVideo, this.textPost, 0, 0);
         mDatabaseRef.child(code).setValue(post);
         FancyToast.makeText(getBaseContext(), "Publicación Subida con éxito.", FancyToast.LENGTH_SHORT, FancyToast.INFO, true).show();
 
@@ -107,7 +107,7 @@ public class PublicationPostActivity extends AppCompatActivity implements Dialog
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null){
+                && data != null && data.getData() != null) {
             mImageUri = data.getData();
             Picasso.with(this).load(mImageUri).into(mImageViewPost);
             mImageViewPost.setVisibility(View.VISIBLE);
@@ -117,7 +117,7 @@ public class PublicationPostActivity extends AppCompatActivity implements Dialog
         }
     }
 
-    public String GetId(){
+    public String GetId() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         String idU = user.getUid();
@@ -125,10 +125,9 @@ public class PublicationPostActivity extends AppCompatActivity implements Dialog
     }
 
 
-
     private void uploadImageFBStorage() {
         String idU = GetId();
-        final StorageReference profImgref = FirebaseStorage.getInstance().getReference("/" + idU  + "/post");
+        final StorageReference profImgref = FirebaseStorage.getInstance().getReference("/" + idU + "/post");
         if (mImageUri != null) {
             mProgressBarPost.setVisibility(View.VISIBLE);
             profImgref

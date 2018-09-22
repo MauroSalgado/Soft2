@@ -29,6 +29,7 @@ import activities.LoginActivity;
 import activities.PhotoProfile;
 import activities.PostFragment;
 import activities.PostViewerFragment;
+import activities.ProfileActivity;
 
 public class TabPrincipalController extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
 

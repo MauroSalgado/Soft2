@@ -15,8 +15,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -49,13 +52,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull final ImageViewHolder holder, int position) {
+
         final Post postCurrent = mPosts.get(position);
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("User/"+postCurrent.getIdUser());
         final DatabaseReference refPost = FirebaseDatabase.getInstance().getReference("Post");
         final String user = mAuth.getCurrentUser().getUid();
         final String postID = postCurrent.getIdPost();
 
-        holder.txtUserName.setText(mAuth.getCurrentUser().getDisplayName());
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                holder.txtUserName.setText(dataSnapshot.child("name").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         holder.txtPost.setText(postCurrent.getTxtPost());
         String like = Integer.toString(postCurrent.getLike());
         holder.txtLike.setText(like);

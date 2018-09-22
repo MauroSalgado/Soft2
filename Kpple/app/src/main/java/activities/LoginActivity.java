@@ -78,7 +78,7 @@ private static final String TAG = "EmailPassword";
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null && currentUser.getDisplayName()!=null){
             finish();
-            //startActivity(new Intent(this, PublicationPostActivity.class));
+            //startActivity(new Intent(this, ProfileActivity.class));
             startActivity(new Intent(this, TabPrincipalController.class));
         }
 

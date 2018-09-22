@@ -46,7 +46,8 @@ public class PostViewer extends AppCompatActivity {
 
         mPosts = new ArrayList<>();
         Intent intent = getIntent();
-        String userId = intent.getStringExtra(MESSAGE_KEY);
+        //String userId = intent.getStringExtra(MESSAGE_KEY);
+        String userId = "27M4a845YeRSWejMijro3FWGIRj2";
         if(userId.equals("null")){
             FirebaseUser user = mAuth.getCurrentUser();
             userId = user.getUid();

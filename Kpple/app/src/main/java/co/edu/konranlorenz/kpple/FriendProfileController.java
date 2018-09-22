@@ -18,19 +18,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
-import activities.GalleryFragment;
-import activities.InfoFragment;
 import activities.PostViewerFragment;
 import activities.TabBlank;
 
 public class FriendProfileController extends AppCompatActivity {
 
+    private static final String MESSAGE_KEY = "user";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -42,6 +44,10 @@ public class FriendProfileController extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ImageView imgCouple;
     private TextView txtFriendName;
+    private ImageView imgFollow;
+
+    private FirebaseDatabase database;
+    private DatabaseReference mDatabaseRef, followRef;
     FirebaseAuth mAuth;
 
     /**
@@ -53,7 +59,12 @@ public class FriendProfileController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_profile);
-
+        Intent intent = getIntent();
+        final String userID = intent.getStringExtra(MESSAGE_KEY);
+        //final String userID = "27M4a845YeRSWejMijro3FWGIRj2";
+        database = FirebaseDatabase.getInstance();
+        mDatabaseRef = database.getReference("User/" + userID);
+        followRef = database.getReference("Following");
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -74,24 +85,43 @@ public class FriendProfileController extends AppCompatActivity {
 
         imgCouple = findViewById(R.id.imgCouple);
         txtFriendName = findViewById(R.id.txtFriendName);
+        imgFollow = findViewById(R.id.imgFollow);
+
+        imgFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                followRef.child(user.getUid()).child(userID).setValue("Yes");
+                FancyToast.makeText(getBaseContext(), "Now you are following", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+            }
+        });
 
         loadUserInformation();
 
     }
 
     private void loadUserInformation() {
+        //Intent intent = getIntent();
+        //String idFriend = intent.getStringExtra(MESSAGE_KEY);
 
-        final FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            if (user.getPhotoUrl().toString() != null) {
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String temp = dataSnapshot.getKey();
+                String friendName = dataSnapshot.child("name").getValue().toString();
+                String urlImgProfile = dataSnapshot.child("urlImgProfile").getValue().toString();
                 Glide.with(getBaseContext())
-                        .load(user.getPhotoUrl().toString())
+                        .load(urlImgProfile)
                         .into(imgCouple);
+                txtFriendName.setText(friendName);
+
             }
-            if (user.getDisplayName() != null) {
-                txtFriendName.setText(user.getDisplayName());
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
-        }
+        });
     }
 
 
@@ -124,7 +154,7 @@ public class FriendProfileController extends AppCompatActivity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-        private static final String MESSAGE_KEY= "user";
+        private static final String MESSAGE_KEY = "user";
 
         public PlaceholderFragment() {
         }
@@ -166,15 +196,15 @@ public class FriendProfileController extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            switch (position){
+            switch (position) {
                 case 0:
                     PostViewerFragment postViewer = new PostViewerFragment();
                     return postViewer;
                 case 1:
-                    TabBlank tab1= new TabBlank();
+                    TabBlank tab1 = new TabBlank();
                     return tab1;
                 case 2:
-                    TabBlank tab2= new TabBlank();
+                    TabBlank tab2 = new TabBlank();
                     return tab2;
             }
             return null;
