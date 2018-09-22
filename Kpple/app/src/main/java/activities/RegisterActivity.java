@@ -16,6 +16,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,10 +31,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.shashank.sony.fancytoastlib.FancyToast;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 import co.edu.konranlorenz.kpple.R;
 import co.edu.konranlorenz.kpple.TabPrincipalController;
@@ -48,12 +57,13 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
+    private CallbackManager mCallbackManager;
+    private LoginButton loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
 
         firebaseAuth = FirebaseAuth.getInstance();
         btnRegister = findViewById(R.id.email_sign_in_button);
@@ -66,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
         txtViewSignIn.setOnClickListener(this);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
+
         // [START config_signin]
         // Configure Google Sign In
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -78,6 +89,30 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         // [END build_client]
+
+        // Initialize Facebook Login button
+        mCallbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = findViewById(R.id.login_button_facebook);
+        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d(TAG, "facebook:onCancel");
+                // ...
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d(TAG, "facebook:onError", error);
+                // ...
+            }
+        });
     }
 
     // [START on_start_check_user]
@@ -95,6 +130,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //mCallbackManager.onActivityResult(requestCode, resultCode, data);
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -141,6 +177,34 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
                 });
     }
     // [END auth_with_google]
+    // [START auth_with_facebook]
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.d(TAG, "handleFacebookAccessToken:" + token);
+
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            updateUI(user);
+                            startActivity(new Intent(getBaseContext(), ActivityFormRegister.class));
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            FancyToast.makeText(RegisterActivity.this, "Authentication failed.",
+                                    FancyToast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+
+                    }
+                });
+    }
+    // [END auth_with_facebook]
 
     // [START signin]
     private void signIn() {

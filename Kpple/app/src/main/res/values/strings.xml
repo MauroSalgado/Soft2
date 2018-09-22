@@ -39,6 +39,7 @@
 
 
     <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="facebook_app_id">493604694437736</string>
     <!--                            -->
 
     <!-- Strings Dialog URLVIDEO-->
