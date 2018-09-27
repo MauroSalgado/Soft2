@@ -1,4 +1,4 @@
-package co.edu.konranlorenz.kpple;
+package activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +27,7 @@ import java.util.List;
 
 import activities.PublicationPostActivity;
 import adapters.PostAdapter;
+import co.edu.konranlorenz.kpple.R;
 import entities.Post;
 
 
@@ -47,7 +48,7 @@ public class PostViewerComunityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.activity_post_viewer, container, false);
+        View v = inflater.inflate(R.layout.fragment_post_viewer_comunity, container, false);
         mRecyclerView = v.findViewById(R.id.recViewPost);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

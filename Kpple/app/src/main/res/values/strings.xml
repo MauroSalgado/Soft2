@@ -142,6 +142,7 @@
     <string name="name_card">Jhon Watson</string>
     <string name="card_post">Post:</string>
     <string name="card_post_values">5</string>
+    <string name="label_comunity_name">ComunityName</string>
 
     <!--                             -->
 </resources>

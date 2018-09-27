@@ -6,6 +6,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class FirebaseFunctions {
 
@@ -19,7 +21,7 @@ public class FirebaseFunctions {
     }
 
     // Éste método consigue el Id del usuario actual
-    public String GetIdUsuarioFire() {
+    public String getIdUsuarioFire() {
         return mUser.getUid();
     }
 
@@ -38,7 +40,7 @@ public class FirebaseFunctions {
 
     // Éste método consigue la referencia de POST en firebase del usuario actual
     public DatabaseReference getReferencePostByUserId() {
-        String url = "Post/"+this.GetIdUsuarioFire();
+        String url = "Post/"+this.getIdUsuarioFire();
         DatabaseReference refPostUser = mDatabase.getInstance().getReference(url);
         return refPostUser;
     }
@@ -51,7 +53,7 @@ public class FirebaseFunctions {
 
     // Éste método consigue la referencia de USER en firebase del usuario actual
     public DatabaseReference getReferenceUserById(){
-        String url = "User/"+this.GetIdUsuarioFire();
+        String url = "User/"+this.getIdUsuarioFire();
         DatabaseReference refUser = mDatabase.getInstance().getReference(url);
         return refUser;
     }
@@ -89,5 +91,9 @@ public class FirebaseFunctions {
         return refHobbiesByname;
     }
 
+    public StorageReference getStorageRefPostPicturesByUser(){
+        StorageReference profImgref = FirebaseStorage.getInstance().getReference("/" + this.getIdUsuarioFire()+ "/post");
+        return profImgref;
+    }
 
 }

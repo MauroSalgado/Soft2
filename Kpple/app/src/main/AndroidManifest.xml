@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <!-- Facebook Configuration -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -62,8 +63,8 @@
         <activity
             android:name=".TabPrincipalController"
             android:label="@string/title_activity_tab_principal_controller"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ComunityActivityController"></activity>
     </application>
 
 </manifest>
