@@ -25,6 +25,8 @@ import com.google.firebase.storage.StorageReference;
 import java.util.List;
 
 import activities.PostViewer;
+import activities.PostViewerFragment;
+import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
 import entities.User;
 
@@ -102,7 +104,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
         holder.imgCardPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(context, PostViewer.class);
+                Intent intent= new Intent(context, FriendProfileController.class);
                 intent.putExtra("Nombre", userCurrent.getIdUser());
                 context.startActivity(intent);
 
