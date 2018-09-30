@@ -105,7 +105,7 @@ private static final String TAG = "EmailPassword";
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            Intent intentp = new Intent(LoginActivity.this,ProfileActivity.class);
+                            Intent intentp = new Intent(LoginActivity.this,TabPrincipalController.class);
                             startActivity(intentp);
                             finish();
                         } else {

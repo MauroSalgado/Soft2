@@ -28,6 +28,7 @@ import activities.InfoFragment;
 import activities.LoginActivity;
 import activities.PhotoProfile;
 import activities.PostFragment;
+import activities.PostViewerComunityFragment;
 import activities.PostViewerFragment;
 import activities.ProfileActivity;
 import activities.Recycler_cardview_person;
@@ -176,6 +177,9 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
                     GalleryFragment galleryFragment = new GalleryFragment();
                     return galleryFragment;
                 case 3:
+                    PostViewerComunityFragment comunityFragment = new PostViewerComunityFragment();
+                    return comunityFragment;
+                case 4:
                     InfoFragment infoFragment2 = new InfoFragment();
                     return infoFragment2;
             }
@@ -185,7 +189,7 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            return 5;
         }
     }
 }
