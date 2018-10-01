@@ -31,6 +31,7 @@ import activities.PostFragment;
 import activities.PostViewerComunityFragment;
 import activities.PostViewerFragment;
 import activities.ProfileActivity;
+import activities.Recycler_cardview_communities;
 import activities.Recycler_cardview_person;
 
 public class TabPrincipalController extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
@@ -177,8 +178,8 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
                     GalleryFragment galleryFragment = new GalleryFragment();
                     return galleryFragment;
                 case 3:
-                    PostViewerComunityFragment comunityFragment = new PostViewerComunityFragment();
-                    return comunityFragment;
+                    Recycler_cardview_communities cardview_communities = new Recycler_cardview_communities();
+                    return cardview_communities;
                 case 4:
                     InfoFragment infoFragment2 = new InfoFragment();
                     return infoFragment2;

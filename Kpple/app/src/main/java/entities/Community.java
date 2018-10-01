@@ -4,7 +4,7 @@ import com.firebase.ui.auth.data.model.User;
 
 import java.util.List;
 
-public class Comunity {
+public class Community {
 
     private String idComunity;
     private String name;
@@ -13,7 +13,7 @@ public class Comunity {
     private String urlImage;
     private List<String> followers;
 
-    public Comunity() {
+    public Community() {
     }
 
     public String getIdComunity() {

@@ -25,41 +25,39 @@ import java.util.List;
 
 import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
-import entities.User;
+import entities.Community;
 
-public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.ImageViewHolder> {
+public class CommunityCardAdapter extends RecyclerView.Adapter<CommunityCardAdapter.ImageViewHolder> {
     private Context mContext;
-    private List<User> mUser;
+    private List<Community> mComunity;
     private Context context;
 
-    public PersonCardAdapter(Context mContext, List<User> mUser,Context context) {
-        this.mContext = mContext;
-        this.mUser = mUser;
+    public CommunityCardAdapter(Context mContext, List<Community> Comunity, Context context) {
+        this.mContext = context;
+        this.mComunity = Comunity;
         this.context = context;
     }
 
 
-    public void setData(List<User> newUser) {
-        this.mUser.clear();
-        mUser.addAll(newUser);
+    public void setData(List<Community> newCommunity) {
+        this.mComunity.clear();
+        mComunity.addAll(newCommunity);
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CommunityCardAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.home_person_item, parent, false);
-        return new ImageViewHolder(v);
+        return new CommunityCardAdapter.ImageViewHolder(v);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull final ImageViewHolder holder, int position) {
-        final User userCurrent = mUser.get(position);
+        final Community communityCurrent = mComunity.get(position);
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-        final String user = mAuth.getCurrentUser().getUid();
-        String url = "Post/" + userCurrent.getIdUser();
+        String url = "Post/" + communityCurrent.getIdComunity();
         final DatabaseReference refUser = FirebaseDatabase.getInstance().getReference("User");
 
         // [END initialize_auth]
@@ -102,19 +100,20 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(context, FriendProfileController.class);
-                intent.putExtra("Nombre", userCurrent.getIdUser());
+                intent.putExtra("Nombre", communityCurrent.getIdComunity());
                 context.startActivity(intent);
 
             }
         });
         Glide.with(mContext)
-                .load(userCurrent.getUrlImgProfile())
+                .load(communityCurrent.getUrlImage())
                 .into(holder.imgCardPerson);
     }
 
+
     @Override
     public int getItemCount() {
-        return mUser.size();
+        return mComunity.size();
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {
@@ -132,4 +131,3 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
         }
     }
 }
-
