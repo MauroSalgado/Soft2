@@ -36,7 +36,7 @@
 
             <EditText
                 android:id="@+id/field_find"
-                android:layout_width="274dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -51,17 +51,6 @@
                 android:singleLine="true"
                 android:textColor="#959595" />
 
-            <ImageButton
-                android:id="@+id/btn_find"
-                style="@android:style/Widget.Holo.Button.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end|bottom"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:color="@color/white"
-                android:tint="@color/browser_actions_bg_grey"
-                app:srcCompat="@android:drawable/ic_search_category_default" />
 
 
         </LinearLayout>
@@ -79,39 +68,27 @@
 
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tabProfile"
+                android:id="@+id/tabFindPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/iconm_home"
-                android:text="@string/tab_main_home" />
+                android:icon="@drawable/ic_findpeople"
+                android:text="@string/tab_main_people" />
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tabActivities"
+                android:id="@+id/tabFindInterest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/iconm_post"
-                android:text="@string/tab_main_post" />
+                android:icon="@drawable/ic_findhob"
+                android:text="@string/tab_main_interest" />
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tabHobbies"
+                android:id="@+id/tabFindHobbies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/iconm_gallery"
-                android:text="@string/gallery_profile" />
+                android:icon="@drawable/ic_findinteres"
+                android:text="@string/tab_main_hobbies" />
 
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabComunities"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/iconm_groups"
-                android:text="@string/groups_profile" />
 
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/iconm_info"
-                android:text="@string/tab_main_info" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
@@ -122,12 +99,6 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+
 
 </android.support.design.widget.CoordinatorLayout>

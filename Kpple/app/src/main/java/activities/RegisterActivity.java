@@ -35,12 +35,19 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.TwitterAuthProvider;
 import com.shashank.sony.fancytoastlib.FancyToast;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterConfig;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+
 
 import co.edu.konranlorenz.kpple.R;
-import co.edu.konranlorenz.kpple.TabPrincipalController;
 
 /**
  * A login screen that offers login via email/password.
@@ -59,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
     private GoogleSignInClient mGoogleSignInClient;
     private CallbackManager mCallbackManager;
     private LoginButton loginButton;
+    private TwitterLoginButton mLoginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +93,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
                 .requestEmail()
                 .build();
         // [END configure_signin]
+
         // [START build_client]
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -92,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
 
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = findViewById(R.id.login_button_facebook);
+        loginButton = findViewById(R.id.login_button_facebook);
         loginButton.setReadPermissions("email", "public_profile");
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -113,13 +122,42 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
                 // ...
             }
         });
+
+        // Configure Twitter SDK
+        TwitterAuthConfig authConfig =  new TwitterAuthConfig(
+                getString(R.string.twitter_consumer_key),
+                getString(R.string.twitter_consumer_secret));
+
+        TwitterConfig twitterConfig = new TwitterConfig.Builder(this)
+                .twitterAuthConfig(authConfig)
+                .build();
+
+        Twitter.initialize(twitterConfig);
+
+        // [START initialize_twitter_login]
+        mLoginButton = findViewById(R.id.button_twitter_login);
+        mLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                Log.d(TAG, "twitterLogin:success" + result);
+                handleTwitterSession(result.data);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                Log.w(TAG, "twitterLogin:failure", exception);
+                updateUI(null);
+            }
+        });
+        // [END initialize_twitter_login]
+
     }
 
     // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         updateUI(currentUser);
     }
@@ -129,9 +167,12 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        // Pass the activity result to the facebook login button.
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        // Pass the activity result to the Twitter login button.
+        mLoginButton.onActivityResult(requestCode, resultCode, data);
 
-        //mCallbackManager.onActivityResult(requestCode, resultCode, data);
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -177,6 +218,14 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
                 });
     }
     // [END auth_with_google]
+
+    // [START signin]
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+    // [END signin]
+
     // [START auth_with_facebook]
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
@@ -206,26 +255,45 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
     }
     // [END auth_with_facebook]
 
-    // [START signin]
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+
+    // [START auth_with_twitter]
+    private void handleTwitterSession(TwitterSession session) {
+        Log.d(TAG, "handleTwitterSession:" + session);
+
+        AuthCredential credentialTwitter = TwitterAuthProvider.getCredential(
+                session.getAuthToken().token,
+                session.getAuthToken().secret);
+
+        firebaseAuth.signInWithCredential(credentialTwitter)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            updateUI(user);
+                            startActivity(new Intent(getBaseContext(), ActivityFormRegister.class));
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            FancyToast.makeText(RegisterActivity.this, "Authentication failed.",
+                                    FancyToast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    }
+                });
     }
-    // [END signin]
+    // [END auth_with_twitter]
+
 
 
     private void updateUI(FirebaseUser user) {
-       /* if (account != null) {
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
-
-            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+        if (user != null) {
+            findViewById(R.id.button_twitter_login).setVisibility(View.GONE);
         } else {
-            mStatusTextView.setText(R.string.signed_out);
-
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
-        }*/
+            findViewById(R.id.button_twitter_login).setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -280,7 +348,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
             case R.id.email_sign_in_button:
                 registerUser();
                 break;
+
         }
     }
 }
-
