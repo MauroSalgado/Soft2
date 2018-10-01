@@ -26,16 +26,19 @@ import java.util.List;
 import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
 import entities.Community;
+import lib.FirebaseFunctions;
 
 public class CommunityCardAdapter extends RecyclerView.Adapter<CommunityCardAdapter.ImageViewHolder> {
     private Context mContext;
     private List<Community> mComunity;
     private Context context;
+    private FirebaseFunctions functions;
 
     public CommunityCardAdapter(Context mContext, List<Community> Comunity, Context context) {
         this.mContext = context;
         this.mComunity = Comunity;
         this.context = context;
+        this.functions = new FirebaseFunctions();
     }
 
 
@@ -58,7 +61,6 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<CommunityCardAdap
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         String url = "Post/" + communityCurrent.getIdComunity();
-        final DatabaseReference refUser = FirebaseDatabase.getInstance().getReference("User");
 
         // [END initialize_auth]
 
@@ -91,18 +93,13 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<CommunityCardAdap
             });
         }
         // termina el método de like
-
-
-        StorageReference mStorageRef;
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-        mStorageRef.getDownloadUrl();
+        holder.txtName.setText(communityCurrent.getName());
         holder.imgCardPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(context, FriendProfileController.class);
                 intent.putExtra("Nombre", communityCurrent.getIdComunity());
                 context.startActivity(intent);
-
             }
         });
         Glide.with(mContext)

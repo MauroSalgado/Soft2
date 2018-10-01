@@ -18,7 +18,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/imageviewprofile" />
+            app:srcCompat="@drawable/bdsm" />
 
         <TextView
             android:id="@+id/textView4"
@@ -26,14 +26,14 @@
             android:layout_height="17dp"
             android:layout_marginStart="8dp"
             android:text="@string/card_textview_likes"
-            app:layout_constraintBaseline_toBaselineOf="@+id/card_text_like_values"
+            app:layout_constraintBaseline_toBaselineOf="@+id/card_text_like_com_values"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.136"
             app:layout_constraintStart_toEndOf="@+id/imagecardcommunity"
             tools:text="@string/card_textview_likes" />
 
         <TextView
-            android:id="@+id/card_text_like_values"
+            android:id="@+id/card_text_like_com_values"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
@@ -60,7 +60,7 @@
             app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toEndOf="@+id/imagecardcommunity"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/name_card" />
+            tools:text="@string/txtview_name_community" />
 
         <TextView
             android:id="@+id/textView2"
@@ -68,12 +68,12 @@
             android:layout_height="19dp"
             android:layout_marginStart="32dp"
             android:text="@string/card_post"
-            app:layout_constraintBaseline_toBaselineOf="@+id/card_text_post_values"
+            app:layout_constraintBaseline_toBaselineOf="@+id/card_text_post_com_values"
             app:layout_constraintStart_toEndOf="@+id/imagecardcommunity"
             tools:text="@string/card_post" />
 
         <TextView
-            android:id="@+id/card_text_post_values"
+            android:id="@+id/card_text_post_com_values"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"

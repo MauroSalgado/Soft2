@@ -2,6 +2,7 @@ package adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,6 +24,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
+import activities.PostViewer;
+import activities.PostViewerFragment;
 import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
 import entities.User;
@@ -94,7 +97,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
         }
         // termina el método de like
 
-
+        holder.txtName.setText(userCurrent.getName());
         StorageReference mStorageRef;
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mStorageRef.getDownloadUrl();
