@@ -36,6 +36,7 @@
     <string name="Fetichism">Fetichism</string>
     <string name="masoquism">Masoquism</string>
     <string name="exhibicionism">Exhibicionism</string>
+    <string name="Find">Buscar</string>
 
 
     <string name="firebase_status_fmt">Firebase User: %s</string>
@@ -54,7 +55,14 @@
     <string name="tab_main_info">Info</string>
     <string name="tab_main_post">Posts</string>
     <string name="tab_main_gallery">Gallery</string>
-    <!--                        -->
+    <!-- -->
+
+    <!-- Strings Dialog URLVIDEO-->
+    <string name="tab_main_people">Personas</string>
+    <string name="tab_main_hobbies">Hobbies</string>
+    <string name="tab_main_interest">Interest</string>
+    <!--  -->
+
 
     <!-- Strings de Login y Registro -->
     <string name="button_register">Register</string>
@@ -145,6 +153,7 @@
     <string name="card_post">Post:</string>
     <string name="card_post_values">5</string>
     <string name="label_comunity_name">ComunityName</string>
+    <string name="title_activity_find">Find</string>
 
     <!--                             -->
 </resources>

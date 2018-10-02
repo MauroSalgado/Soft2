@@ -1,8 +1,5 @@
 package co.edu.konranlorenz.kpple;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,27 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import activities.ChatViewer;
-import activities.GalleryFragment;
-import activities.InfoFragment;
-import activities.LoginActivity;
-import activities.PhotoProfile;
-import activities.PostFragment;
-import activities.PostViewerComunityFragment;
-import activities.PostViewerFragment;
-import activities.ProfileActivity;
-import activities.Recycler_cardview_communities;
-import activities.Recycler_cardview_person;
-
-public class TabPrincipalController extends AppCompatActivity implements PostFragment.OnFragmentInteractionListener, GalleryFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, PhotoProfile.OnFragmentInteractionListener {
-
-    FirebaseAuth mAuth;
+public class FindController extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -59,7 +38,7 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab_principal_controller);
+        setContentView(R.layout.activity_find);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,30 +50,7 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ChatViewer.class);
-            }
-        });
-
-        ImageButton button_find = findViewById(R.id.btn_find);
-        button_find.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(), FindController.class));
-            }
-        });
-
-        // [START initialize_auth]
-        mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
+      
 
     }
 
@@ -102,31 +58,24 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_find, menu);
         return true;
     }
-    private void signOut() {
-        mAuth.signOut();
-    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item_menu) {
-        int id = item_menu.getItemId();
-        if (id == R.id.logout_menu_main) {
-            signOut();
-            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-            startActivity(intent);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
-        return super.onOptionsItemSelected(item_menu);
+
+        return super.onOptionsItemSelected(item);
     }
-
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-
-
 
     /**
      * A placeholder fragment containing a simple view.
@@ -156,7 +105,7 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_tab_principal_controller, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_find, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -167,8 +116,6 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-
-
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -179,30 +126,13 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            switch (position){
-                case 0:
-                    Recycler_cardview_person cardview_person = new Recycler_cardview_person();
-                    return cardview_person;
-                case 1:
-                    PostViewerFragment postViewer = new PostViewerFragment();
-                    return postViewer;
-                case 2:
-                    GalleryFragment galleryFragment = new GalleryFragment();
-                    return galleryFragment;
-                case 3:
-                    Recycler_cardview_communities cardview_communities = new Recycler_cardview_communities();
-                    return cardview_communities;
-                case 4:
-                    InfoFragment infoFragment2 = new InfoFragment();
-                    return infoFragment2;
-            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 5;
+            return 3;
         }
     }
 }

@@ -64,6 +64,7 @@
             android:name=".TabPrincipalController"
             android:label="@string/title_activity_tab_principal_controller"
             android:theme="@style/AppTheme.NoActionBar" />
+<<<<<<< HEAD
         <activity android:name=".ComunityActivityController"></activity>
         <activity
             android:name="activities.ChatViewer"
@@ -75,6 +76,13 @@
             android:label="Chat"
             android:parentActivityName="activities.ChatViewer" />
 
+=======
+        <activity android:name=".ComunityActivityController" />
+        <activity
+            android:name=".FindController"
+            android:label="@string/title_activity_find"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+>>>>>>> b184afa18946a749eccd89bd7ebfa5222a7d759e
     </application>
 
 </manifest>

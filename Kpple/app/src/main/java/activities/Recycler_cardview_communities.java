@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,22 +21,22 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.PersonCardAdapter;
+import adapters.CommunityCardAdapter;
 import co.edu.konranlorenz.kpple.R;
-import entities.User;
+import entities.Community;
 
-public class Recycler_cardview_person extends Fragment {
 
+public class Recycler_cardview_communities extends Fragment {
     private RecyclerView mRecyclerView;
-    private PersonCardAdapter mAdapter;
+    private CommunityCardAdapter mAdapter;
 
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    private List<User> mUser;
+    private List<Community> mCommunity;
     private final static String MESSAGE_KEY = "null";
 
-    public Recycler_cardview_person() {
+    public Recycler_cardview_communities() {
     }
 
     @Nullable
@@ -45,14 +44,15 @@ public class Recycler_cardview_person extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.activity_recycler_cardview_person, container, false);
-        mRecyclerView = v.findViewById(R.id.recyclerview_card_person);
+        View v = inflater.inflate(R.layout.fragment_recycler_cardview_communities, container, false);
+        mRecyclerView = v.findViewById(R.id.recyclerview_card_community);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mUser = new ArrayList<>();
+        mCommunity = new ArrayList<>();
         Intent intent = getActivity().getIntent();
         String userId = intent.getStringExtra(MESSAGE_KEY);
+
         if (userId == null) {
             FirebaseUser user = mAuth.getCurrentUser();
             userId = user.getUid();
@@ -60,15 +60,15 @@ public class Recycler_cardview_person extends Fragment {
 
 
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("User");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Community");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    User user = postSnapshot.getValue(User.class);
-                    mUser.add(user);
+                    Community community = postSnapshot.getValue(Community.class);
+                    mCommunity.add(community);
                 }
-                mAdapter = new PersonCardAdapter(getActivity(), mUser, getContext());
+                mAdapter = new CommunityCardAdapter(getActivity(), mCommunity, getContext());
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }

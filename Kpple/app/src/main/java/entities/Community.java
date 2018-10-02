@@ -1,19 +1,28 @@
 package entities;
 
-import com.firebase.ui.auth.data.model.User;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class Comunity {
+public class Community {
 
     private String idComunity;
     private String name;
-    private String Descripcion;
+    private String descripcion;
     private List<String> topics;
     private String urlImage;
+    private int calification;
     private List<String> followers;
 
-    public Comunity() {
+    public Community() {
+    }
+
+    public Community(String name, String descripcion, String urlImage) {
+        this.calification = 0;
+        this.name = name;
+        this.descripcion = descripcion;
+        this.urlImage = urlImage;
+        this.topics = new ArrayList<>();
+        this.followers = new ArrayList<>();
     }
 
     public String getIdComunity() {
@@ -33,11 +42,11 @@ public class Comunity {
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+        descripcion = descripcion;
     }
 
     public List<String> getTopics() {
