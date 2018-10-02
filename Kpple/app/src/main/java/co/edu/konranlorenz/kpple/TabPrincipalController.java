@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import activities.ChatViewer;
 import activities.GalleryFragment;
 import activities.InfoFragment;
 import activities.LoginActivity;
@@ -76,8 +77,7 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getBaseContext(), ChatViewer.class);
             }
         });
 

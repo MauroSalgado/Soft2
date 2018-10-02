@@ -20,14 +20,6 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="left"
-                android:background="@color/colorPrimary"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_back_arrow" />
-
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/imgChat"
                 android:layout_width="48dp"
@@ -39,12 +31,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:text="User"
                 android:textColor="@color/cardview_light_background"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="30dp"
-                />
+                android:textStyle="bold" />
         </android.support.v7.widget.Toolbar>
 
         <ListView
