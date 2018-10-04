@@ -18,13 +18,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
+import co.edu.konranlorenz.kpple.TabCommunityController;
 import entities.Community;
 import lib.FirebaseFunctions;
 
@@ -97,8 +95,9 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<CommunityCardAdap
         holder.imgCardPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(context, FriendProfileController.class);
-                intent.putExtra("Nombre", communityCurrent.getIdComunity());
+                Intent intent= new Intent(context, TabCommunityController.class);
+                intent.putExtra("idcommunity", communityCurrent.getIdComunity());
+                Log.i("CommunityAdapter",communityCurrent.getIdComunity());
                 context.startActivity(intent);
             }
         });

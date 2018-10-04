@@ -2,38 +2,40 @@ package co.edu.konranlorenz.kpple;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.shashank.sony.fancytoastlib.FancyToast;
 
 import activities.PostViewerFragment;
 import activities.TabBlank;
-import co.edu.konranlorenz.kpple.R;
+import entities.Community;
+import kotlin.jvm.internal.FunctionReference;
+import lib.FirebaseFunctions;
 
-public class ComunityActivityController extends AppCompatActivity {
+public class TabCommunityController extends AppCompatActivity {
 
-    private static final String MESSAGE_KEY = "user";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -42,14 +44,12 @@ public class ComunityActivityController extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private FriendProfileController.SectionsPagerAdapter mSectionsPagerAdapter;
-    private ImageView imgCouple;
-    private TextView txtFriendName;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    private ImageView imgCommunity;
+    private TextView txtCommunityName;
     private ImageView imgFollow;
 
-    private FirebaseDatabase database;
-    private DatabaseReference mDatabaseRef, followRef;
-    FirebaseAuth mAuth;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -59,9 +59,63 @@ public class ComunityActivityController extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comunity);
-        Intent intent = getIntent();
+        setContentView(R.layout.activity_tab_community_controller);
+        FirebaseFunctions firebaseFunctions = new FirebaseFunctions();
 
+        imgCommunity = findViewById(R.id.img_comunity);
+        txtCommunityName = findViewById(R.id.txtcomunityName);
+        Intent intent = getIntent();
+        Bundle bdiduser = intent.getExtras();
+        if(bdiduser != null)
+        {
+            String uiduser = (String) bdiduser.get("idcommunity");
+            /*Log.i("TABLOGComunnity",uiduser);*/
+            DatabaseReference refuserCurrent = firebaseFunctions.getReferenceCommunityByID(uiduser);
+            refuserCurrent.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String nameUser = "NameComunnityD";
+                    String url = "";
+                    Community commu = dataSnapshot.getValue(Community.class);
+                    nameUser=commu.getName();
+                    url = commu.getUrlImage();
+
+                    txtCommunityName.setText(nameUser);
+                    Glide.with(getApplicationContext())
+                            .load(url)
+                            .into(imgCommunity);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
     }
 
@@ -69,7 +123,7 @@ public class ComunityActivityController extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_friend_profile, menu);
+        getMenuInflater().inflate(R.menu.menu_tab_community_controller, menu);
         return true;
     }
 
@@ -81,7 +135,9 @@ public class ComunityActivityController extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -95,7 +151,6 @@ public class ComunityActivityController extends AppCompatActivity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-        private static final String MESSAGE_KEY = "user";
 
         public PlaceholderFragment() {
         }
@@ -104,8 +159,8 @@ public class ComunityActivityController extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static FriendProfileController.PlaceholderFragment newInstance(int sectionNumber) {
-            FriendProfileController.PlaceholderFragment fragment = new FriendProfileController.PlaceholderFragment();
+        public static PlaceholderFragment newInstance(int sectionNumber) {
+            PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -115,8 +170,7 @@ public class ComunityActivityController extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
-            View rootView = inflater.inflate(R.layout.fragment_friend_profile, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_tab_community_controller, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -135,8 +189,6 @@ public class ComunityActivityController extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case 0:
                     PostViewerFragment postViewer = new PostViewerFragment();
@@ -148,7 +200,7 @@ public class ComunityActivityController extends AppCompatActivity {
                     TabBlank tab2 = new TabBlank();
                     return tab2;
             }
-            return null;
+            return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override

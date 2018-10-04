@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import co.edu.konranlorenz.kpple.R;
+import co.edu.konranlorenz.kpple.TabPrincipalController;
 
 public class TabCode extends android.support.v4.app.Fragment implements View.OnClickListener {
 
@@ -61,7 +62,7 @@ public class TabCode extends android.support.v4.app.Fragment implements View.OnC
                     if (codeGenerated == true) {
                         refUser.child(id).child("code").setValue(text);
                         FancyToast.makeText(getContext(), "Code Saved", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
-                        startActivity(new Intent(getContext(), ProfileActivity.class));
+                        startActivity(new Intent(getContext(), TabPrincipalController.class));
                     } else {
                         String searchCode = txtCode.getText().toString();
                         if (refTokens.child(searchCode).toString().equals("")) {
@@ -70,7 +71,7 @@ public class TabCode extends android.support.v4.app.Fragment implements View.OnC
                             refUser.child(id).child("code").setValue(text);
                             refTokens.child(searchCode).setValue("Yes");
                             FancyToast.makeText(getContext(), "Code Saved", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
-                            startActivity(new Intent(getContext(), ProfileActivity.class));
+                            startActivity(new Intent(getContext(), TabPrincipalController.class));
                         }
                     }
                 }

@@ -95,7 +95,13 @@ public class FirebaseFunctions {
     }
 
     public DatabaseReference getReferenceCommunity(){
-        String url = "Community";
+        String url = "Community/";
+        DatabaseReference refCommunity = mDatabase.getReference(url);
+        return refCommunity;
+    }
+
+    public DatabaseReference getReferenceCommunityByID(String id){
+        String url = "Community/"+id;
         DatabaseReference refCommunity = mDatabase.getReference(url);
         return refCommunity;
     }

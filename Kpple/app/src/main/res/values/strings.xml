@@ -156,6 +156,7 @@
     <string name="title_activity_find">Find</string>
     <string name="title_activity_find_people">FindPeople</string>
     <string name="title_activity_find_nombre">FindNombre</string>
+    <string name="title_activity_tab_community_controller">TabCommunityController</string>
 
     <!--                             -->
 </resources>

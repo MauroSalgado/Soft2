@@ -46,9 +46,6 @@
             android:name="activities.ActivityFormRegister"
             android:label="Register Form" />
         <activity
-            android:name="activities.ProfileActivity"
-            android:label="Profile" />
-        <activity
             android:name=".TabProfileController"
             android:label="@string/title_activity_tab_profile"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -78,6 +75,10 @@
             android:label="Chat"
             android:parentActivityName="activities.ChatViewer" />
 
+        <activity
+            android:name=".TabCommunityController"
+            android:label="@string/title_activity_tab_community_controller"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name=".FindNombre"
