@@ -154,6 +154,8 @@
     <string name="card_post_values">5</string>
     <string name="label_comunity_name">ComunityName</string>
     <string name="title_activity_find">Find</string>
+    <string name="title_activity_find_people">FindPeople</string>
+    <string name="title_activity_find_nombre">FindNombre</string>
 
     <!--                             -->
 </resources>

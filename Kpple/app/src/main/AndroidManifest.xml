@@ -64,21 +64,27 @@
             android:name=".TabPrincipalController"
             android:label="@string/title_activity_tab_principal_controller"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".ComunityActivityController"></activity>
+        <activity android:name=".ComunityActivityController" />
         <activity
             android:name=".FindController"
             android:label="@string/title_activity_find"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="activities.ChatViewer"
             android:label="Chat"
             android:parentActivityName="activities.LoginActivity" />
-
         <activity
             android:name="activities.ActivityMessage"
             android:label="Chat"
             android:parentActivityName="activities.ChatViewer" />
+        <activity
+            android:name=".FindPeople"
+            android:label="@string/title_activity_find_people"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FindNombre"
+            android:label="@string/title_activity_find_nombre"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
