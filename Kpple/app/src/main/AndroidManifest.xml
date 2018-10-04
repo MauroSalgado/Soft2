@@ -77,21 +77,18 @@
             android:name="activities.ActivityMessage"
             android:label="Chat"
             android:parentActivityName="activities.ChatViewer" />
-<<<<<<< HEAD
-        <activity
-            android:name=".FindPeople"
-            android:label="@string/title_activity_find_people"
-            android:theme="@style/AppTheme.NoActionBar" />
+
+
         <activity
             android:name=".FindNombre"
             android:label="@string/title_activity_find_nombre"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-=======
+
         <activity android:name="activities.ActivityChat"
             android:label="Chat"
             android:parentActivityName=".TabPrincipalController">
         </activity>
->>>>>>> 5b4e1ded7258f6b2dd696888845e497bfda7a887
+
     </application>
 
 </manifest>
