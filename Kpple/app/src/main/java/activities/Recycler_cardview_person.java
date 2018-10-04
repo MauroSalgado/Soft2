@@ -59,7 +59,6 @@ public class Recycler_cardview_person extends Fragment {
         }
 
 
-
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("User");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override

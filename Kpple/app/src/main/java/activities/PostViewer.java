@@ -48,7 +48,7 @@ public class PostViewer extends AppCompatActivity {
         Intent intent = getIntent();
         //String userId = intent.getStringExtra(MESSAGE_KEY);
         String userId = "27M4a845YeRSWejMijro3FWGIRj2";
-        if(userId.equals("null")){
+        if (userId.equals("null")) {
             FirebaseUser user = mAuth.getCurrentUser();
             userId = user.getUid();
         }
@@ -78,7 +78,7 @@ public class PostViewer extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                FancyToast.makeText(PostViewer.this, databaseError.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                FancyToast.makeText(PostViewer.this, databaseError.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
             }
         });
     }

@@ -19,7 +19,7 @@ public class SplashKpple extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(SplashKpple.this, LoginActivity.class));
             }
-        },2000);
+        }, 2000);
         //finish();
     }
 }

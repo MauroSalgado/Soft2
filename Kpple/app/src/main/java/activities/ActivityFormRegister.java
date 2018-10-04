@@ -130,7 +130,7 @@ public class ActivityFormRegister extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressBar.setVisibility(View.GONE);
-                            FancyToast.makeText(getBaseContext(), e.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                            FancyToast.makeText(getBaseContext(), e.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
 
                         }
                     });

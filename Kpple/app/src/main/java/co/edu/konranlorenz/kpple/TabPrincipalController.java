@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import activities.ActivityChat;
 import activities.ChatViewer;
 import activities.GalleryFragment;
 import activities.InfoFragment;
@@ -80,7 +81,8 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ChatViewer.class);
+                Intent intent = new Intent(getBaseContext(), ActivityChat.class);
+                startActivity(intent);
             }
         });
 

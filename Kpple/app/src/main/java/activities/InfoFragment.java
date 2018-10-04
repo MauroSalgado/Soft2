@@ -107,8 +107,8 @@ public class InfoFragment extends Fragment {
                         String paisStr = ds.child("country").getValue().toString();
                         String nombreStr = ds.child("name").getValue().toString();
                         String sexoStr = ds.child("sex").getValue().toString();
-                        Log.i("IDDS",uid);
-                        if(uid.equals(idU)) {
+                        Log.i("IDDS", uid);
+                        if (uid.equals(idU)) {
                             nombre.setText(nombreStr);
                             pais.setText(paisStr);
                             ciudad.setText(ciudadStr);

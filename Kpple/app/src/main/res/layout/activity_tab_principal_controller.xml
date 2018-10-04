@@ -26,6 +26,7 @@
             app:title="@string/app_name">
 
 
+<<<<<<< HEAD
             <ImageButton
                 android:id="@+id/btn_chat"
                 style="@android:style/Widget.Holo.Button.Small"
@@ -37,6 +38,31 @@
                 android:color="@color/white"
                 android:tint="@color/browser_actions_bg_grey"
                 app:srcCompat="@android:drawable/sym_action_chat" />
+=======
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/field_find"
+                android:layout_width="274dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/search_layout"
+                android:hint="@string/Find"
+                android:inputType=""
+                android:maxLines="1"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:singleLine="true"
+                android:textColor="#959595" />
+>>>>>>> 5b4e1ded7258f6b2dd696888845e497bfda7a887
 
             <ImageButton
                 android:id="@+id/btn_find"
@@ -61,7 +87,6 @@
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicatorColor="@color/colorAccent"
             app:tabTextColor="@color/colorAccent">
-
 
 
             <android.support.design.widget.TabItem

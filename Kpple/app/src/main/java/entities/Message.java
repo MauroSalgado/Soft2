@@ -18,6 +18,14 @@ public class Message {
         this.type_message = type_message;
     }
 
+    public Message(String message, String name, String profilePhoto, String type_message) {
+        this.message = message;
+        this.name = name;
+        this.profilePhoto = profilePhoto;
+        this.type_message = type_message;
+    }
+
+
     public String getMessage() {
         return message;
     }

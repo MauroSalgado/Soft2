@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -57,7 +58,6 @@ public class Recycler_cardview_communities extends Fragment {
             FirebaseUser user = mAuth.getCurrentUser();
             userId = user.getUid();
         }
-
 
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Community");
