@@ -116,7 +116,7 @@ public class TabPrincipalController extends AppCompatActivity implements PostFra
         int id = item_menu.getItemId();
         if (id == R.id.logout_menu_main) {
             signOut();
-            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+            Intent intent = new Intent(getBaseContext(), FindController.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item_menu);
