@@ -32,7 +32,7 @@ import entities.Pictures;
  * Use the {@link GalleryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GalleryFragment extends android.support.v4.app.Fragment{
+public class GalleryFragment extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -108,19 +108,19 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
         photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/default_75.png");
         photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/Imagen13.png");
 
-        String id ="4Fy1OMGn9lOSkSkZctpjAgTp1Mp2";
-        Pictures pictures = new Pictures(id,photoProfile,photoProfile);
+        String id = "4Fy1OMGn9lOSkSkZctpjAgTp1Mp2";
+        Pictures pictures = new Pictures(id, photoProfile, photoProfile);
         myRefPictures.child(id).setValue(pictures);
         myRefPictures.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.exists()) {
+                if (dataSnapshot.exists()) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         ArrayList<String> lista = (ArrayList<String>) ds.getValue(Pictures.class).getPhotos_profile();
-                        adapter= new GalleryAdapter(getContext(),lista);
+                        adapter = new GalleryAdapter(getContext(), lista);
                         gridView.setAdapter(adapter);
-                        Log.i(tag,""+ lista.size());
+                        Log.i(tag, "" + lista.size());
                     }
                 }
 
@@ -131,8 +131,6 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
 
             }
         });
-
-
 
 
         return view;
@@ -163,7 +161,6 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
     }
 
 
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -178,7 +175,6 @@ public class GalleryFragment extends android.support.v4.app.Fragment{
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 
 
 }

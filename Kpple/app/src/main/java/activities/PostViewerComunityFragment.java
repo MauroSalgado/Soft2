@@ -1,8 +1,6 @@
 package activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -25,11 +23,9 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import java.util.ArrayList;
 import java.util.List;
 
-import activities.PublicationPostActivity;
 import adapters.PostAdapter;
 import co.edu.konranlorenz.kpple.R;
 import entities.Post;
-
 
 
 public class PostViewerComunityFragment extends Fragment {
@@ -92,8 +88,6 @@ public class PostViewerComunityFragment extends Fragment {
         });
         return v;
     }
-
-
 
 
 }

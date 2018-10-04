@@ -17,7 +17,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import co.edu.konranlorenz.kpple.R;
 import io.ghyeok.stickyswitch.widget.StickySwitch;
 
-public class TabInterests extends android.support.v4.app.Fragment implements View.OnClickListener{
+public class TabInterests extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     StickySwitch stcSwTrio;
     StickySwitch stcSwVouyer;
@@ -49,7 +49,7 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnSaveInterest:
                 FirebaseUser user = mAuth.getCurrentUser();
 
@@ -60,7 +60,7 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
                 refUser.child("Masoquism").child(user.getUid()).setValue(stcSwMasoquism.getText());
                 refUser.child("Exhibicionism").child(user.getUid()).setValue(stcExhibicionism.getText());
 
-                FancyToast.makeText(getContext(), "Interest Saved. Please continue to Hobbies", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+                FancyToast.makeText(getContext(), "Interest Saved. Please continue to Hobbies", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
                 btnSaveInterest.setVisibility(View.INVISIBLE);
                 break;
         }

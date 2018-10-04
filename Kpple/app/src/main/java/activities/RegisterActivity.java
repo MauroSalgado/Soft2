@@ -3,7 +3,6 @@ package activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -46,13 +44,12 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-
 import co.edu.konranlorenz.kpple.R;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class RegisterActivity extends AppCompatActivity  implements OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements OnClickListener {
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -124,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
         });
 
         // Configure Twitter SDK
-        TwitterAuthConfig authConfig =  new TwitterAuthConfig(
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(
                 getString(R.string.twitter_consumer_key),
                 getString(R.string.twitter_consumer_secret));
 
@@ -287,7 +284,6 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
     // [END auth_with_twitter]
 
 
-
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             findViewById(R.id.button_twitter_login).setVisibility(View.GONE);
@@ -297,24 +293,24 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
     }
 
 
-    private void registerUser(){
+    private void registerUser() {
         String email = ediTxtMail.getText().toString().trim();
         String pass = ediTxtPass.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email)){
-            FancyToast.makeText(this, "Please enter mail", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+        if (TextUtils.isEmpty(email)) {
+            FancyToast.makeText(this, "Please enter mail", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            FancyToast.makeText(this, "Please enter a valid mail", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+            FancyToast.makeText(this, "Please enter a valid mail", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
             return;
         }
-        if(TextUtils.isEmpty(pass)){
-            FancyToast.makeText(this, "Please enter password", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+        if (TextUtils.isEmpty(pass)) {
+            FancyToast.makeText(this, "Please enter password", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
             return;
         }
         if (pass.length() < 6) {
-            FancyToast.makeText(this, "Minimum lenght of password should be 6", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+            FancyToast.makeText(this, "Minimum lenght of password should be 6", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
             return;
         }
 
@@ -323,12 +319,12 @@ public class RegisterActivity extends AppCompatActivity  implements OnClickListe
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             progressBar.setVisibility(ProgressBar.INVISIBLE);
-                            FancyToast.makeText(RegisterActivity.this, "Registered Succesfully", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+                            FancyToast.makeText(RegisterActivity.this, "Registered Succesfully", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
                             startActivity(new Intent(getBaseContext(), ActivityFormRegister.class));
-                        }else{
-                            FancyToast.makeText(RegisterActivity.this, "Could not register. Please try again", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                        } else {
+                            FancyToast.makeText(RegisterActivity.this, "Could not register. Please try again", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
                             progressBar.setVisibility(ProgressBar.INVISIBLE);
                         }
 

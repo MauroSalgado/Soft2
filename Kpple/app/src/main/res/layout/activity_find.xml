@@ -26,7 +26,6 @@
             app:title="@string/app_name">
 
 
-
         </android.support.v7.widget.Toolbar>
 
         <LinearLayout
@@ -52,7 +51,6 @@
                 android:textColor="#959595" />
 
 
-
         </LinearLayout>
 
 
@@ -64,7 +62,6 @@
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicatorColor="@color/colorAccent"
             app:tabTextColor="@color/colorAccent">
-
 
 
             <android.support.design.widget.TabItem
@@ -89,7 +86,6 @@
                 android:text="@string/tab_main_hobbies" />
 
 
-
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -98,7 +94,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -26,7 +26,6 @@
             app:title="@string/app_name">
 
 
-
         </android.support.v7.widget.Toolbar>
 
         <LinearLayout
@@ -75,7 +74,6 @@
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicatorColor="@color/colorAccent"
             app:tabTextColor="@color/colorAccent">
-
 
 
             <android.support.design.widget.TabItem

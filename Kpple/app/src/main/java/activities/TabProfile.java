@@ -82,11 +82,11 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
         String language = spnLanguage.getSelectedItem().toString();
         String urlImgProfile = user.getPhotoUrl().toString();
 
-        User newUser = new User(id, city, country, sex, date, nick, name, language, "",false, urlImgProfile);
+        User newUser = new User(id, city, country, sex, date, nick, name, language, "", false, urlImgProfile);
 
         refUser.child(id).setValue(newUser);
         btnSaveProfile.setVisibility(View.INVISIBLE);
-        FancyToast.makeText(getContext(), "Profile Saved. Please continue to Interest", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+        FancyToast.makeText(getContext(), "Profile Saved. Please continue to Interest", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
 
     }
 

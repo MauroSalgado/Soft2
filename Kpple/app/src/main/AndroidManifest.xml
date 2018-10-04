@@ -79,6 +79,10 @@
             android:name="activities.ActivityMessage"
             android:label="Chat"
             android:parentActivityName="activities.ChatViewer" />
+        <activity android:name="activities.ActivityChat"
+            android:label="Chat"
+            android:parentActivityName=".TabPrincipalController">
+        </activity>
     </application>
 
 </manifest>

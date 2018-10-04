@@ -1,136 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-        <string name="app_name">Kpple</string>
-        <string name="title_activity_login">Sign in</string>
+    <string name="app_name">Kpple</string>
+    <string name="title_activity_login">Sign in</string>
 
-        <!-- Strings related to login -->
-        <string name="prompt_email">Email</string>
-        <string name="prompt_password">Contraseña</string>
-        <string name="action_log_in">Iniciar Sesion</string>
-        <string name="action_sign_in">Sign in</string>
-        <string name="action_sign_in_short">Sign in</string>
-        <string name="error_invalid_email">La direccion de correo no es válida</string>
-        <string name="error_invalid_password">La contraseña es muy corta</string>
-        <string name="error_incorrect_password">La contraseña es incorrecta</string>
-        <string name="error_field_required">Esta dirección de correo electrónico es obligatorio</string>
-        <string name="permission_rationale">Los permisos de contactos son necesarios para proporcionar terminaciones
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_log_in">Iniciar Sesion</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">La direccion de correo no es válida</string>
+    <string name="error_invalid_password">La contraseña es muy corta</string>
+    <string name="error_incorrect_password">La contraseña es incorrecta</string>
+    <string name="error_field_required">Esta dirección de correo electrónico es obligatorio</string>
+    <string name="permission_rationale">Los permisos de contactos son necesarios para proporcionar terminaciones
          de correo electrónico."</string>
-        <string name="login_forgot_pass">¿Se te olvidó tu contraseña?</string>
-        <string name="emailpassword_status_fmt">Usuario de correo electrónico: %1$s (verificado: %2$b)</string>
-        <string name="sign_out">Desconectar</string>
-        <string name="auth_failed">Autenticación fallida</string>
-        <string name="signed_out">Cerrar Sesión</string>
-        <string name="firebase_status_fmt">Firebase Usuario: %s</string>
+    <string name="login_forgot_pass">¿Se te olvidó tu contraseña?</string>
+    <string name="emailpassword_status_fmt">Usuario de correo electrónico: %1$s (verificado: %2$b)</string>
+    <string name="sign_out">Desconectar</string>
+    <string name="auth_failed">Autenticación fallida</string>
+    <string name="signed_out">Cerrar Sesión</string>
+    <string name="firebase_status_fmt">Firebase Usuario: %s</string>
 
-        <!--                            -->
+    <!--                            -->
 
-        <!-- Strings Dialog URLVIDEO-->
-        <string name="dialog_textview_url">Url del video:</string>
-        <string name="dialog_hint_url">Introduce la url..</string>
-        <string name="dialog_button_url">Aceptar</string>
-        <string name="dialog_buttonEx_url">Cancelar</string>
-        <!--                -->
+    <!-- Strings Dialog URLVIDEO-->
+    <string name="dialog_textview_url">Url del video:</string>
+    <string name="dialog_hint_url">Introduce la url..</string>
+    <string name="dialog_button_url">Aceptar</string>
+    <string name="dialog_buttonEx_url">Cancelar</string>
+    <!--                -->
 
-        <!-- Strings Dialog URLVIDEO-->
-        <string name="tab_main_home">Inicio</string>
-        <string name="tab_main_info">Información</string>
-        <string name="tab_main_post">Publicaciones</string>
-        <string name="tab_main_gallery">Galeria</string>
-        <!--                        -->
+    <!-- Strings Dialog URLVIDEO-->
+    <string name="tab_main_home">Inicio</string>
+    <string name="tab_main_info">Información</string>
+    <string name="tab_main_post">Publicaciones</string>
+    <string name="tab_main_gallery">Galeria</string>
+    <!--                        -->
 
-        <!-- Strings de Login y Registro -->
-        <string name="button_register">Registrarse</string>
-        <string name="sign_here">Registrado? Inicie sesion aquí</string>
-        <string name="title_activity_profile">actividad_perfil</string>
-        <string name="text_o">Ó</string>
-        <string name="sign_up">Registrate</string>
-        <!--                           -->
+    <!-- Strings de Login y Registro -->
+    <string name="button_register">Registrarse</string>
+    <string name="sign_here">Registrado? Inicie sesion aquí</string>
+    <string name="title_activity_profile">actividad_perfil</string>
+    <string name="text_o">Ó</string>
+    <string name="sign_up">Registrate</string>
+    <!--                           -->
 
-        <!-- Strings del menú Superior -->
-        <string name="logout_item_menu">Cerrar Sesión</string>
-        <string name="profile_item_menu">Mi Perfil</string>
-        <string name="title_activity_register">actividad_registro</string>
-        <!--                           -->
+    <!-- Strings del menú Superior -->
+    <string name="logout_item_menu">Cerrar Sesión</string>
+    <string name="profile_item_menu">Mi Perfil</string>
+    <string name="title_activity_register">actividad_registro</string>
+    <!--                           -->
 
-        <!-- Srtring de publicacion POST -->
-        <string name="hint_postActivity">Escribe tu publicación...</string>
-        <string name="title_post_activity">Crear Publicación</string>
+    <!-- Srtring de publicacion POST -->
+    <string name="hint_postActivity">Escribe tu publicación...</string>
+    <string name="title_post_activity">Crear Publicación</string>
 
-        <!--                             -->
+    <!--                             -->
 
 
-        <!-- Strings del fragment Info   -->
-        <string name="info_profile_name">Cargando...</string>
-        <string name="info_label_name">Nombre:</string>
-        <string name="info_label_country">País:</string>
-        <string name="info_text_country"></string>
-        <string name="info_label_city">Ciudad:</string>
-        <string name="info_text_city"></string>
-        <string name="info_label_sex">Sexo:</string>
-        <string name="info_text_sex"></string>
-        <string name="info_label_languaje">Idioma:</string>
-        <string name="info_text_languaje"></string>
-        <string name="info_label_birthdate">Fecha de Nacimiento:</string>
-        <string name="info_text_birthdate"></string>
-        <string name="info_profile_hobbies">Pasatiempo</string>
-        <string name="info_profile_interest">Interéses</string>
-        <string name="displayname">Enter Display Name</string>
-        <string name="save">Guardar</string>
-        <string name="msj">¿Tienes un código? Ingresar aquí</string>
-        <string name="newCode">Genera un nuevo CÓDIGO</string>
-        <string name="drinkcoffee">Tomar Café</string>
-        <string name="movies">Películas</string>
-        <string name="party">Fiesta</string>
-        <string name="park">Parque</string>
-        <string name="video_Call">Videollamada</string>
-        <string name="swinger">Swinger</string>
-        <string name="trio">Trio</string>
-        <string name="vouyerism">Voyeurismo</string>
-        <string name="sadism">Sadismo</string>
-        <string name="Fetichism">Fetichismo</string>
-        <string name="masoquism">Masoquismo</string>
-        <string name="exhibicionism">Exhibicionismo</string>
-        <!--                             -->
+    <!-- Strings del fragment Info   -->
+    <string name="info_profile_name">Cargando...</string>
+    <string name="info_label_name">Nombre:</string>
+    <string name="info_label_country">País:</string>
+    <string name="info_text_country"></string>
+    <string name="info_label_city">Ciudad:</string>
+    <string name="info_text_city"></string>
+    <string name="info_label_sex">Sexo:</string>
+    <string name="info_text_sex"></string>
+    <string name="info_label_languaje">Idioma:</string>
+    <string name="info_text_languaje"></string>
+    <string name="info_label_birthdate">Fecha de Nacimiento:</string>
+    <string name="info_text_birthdate"></string>
+    <string name="info_profile_hobbies">Pasatiempo</string>
+    <string name="info_profile_interest">Interéses</string>
+    <string name="displayname">Enter Display Name</string>
+    <string name="save">Guardar</string>
+    <string name="msj">¿Tienes un código? Ingresar aquí</string>
+    <string name="newCode">Genera un nuevo CÓDIGO</string>
+    <string name="drinkcoffee">Tomar Café</string>
+    <string name="movies">Películas</string>
+    <string name="party">Fiesta</string>
+    <string name="park">Parque</string>
+    <string name="video_Call">Videollamada</string>
+    <string name="swinger">Swinger</string>
+    <string name="trio">Trio</string>
+    <string name="vouyerism">Voyeurismo</string>
+    <string name="sadism">Sadismo</string>
+    <string name="Fetichism">Fetichismo</string>
+    <string name="masoquism">Masoquismo</string>
+    <string name="exhibicionism">Exhibicionismo</string>
+    <!--                             -->
 
-        <string name="post_profile">Publicaciones</string>
+    <string name="post_profile">Publicaciones</string>
 
-        <string name="gallery_profile">Galería</string>
+    <string name="gallery_profile">Galería</string>
 
-        <!-- TODO: Remove or change this placeholder text -->
-        <string name="hello_blank_fragment">Hola fragmento en blanco</string>
-        <string name="title_activity_tab_profile">Perfil</string>
-        <string name="tab_profile">Perfil</string>
-        <string name="tab_interest">Intereses</string>
-        <string name="tab_hobbies">Pasatiempo</string>
-        <string name="tab_code">Codigo</string>
-        <string name="action_settings">Configuraciones</string>
-        <string name="section_format">Hola Mundo para seccion: %1$d</string>
-        <string-array name="sex">
-                <item>Masculino</item>
-                <item>Femenino</item>
-        </string-array>
-        <string-array name="countries">
-                <item>Colombia</item>
-                <item>Estados Unidos</item>
-                <item>España</item>
-        </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="title_activity_tab_profile">Perfil</string>
+    <string name="tab_profile">Perfil</string>
+    <string name="tab_interest">Intereses</string>
+    <string name="tab_hobbies">Pasatiempo</string>
+    <string name="tab_code">Codigo</string>
+    <string name="action_settings">Configuraciones</string>
+    <string name="section_format">Hola Mundo para seccion: %1$d</string>
+    <string-array name="sex">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+    <string-array name="countries">
+        <item>Colombia</item>
+        <item>Estados Unidos</item>
+        <item>España</item>
+    </string-array>
 
-        <string-array name="cities">
-                <item>Bogota</item>
-                <item>Washington</item>
-                <item>Madrid</item>
-        </string-array>
+    <string-array name="cities">
+        <item>Bogota</item>
+        <item>Washington</item>
+        <item>Madrid</item>
+    </string-array>
 
-        <string-array name="languages">
-                <item>Español</item>
-                <item>Inglés</item>
-        </string-array>
-        <string name="title_activity_tab_prinpal_contoller">TabPrinpalContoller</string>
-        <string name="title_activity_friend_profile">FriendProfile</string>
-        <string name="tab_couple_post">Post</string>
-        <string name="tab_couple_gallery">Gallery</string>
-        <string name="tab_couple_info">Info</string>
+    <string-array name="languages">
+        <item>Español</item>
+        <item>Inglés</item>
+    </string-array>
+    <string name="title_activity_tab_prinpal_contoller">TabPrinpalContoller</string>
+    <string name="title_activity_friend_profile">FriendProfile</string>
+    <string name="tab_couple_post">Post</string>
+    <string name="tab_couple_gallery">Gallery</string>
+    <string name="tab_couple_info">Info</string>
 
 
 </resources>

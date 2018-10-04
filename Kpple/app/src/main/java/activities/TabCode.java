@@ -21,7 +21,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 import co.edu.konranlorenz.kpple.R;
 
-public class TabCode extends android.support.v4.app.Fragment implements View.OnClickListener{
+public class TabCode extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     ImageView imgNewCode;
     TextInputEditText txtCode;
@@ -36,7 +36,7 @@ public class TabCode extends android.support.v4.app.Fragment implements View.OnC
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_code, container, false);
         refUser = FirebaseDatabase.getInstance().getReference("User");
-        refTokens= FirebaseDatabase.getInstance().getReference("Tokens");
+        refTokens = FirebaseDatabase.getInstance().getReference("Tokens");
         imgNewCode = view.findViewById(R.id.imgNewCode);
         imgNewCode.setOnClickListener(this);
         txtCode = view.findViewById(R.id.txtCode);
@@ -48,28 +48,28 @@ public class TabCode extends android.support.v4.app.Fragment implements View.OnC
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnSaveCode:
-                if (TextUtils.isEmpty(txtCode.getText())){
-                    FancyToast.makeText(getContext(), "Wrong Code", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                if (TextUtils.isEmpty(txtCode.getText())) {
+                    FancyToast.makeText(getContext(), "Wrong Code", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
                     return;
-                }else {
+                } else {
                     FirebaseUser user = mAuth.getCurrentUser();
                     String id = user.getUid();
                     String text = txtCode.getText().toString();
 
-                    if (codeGenerated == true){
+                    if (codeGenerated == true) {
                         refUser.child(id).child("code").setValue(text);
-                        FancyToast.makeText(getContext(), "Code Saved", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+                        FancyToast.makeText(getContext(), "Code Saved", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
                         startActivity(new Intent(getContext(), ProfileActivity.class));
-                    }else{
+                    } else {
                         String searchCode = txtCode.getText().toString();
-                        if (refTokens.child(searchCode).toString().equals("")){
-                            FancyToast.makeText(getContext(), "Wrong Code", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
-                        }else{
+                        if (refTokens.child(searchCode).toString().equals("")) {
+                            FancyToast.makeText(getContext(), "Wrong Code", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
+                        } else {
                             refUser.child(id).child("code").setValue(text);
                             refTokens.child(searchCode).setValue("Yes");
-                            FancyToast.makeText(getContext(), "Code Saved", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+                            FancyToast.makeText(getContext(), "Code Saved", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
                             startActivity(new Intent(getContext(), ProfileActivity.class));
                         }
                     }
@@ -85,7 +85,7 @@ public class TabCode extends android.support.v4.app.Fragment implements View.OnC
         String code = refTokens.push().getKey();
         refTokens.child(code).setValue("No");
         txtCode.setText(code);
-        final Snackbar snackbar = Snackbar.make(getView(), "Share this code with your couple",Snackbar.LENGTH_INDEFINITE);
+        final Snackbar snackbar = Snackbar.make(getView(), "Share this code with your couple", Snackbar.LENGTH_INDEFINITE);
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getView().getContext(), R.color.colorPrimary));
         snackbar.setActionTextColor(getResources().getColor(R.color.white));
         snackbar.show();

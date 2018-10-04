@@ -28,9 +28,9 @@ import co.edu.konranlorenz.kpple.TabPrincipalController;
  * A login screen that offers login via email/password.
  */
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener  {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-private static final String TAG = "EmailPassword";
+    private static final String TAG = "EmailPassword";
 
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -69,14 +69,13 @@ private static final String TAG = "EmailPassword";
     }
 
 
-
     // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null && currentUser.getDisplayName()!=null){
+        if (currentUser != null && currentUser.getDisplayName() != null) {
             finish();
             //startActivity(new Intent(this, ProfileActivity.class));
             startActivity(new Intent(this, TabPrincipalController.class));
@@ -105,19 +104,19 @@ private static final String TAG = "EmailPassword";
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            Intent intentp = new Intent(LoginActivity.this,TabPrincipalController.class);
+                            Intent intentp = new Intent(LoginActivity.this, TabPrincipalController.class);
                             startActivity(intentp);
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            FancyToast.makeText(LoginActivity.this, "Authentication failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                            FancyToast.makeText(LoginActivity.this, "Authentication failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
                             updateUI(null);
                         }
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-                            FancyToast.makeText(LoginActivity.this, "Authentication failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                            FancyToast.makeText(LoginActivity.this, "Authentication failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
                         }
                         // [END_EXCLUDE]
                     }
@@ -178,9 +177,9 @@ private static final String TAG = "EmailPassword";
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Email sent");
-                            FancyToast.makeText(LoginActivity.this, "Mail sent with instructions", FancyToast.LENGTH_SHORT, FancyToast.INFO,true).show();
+                            FancyToast.makeText(LoginActivity.this, "Mail sent with instructions", FancyToast.LENGTH_SHORT, FancyToast.INFO, true).show();
                         } else {
-                            FancyToast.makeText(LoginActivity.this, "Email no Register in the APP", FancyToast.LENGTH_SHORT, FancyToast.ERROR,true).show();
+                            FancyToast.makeText(LoginActivity.this, "Email no Register in the APP", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show();
                         }
                     }
                 });
@@ -210,6 +209,7 @@ private static final String TAG = "EmailPassword";
         */
 
     }
+
     private void signOut() {
         mAuth.signOut();
     }
@@ -219,7 +219,7 @@ private static final String TAG = "EmailPassword";
         int id = item_menu.getItemId();
         if (id == R.id.logout_menu_main) {
             signOut();
-            Intent intent = new Intent(getBaseContext(),LoginActivity.class);
+            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item_menu);

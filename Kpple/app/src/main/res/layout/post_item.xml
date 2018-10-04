@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp">
@@ -22,6 +21,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold|italic" />
+
         <TextView
             android:id="@+id/txtPost"
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:src="@drawable/ic_comment"
-                android:layout_gravity="start"/>
+                android:layout_gravity="start" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -71,8 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textSize="20sp"
-                android:gravity="start"
-                />
+                android:gravity="start" />
 
             <ImageView
                 android:id="@+id/imgLike"
@@ -88,7 +87,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="0"
                 android:textSize="20sp"
-                android:gravity="start"/>
+                android:gravity="start" />
 
         </LinearLayout>
     </LinearLayout>

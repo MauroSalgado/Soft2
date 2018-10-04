@@ -16,7 +16,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import co.edu.konranlorenz.kpple.R;
 import io.ghyeok.stickyswitch.widget.StickySwitch;
 
-public class TabHobbies extends android.support.v4.app.Fragment implements View.OnClickListener{
+public class TabHobbies extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     StickySwitch stcSwCoffee;
     StickySwitch stcSwMovies;
@@ -47,7 +47,7 @@ public class TabHobbies extends android.support.v4.app.Fragment implements View.
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnSaveHobbies:
                 FirebaseUser user = mAuth.getCurrentUser();
 
@@ -58,7 +58,7 @@ public class TabHobbies extends android.support.v4.app.Fragment implements View.
                 refUser.child("VideoCall").child(user.getUid()).setValue(stcSwVideo.getText());
                 refUser.child("Swinger").child(user.getUid()).setValue(stcSwSwinger.getText());
 
-                FancyToast.makeText(getContext(), "Hobbies Saved. Please continue to Code", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+                FancyToast.makeText(getContext(), "Hobbies Saved. Please continue to Code", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
                 btnSaveHobbies.setVisibility(View.INVISIBLE);
                 break;
         }
