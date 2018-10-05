@@ -36,15 +36,17 @@
                 android:id="@+id/img_comunity"
                 android:layout_width="0dp"
                 android:layout_height="135dp"
-                android:layout_marginBottom="32dp"
-                android:layout_marginEnd="90dp"
                 android:layout_marginStart="90dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="32dp"
                 android:adjustViewBounds="false"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgFollow_comunity"
                 app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
@@ -53,21 +55,24 @@
 
             <ImageView
                 android:id="@+id/imgFollow_comunity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="130dp"
                 android:layout_marginEnd="32dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_comunity"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_follow" />
 
             <TextView
                 android:id="@+id/txtcomunityName"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginStart="112dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/label_comunity_name"
                 android:textColor="@color/black"
                 android:textSize="23sp"
@@ -76,6 +81,44 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_comunity"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="8dp"
+                android:text="TextView"
+                android:textColor="@color/Darkgrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgFollow_comunity"
+                tools:text="@string/label_profile_seguir" />
+
+            <ImageView
+                android:id="@+id/img_calificar_star"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                app:srcCompat="@drawable/starcalification" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_calificar_star"
+                tools:text="@string/label_profile_star" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.design.widget.TabLayout

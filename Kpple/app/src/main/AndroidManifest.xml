@@ -74,22 +74,19 @@
             android:name="activities.ActivityMessage"
             android:label="Chat"
             android:parentActivityName="activities.ChatViewer" />
-
         <activity
             android:name=".TabCommunityController"
             android:label="@string/title_activity_tab_community_controller"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FindNombre"
             android:label="@string/title_activity_find_nombre"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name="activities.ActivityChat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="activities.ActivityChat"
             android:label="Chat"
-            android:parentActivityName=".TabPrincipalController">
-        </activity>
-
+            android:parentActivityName=".TabPrincipalController"></activity>
+        <activity android:name="activities.CalificationCommunityActivity"></activity>
     </application>
 
 </manifest>

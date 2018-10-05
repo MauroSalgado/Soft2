@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="txtview_name_community">BDSM</string>
+    <string name="calification_title" translatable="false">Danos tu Opinión</string>
+    <string name="label_profile_seguir" translatable="false">Seguir</string>
+    <string name="label_profile_star" translatable="false">Calificar</string>
 </resources>

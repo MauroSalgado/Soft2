@@ -1,24 +1,21 @@
 package co.edu.konranlorenz.kpple;
 
 import android.content.Intent;
-import android.support.design.widget.TabLayout;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,10 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import activities.CalificationCommunityActivity;
 import activities.PostViewerFragment;
 import activities.TabBlank;
 import entities.Community;
-import kotlin.jvm.internal.FunctionReference;
 import lib.FirebaseFunctions;
 
 public class TabCommunityController extends AppCompatActivity {
@@ -49,6 +46,7 @@ public class TabCommunityController extends AppCompatActivity {
     private ImageView imgCommunity;
     private TextView txtCommunityName;
     private ImageView imgFollow;
+    private ImageView imgcalificar;
 
 
     /**
@@ -64,6 +62,7 @@ public class TabCommunityController extends AppCompatActivity {
 
         imgCommunity = findViewById(R.id.img_comunity);
         txtCommunityName = findViewById(R.id.txtcomunityName);
+        imgcalificar = findViewById(R.id.img_calificar_star);
         Intent intent = getIntent();
         Bundle bdiduser = intent.getExtras();
         if(bdiduser != null)
@@ -114,6 +113,14 @@ public class TabCommunityController extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        imgcalificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TabCommunityController.this,CalificationCommunityActivity.class);
+                startActivity(intent);
             }
         });
 
