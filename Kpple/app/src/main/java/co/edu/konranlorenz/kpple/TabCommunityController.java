@@ -1,6 +1,7 @@
 package co.edu.konranlorenz.kpple;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import activities.CalificationCommunityActivity;
+import activities.GalleryFragment;
 import activities.PostViewer;
 import activities.PostViewerComunityFragment;
 import activities.PostViewerFragment;
@@ -33,7 +35,7 @@ import activities.TabBlank;
 import entities.Community;
 import lib.FirebaseFunctions;
 
-public class TabCommunityController extends AppCompatActivity {
+public class TabCommunityController extends AppCompatActivity implements GalleryFragment.OnFragmentInteractionListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -160,6 +162,11 @@ public class TabCommunityController extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -214,7 +221,7 @@ public class TabCommunityController extends AppCompatActivity {
                     PostViewerFragment postViewer = new PostViewerFragment();
                     return postViewer;
                 case 1:
-                    TabBlank tab1 = new TabBlank();
+                    GalleryFragment tab1 = new GalleryFragment();
                     return tab1;
                 case 2:
                     TabBlank tab2 = new TabBlank();
