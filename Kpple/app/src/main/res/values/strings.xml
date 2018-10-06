@@ -31,12 +31,30 @@
     <string name="video_Call">Video Call</string>
     <string name="swinger">Swinger</string>
     <string name="trio">Trio</string>
-    <string name="vouyerism">Vouyerism</string>
-    <string name="sadism">Sadism</string>
-    <string name="Fetichism">Fetichism</string>
-    <string name="masoquism">Masoquism</string>
-    <string name="exhibicionism">Exhibicionism</string>
+    <string name="vouyerism">Voyeurismo</string>
+    <string name="sadism">Sadismo</string>
+    <string name="Fetichism">Fetichismo</string>
+    <string name="masoquism">Masoquismo</string>
+    <string name="exhibicionism">Exhibicionismo</string>
     <string name="Find">Buscar</string>
+
+    <string-array name="Intereses">
+        <item>Trio</item>
+        <item>Voyeurismo</item>
+        <item>Sadismo</item>
+        <item>Fetichismo</item>
+        <item>Masoquismo</item>
+        <item>Exhibicionismo</item>
+    </string-array>
+
+    <string-array name="Hobbies">
+        <item>Tomar Café</item>
+        <item>Películas</item>
+        <item>Fiesta</item>
+        <item>Parque</item>
+        <item>Videollamada</item>
+        <item>Swinger</item>
+    </string-array>
 
 
     <string name="firebase_status_fmt">Firebase User: %s</string>

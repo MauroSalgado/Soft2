@@ -1,7 +1,9 @@
 package co.edu.konranlorenz.kpple;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -18,8 +20,15 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class FindController extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
 
+import activities.FindHobbiesFragment;
+import activities.FindInterestFragment;
+import activities.FindNameFragment;
+
+public class FindController extends AppCompatActivity  {
+
+    FirebaseAuth mAuth;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -50,31 +59,36 @@ public class FindController extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-      
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        // Set up the ViewPager with the sections adapter.
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+        // [START initialize_auth]
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_find, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+    private void signOut() {
+        mAuth.signOut();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public boolean onOptionsItemSelected(MenuItem item_menu) {
+        int id = item_menu.getItemId();
+        if (id == R.id.logout_menu_main) {
+            signOut();
+            Intent intent = new Intent(getBaseContext(), FindController.class);
+            startActivity(intent);
         }
-
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item_menu);
     }
 
     /**
@@ -126,6 +140,17 @@ public class FindController extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            switch (position) {
+                case 0:
+                    FindNameFragment findName = new FindNameFragment();
+                    return findName;
+                case 1:
+                    FindInterestFragment findInterest = new FindInterestFragment();
+                    return findInterest;
+                case 2:
+                    FindHobbiesFragment findHobbies = new FindHobbiesFragment();
+                    return findHobbies;
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
