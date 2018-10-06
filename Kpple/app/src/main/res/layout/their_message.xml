@@ -64,6 +64,7 @@
         android:id="@+id/imgTheirPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:foregroundGravity="center"
         android:visibility="gone" />
 
 </RelativeLayout>

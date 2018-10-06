@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".TabPrincipalController">
+    tools:context=".FindController">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -28,46 +28,7 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="5dp">
-
-            <EditText
-                android:id="@+id/field_find"
-                android:layout_width="277dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/search_layout"
-                android:hint="@string/Find"
-                android:inputType=""
-                android:maxLines="1"
-                android:paddingBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                android:singleLine="true"
-                android:textColor="#959595" />
-
-            <ImageButton
-                android:id="@+id/btn_find"
-                style="@android:style/Widget.Holo.Button.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end|bottom"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:color="@color/white"
-                android:tint="@color/browser_actions_bg_grey"
-                app:srcCompat="@android:drawable/ic_search_category_default" />
-
-
-        </LinearLayout>
-
-
-        <android.support.design.widget.TabLayout
+          <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
