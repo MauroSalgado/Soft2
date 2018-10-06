@@ -64,7 +64,7 @@ public class ActivityChat extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri u = taskSnapshot.getDownloadUrl();
-                    MessageSend m = new MessageSend(USER_NAME+"Post a new photo", u.toString(), name.getText().toString(), urlPhoto, "2", ServerValue.TIMESTAMP);
+                    MessageSend m = new MessageSend("Post a new photo", u.toString(), USER_NAME, urlPhoto, "2", ServerValue.TIMESTAMP);
                     databaseReference.push().setValue(m);
                 }
             });
