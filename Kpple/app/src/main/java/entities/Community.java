@@ -17,7 +17,6 @@ public class Community {
     }
 
     public Community(String name, String descripcion, String urlImage) {
-        this.calification = 0;
         this.name = name;
         this.descripcion = descripcion;
         this.urlImage = urlImage;
@@ -71,5 +70,13 @@ public class Community {
 
     public void setFollowers(List<String> followers) {
         this.followers = followers;
+    }
+
+    public int getCalification() {
+        return calification;
+    }
+
+    public void setCalification(int calification) {
+        this.calification = calification;
     }
 }

@@ -10,6 +10,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import entities.Community;
+import entities.Post;
 
 public class FirebaseFunctions {
 
@@ -116,6 +117,19 @@ public class FirebaseFunctions {
         DatabaseReference mguiaReference = database.getReference("Community");
         /*DatabaseReference comunityref = this.getReferenceCommunity();*/
         mguiaReference.push().setValue(community);
+    }
+
+    public String InsertarPostGetCode(){
+        FirebaseDatabase database =FirebaseDatabase.getInstance();
+        DatabaseReference mPostref = database.getReference("Post");
+        String code = mPostref.push().getKey();
+        return code;
+    }
+    public void InsertarPost(Post post, String id){
+        FirebaseDatabase database =FirebaseDatabase.getInstance();
+        DatabaseReference mPostref = database.getReference("Post/"+id);
+        mPostref.child(id).setValue(post);
+
     }
 
 }

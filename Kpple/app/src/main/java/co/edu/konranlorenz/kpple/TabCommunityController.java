@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import activities.CalificationCommunityActivity;
+import activities.PostViewer;
+import activities.PostViewerComunityFragment;
 import activities.PostViewerFragment;
 import activities.TabBlank;
 import entities.Community;
@@ -47,6 +49,8 @@ public class TabCommunityController extends AppCompatActivity {
     private TextView txtCommunityName;
     private ImageView imgFollow;
     private ImageView imgcalificar;
+    private TextView tCalification;
+    private String idParam;
 
 
     /**
@@ -63,11 +67,13 @@ public class TabCommunityController extends AppCompatActivity {
         imgCommunity = findViewById(R.id.img_comunity);
         txtCommunityName = findViewById(R.id.txtcomunityName);
         imgcalificar = findViewById(R.id.img_calificar_star);
+        tCalification = findViewById(R.id.txt_value_rating);
         Intent intent = getIntent();
         Bundle bdiduser = intent.getExtras();
         if(bdiduser != null)
         {
             String uiduser = (String) bdiduser.get("idcommunity");
+            idParam = uiduser;
             /*Log.i("TABLOGComunnity",uiduser);*/
             DatabaseReference refuserCurrent = firebaseFunctions.getReferenceCommunityByID(uiduser);
             refuserCurrent.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -75,11 +81,14 @@ public class TabCommunityController extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String nameUser = "NameComunnityD";
                     String url = "";
+                    String calif ="";
                     Community commu = dataSnapshot.getValue(Community.class);
                     nameUser=commu.getName();
                     url = commu.getUrlImage();
+                    calif = ""+commu.getCalification();
 
                     txtCommunityName.setText(nameUser);
+                    tCalification.setText(calif);
                     Glide.with(getApplicationContext())
                             .load(url)
                             .into(imgCommunity);
@@ -120,7 +129,9 @@ public class TabCommunityController extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TabCommunityController.this,CalificationCommunityActivity.class);
+                intent.putExtra("idcommunity", idParam);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -198,6 +209,8 @@ public class TabCommunityController extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
+                    /*PostViewerComunityFragment postViewerComunityFragment = new PostViewerComunityFragment();
+                    return postViewerComunityFragment;*/
                     PostViewerFragment postViewer = new PostViewerFragment();
                     return postViewer;
                 case 1:
