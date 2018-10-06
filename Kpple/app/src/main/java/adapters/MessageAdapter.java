@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,8 +45,12 @@ public class MessageAdapter extends RecyclerView.Adapter<HolderMessage>  {
 
     @Override
     public void onBindViewHolder(@NonNull HolderMessage holder, int position) {
-        Glide.with(context).load(listMessage.get(position).getProfilePhoto()).into(holder.getImgTheirMsg());
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String urlPhoto = user.getPhotoUrl().toString();
+        Glide.with(context).load(urlPhoto).into(holder.getImgTheirMsg());
         holder.getTxtTheirMsgName().setText(listMessage.get(position).getName());
+        holder.getTxtTheirMsgBody().setText(listMessage.get(position).getMessage());
         String typeMsg = listMessage.get(position).getType_message();
         if (typeMsg.equals("2")){
             holder.getImgTheirPicture().setVisibility(View.VISIBLE);

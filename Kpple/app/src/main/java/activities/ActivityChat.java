@@ -13,12 +13,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -28,6 +31,7 @@ import co.edu.konranlorenz.kpple.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 import entities.MessageGet;
 import entities.MessageSend;
+import entities.User;
 
 public class ActivityChat extends AppCompatActivity {
 
@@ -43,8 +47,10 @@ public class ActivityChat extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    private FirebaseAuth mAuth;
+
     private static final int PHOTO_SEND = 1;
-    private static final int PHOTO_PROFILE = 2;
+    private String USER_NAME;
     private String urlPhoto;
 
     @Override
@@ -58,7 +64,7 @@ public class ActivityChat extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri u = taskSnapshot.getDownloadUrl();
-                    MessageSend m = new MessageSend("You got a new photo", u.toString(), name.getText().toString(), urlPhoto, "2", ServerValue.TIMESTAMP);
+                    MessageSend m = new MessageSend(USER_NAME+"Post a new photo", u.toString(), name.getText().toString(), urlPhoto, "2", ServerValue.TIMESTAMP);
                     databaseReference.push().setValue(m);
                 }
             });
@@ -70,8 +76,8 @@ public class ActivityChat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        photoProfile = findViewById(R.id.imgChat);
-        name = findViewById(R.id.txtName);
+        //photoProfile = findViewById(R.id.imgChat);
+        //name = findViewById(R.id.txtName);
         rvMesg = findViewById(R.id.recViewChat);
         txtMessage = findViewById(R.id.txtMessage);
         btnSend = findViewById(R.id.btnSendChat);
@@ -81,6 +87,7 @@ public class ActivityChat extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Chat");//Sala de chat
         storage = FirebaseStorage.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         adapter = new MessageAdapter(this);
         rvMesg.setHasFixedSize(true);
@@ -90,7 +97,7 @@ public class ActivityChat extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference.push().setValue(new MessageSend(txtMessage.getText().toString(), name.getText().toString(), urlPhoto, "1", ServerValue.TIMESTAMP));
+                databaseReference.push().setValue(new MessageSend(txtMessage.getText().toString(), USER_NAME, urlPhoto, "1", ServerValue.TIMESTAMP));
                 txtMessage.setText("");
             }
         });
@@ -141,9 +148,37 @@ public class ActivityChat extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser!=null){
+            btnSend.setEnabled(false);
+            DatabaseReference reference = database.getReference("User/"+currentUser.getUid());
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    User user = dataSnapshot.getValue(User.class);
+                    USER_NAME = user.getName();
+                    //name.setText(USER_NAME);
+                    btnSend.setEnabled(true);
+                }
 
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }else{
+            returnLogin();
+        }
     }
 
+    private void returnLogin(){
+        startActivity(new Intent(ActivityChat.this, LoginActivity.class));
+        finish();
+    }
     private void setScrollbar() {
         rvMesg.scrollToPosition(adapter.getItemCount() - 1);
     }
