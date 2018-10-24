@@ -7,4 +7,6 @@
     <string name="label_hint_etxt_rating" translatable="false">Tu mensaje...</string>
     <string name="button_rating_bar" translatable="false">Enviar</string>
     <string name="subtitle_ratingbar" translatable="false">Calificar</string>
+    <string name="title_comment_actv">Comentarios</string>
+    <string name="name_comment">Andrés Palacios</string>
 </resources>

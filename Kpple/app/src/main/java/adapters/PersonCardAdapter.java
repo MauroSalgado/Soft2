@@ -105,7 +105,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(context, FriendProfileController.class);
-                intent.putExtra("Nombre", userCurrent.getIdUser());
+                intent.putExtra("iduser", userCurrent.getIdUser());
                 context.startActivity(intent);
 
             }

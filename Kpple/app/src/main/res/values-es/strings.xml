@@ -131,6 +131,8 @@
         <string name="tab_couple_post">Post</string>
         <string name="tab_couple_gallery">Gallery</string>
         <string name="tab_couple_info">Info</string>
+    <string name="comment_text_comments">Hola, es mi primer comentario.</string>
+        <string name="txt_hora_comment">10:00</string>
 
 
 </resources>
