@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.GalleryAdapter;
+import adapters.GalleryCardAdapter;
 import co.edu.konranlorenz.kpple.R;
 import entities.Pictures;
 
@@ -42,7 +42,7 @@ public class GalleryFragment extends android.support.v4.app.Fragment {
     private String mParam1;
     private String mParam2;
     private GridView gridView;
-    private GalleryAdapter adapter;
+    private GalleryCardAdapter adapter;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private DatabaseReference myRefPictures;
@@ -109,7 +109,7 @@ public class GalleryFragment extends android.support.v4.app.Fragment {
         photoProfile.add("gs://ingsoft2-65cc5.appspot.com/lyHDpM21QAc3dM1WZ3kb1ONgfGO2/profile/Imagen13.png");
 
         String id = "4Fy1OMGn9lOSkSkZctpjAgTp1Mp2";
-        Pictures pictures = new Pictures(id, photoProfile, photoProfile);
+        /*Pictures pictures = new Pictures(id, photoProfile, photoProfile);
         myRefPictures.child(id).setValue(pictures);
         myRefPictures.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -118,7 +118,7 @@ public class GalleryFragment extends android.support.v4.app.Fragment {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         ArrayList<String> lista = (ArrayList<String>) ds.getValue(Pictures.class).getPhotos_profile();
-                        adapter = new GalleryAdapter(getContext(), lista);
+                        adapter = new GalleryCardAdapter(getContext(), lista);
                         gridView.setAdapter(adapter);
                         Log.i(tag, "" + lista.size());
                     }
@@ -130,7 +130,7 @@ public class GalleryFragment extends android.support.v4.app.Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
         return view;

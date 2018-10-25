@@ -11,7 +11,7 @@ public class Pictures {
     public Pictures() {
     }
 
-    public Pictures(String id_user, List<String> photos_profile, List<String> photos_post) {
+    public Pictures(String id_user) {
         this.id_user = id_user;
         this.photos_profile = photos_profile;
         this.photos_post = photos_post;

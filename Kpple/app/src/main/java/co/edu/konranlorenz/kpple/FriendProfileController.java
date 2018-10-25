@@ -60,7 +60,10 @@ public class FriendProfileController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_profile);
         Intent intent = getIntent();
-        final String userID = intent.getStringExtra(MESSAGE_KEY);
+        Bundle bdiduser = intent.getExtras();
+
+        final String userID = (String) bdiduser.get("iduser");
+
         //final String userID = "27M4a845YeRSWejMijro3FWGIRj2";
         database = FirebaseDatabase.getInstance();
         mDatabaseRef = database.getReference("User/" + userID);
