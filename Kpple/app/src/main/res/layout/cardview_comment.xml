@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/appbar_padding_top">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textVw_card_comment"
+            app:layout_constraintTop_toTopOf="@+id/textVw_card_comment">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/foto_perfil_comment"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:src="@drawable/androidicon"
+                android:layout_weight="3" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/appbar_padding_top"
+                    android:layout_marginTop="@dimen/appbar_padding_top"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/textVw_card_nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name_comment"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_weight="3"
+                        android:id="@+id/texVw_card_hora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_hora_comment"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="@dimen/appbar_padding_top"
+                    android:id="@+id/textVw_card_comment"
+                    android:layout_width="match_parent"
+                    android:lines="2"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:layout_marginLeft="@dimen/appbar_padding_top"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comment_text_comments"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
