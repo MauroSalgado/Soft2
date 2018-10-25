@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import activities.ActivityChat;
+import activities.ActivityRequest;
 import activities.GalleryFragment;
 import activities.InfoFragment;
 import activities.PhotoProfile;
@@ -84,6 +85,14 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getBaseContext(), FindController.class));
+            }
+        });
+
+        ImageButton btn_request = findViewById(R.id.btn_request);
+        btn_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), ActivityRequest.class));
             }
         });
 

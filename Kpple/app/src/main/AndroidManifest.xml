@@ -61,7 +61,7 @@
             android:name=".TabPrincipalController"
             android:label="@string/title_activity_tab_principal_controller"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ComunityActivityController" />
+
         <activity
             android:name=".FindController"
             android:label="@string/title_activity_find"
@@ -79,23 +79,16 @@
             android:label="@string/title_activity_tab_community_controller"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FindNombre"
-            android:label="@string/title_activity_find_nombre"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="activities.ActivityChat"
             android:label="Chat"
             android:parentActivityName=".TabPrincipalController" />
         <activity android:name="activities.CalificationCommunityActivity" />
-<<<<<<< HEAD
+
         <activity android:name="activities.activity_friend_request">
             android:label="Friend Request"
             android:parentActivityName=".TabPrincipalController"
         </activity>
         <activity android:name="activities.ActivityRequest"></activity>
-=======
-        <activity android:name="activities.CommentListActivity"></activity>
->>>>>>> 9fefe6c606e78a10a50a8aaae431609c2e218290
     </application>
 
 </manifest>

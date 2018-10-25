@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.GalleryCardAdapter;
+
 import co.edu.konranlorenz.kpple.R;
 import entities.Pictures;
 
@@ -42,7 +42,7 @@ public class GalleryFragment extends android.support.v4.app.Fragment {
     private String mParam1;
     private String mParam2;
     private GridView gridView;
-    private GalleryCardAdapter adapter;
+
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private DatabaseReference myRefPictures;
