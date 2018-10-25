@@ -9,4 +9,5 @@
     <string name="subtitle_ratingbar" translatable="false">Calificar</string>
     <string name="title_comment_actv">Comentarios</string>
     <string name="name_comment">Andrés Palacios</string>
+    <string name="comment_txtv_name_input">Peter</string>
 </resources>

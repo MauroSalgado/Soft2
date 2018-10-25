@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import activities.CalificationCommunityActivity;
+import activities.CommentListActivity;
 import activities.GalleryFragment;
 import activities.PostViewer;
 import activities.PostViewerComunityFragment;
@@ -124,6 +125,8 @@ public class TabCommunityController extends AppCompatActivity implements Gallery
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent intentpr = new Intent(TabCommunityController.this,CommentListActivity.class);
+                startActivity(intentpr);
             }
         });
 

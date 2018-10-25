@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="comment_text_comments">Hola, es mi primer comentario.</string>
+    <string name="txt_hora_comment">10:00</string>
+</resources>
