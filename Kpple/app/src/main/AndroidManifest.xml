@@ -84,10 +84,10 @@
             android:parentActivityName=".TabPrincipalController" />
         <activity android:name="activities.CalificationCommunityActivity" />
 
-        <activity android:name="activities.activity_friend_request">
+        <activity
+            android:name="activities.ActivityFriendRequest"
             android:label="Friend Request"
-            android:parentActivityName=".TabPrincipalController"
-        </activity>
+            android:parentActivityName=".TabPrincipalController"/>
         <activity android:name="activities.ActivityRequest"></activity>
     </application>
 

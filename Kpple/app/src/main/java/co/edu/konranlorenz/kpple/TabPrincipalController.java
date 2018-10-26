@@ -27,6 +27,7 @@ import activities.ActivityChat;
 import activities.ActivityRequest;
 import activities.GalleryFragment;
 import activities.InfoFragment;
+import activities.LoginActivity;
 import activities.PhotoProfile;
 import activities.PostViewerFragment;
 import activities.Recycler_cardview_communities;
@@ -115,10 +116,11 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item_menu) {
+
         int id = item_menu.getItemId();
         if (id == R.id.logout_menu_main) {
             signOut();
-            Intent intent = new Intent(getBaseContext(), FindController.class);
+            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item_menu);

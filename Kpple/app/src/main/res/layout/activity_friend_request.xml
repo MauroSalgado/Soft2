@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activities.activity_friend_request">
+    tools:context="activities.ActivityFriendRequest">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgFriendReq"
@@ -35,11 +35,12 @@
 
     <Button
         android:id="@+id/btnSendRequest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="146dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:background="@color/colorPrimary"
         android:text="Send Request"
+        android:textAlignment="center"
         android:textColor="@color/browser_actions_bg_grey"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,7 +2,7 @@ package adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,8 +24,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-import activities.PostViewer;
-import activities.PostViewerFragment;
+import activities.ActivityFriendRequest;
 import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
 import entities.User;
@@ -35,7 +34,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
     private List<User> mUser;
     private Context context;
 
-    public PersonCardAdapter(Context mContext, List<User> mUser,Context context) {
+    public PersonCardAdapter(Context mContext, List<User> mUser, Context context) {
         this.mContext = mContext;
         this.mUser = mUser;
         this.context = context;
@@ -61,7 +60,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
         final User userCurrent = mUser.get(position);
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-        final String user = mAuth.getCurrentUser().getUid();
+
         String url = "Post/" + userCurrent.getIdUser();
         final DatabaseReference refUser = FirebaseDatabase.getInstance().getReference("User");
 
@@ -104,9 +103,41 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
         holder.imgCardPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(context, FriendProfileController.class);
-                intent.putExtra("iduser", userCurrent.getIdUser());
-                context.startActivity(intent);
+                final String user = mAuth.getCurrentUser().getUid();
+                final DatabaseReference refFriend = FirebaseDatabase.getInstance().getReference("Friendship/" + user);
+                refFriend.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Bundle extras = new Bundle();
+                        extras.putString("ID", userCurrent.getIdUser());
+                        extras.putString("NAME", userCurrent.getName());
+                        extras.putString("URL_IMG", userCurrent.getUrlImgProfile());
+                        Intent friendIntent = new Intent(context, ActivityFriendRequest.class);
+                        friendIntent.putExtras(extras);
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (ds.getChildren().toString().equals(userCurrent.getIdUser())) {
+                                    if (ds.child(userCurrent.getIdUser()).getValue().toString().equals("Yes")) {
+                                        Intent intent = new Intent(context, FriendProfileController.class);
+                                        intent.putExtra("iduser", userCurrent.getIdUser());
+                                        context.startActivity(intent);
+                                    }else{
+                                        context.startActivity(friendIntent);
+                                    }
+                                }
+                            }
+                        } else {
+                            context.startActivity(friendIntent);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                /**/
 
             }
         });
