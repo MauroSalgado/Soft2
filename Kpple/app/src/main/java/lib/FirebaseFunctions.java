@@ -35,6 +35,10 @@ public class FirebaseFunctions {
         return uri;
     }
 
+    public String getNameUser(){
+        return mAuth.getCurrentUser().getDisplayName();
+    }
+
     // Éste método consigue la referencia de POST en firebase enviándole el id de usuario por parámetro
     public DatabaseReference getReferencePostByUserId(String id) {
         String url = "Post/"+id;

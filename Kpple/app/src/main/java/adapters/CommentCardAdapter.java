@@ -7,26 +7,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import activities.CommentRecibir;
 import activities.HolderComment;
 import co.edu.konranlorenz.kpple.R;
-import entities.Comment;
+import lib.FirebaseFunctions;
 
 public class CommentCardAdapter extends RecyclerView.Adapter<HolderComment> {
 
-    private List<Comment>listMensaje=new ArrayList<>();
+    private List<CommentRecibir> listComment =new ArrayList<>();
     private Context c;
 
     public CommentCardAdapter(Context c) {
         this.c = c;
     }
 
-    public void addComment(Comment comment){
+    public void addComment(CommentRecibir comment){
 
-        this.listMensaje.add(comment);
-        notifyItemInserted(listMensaje.size());
+        this.listComment.add(comment);
+        notifyItemInserted(listComment.size());
     }
 
     @NonNull
@@ -39,14 +44,33 @@ public class CommentCardAdapter extends RecyclerView.Adapter<HolderComment> {
 
     @Override
     public void onBindViewHolder(@NonNull HolderComment holder, int position) {
-        holder.getmTxt_nombre().setText(listMensaje.get(position).getNombre());
-        holder.getmTxt_comment().setText(listMensaje.get(position).getComment());
-        holder.getmHora().setText(listMensaje.get(position).getHora());
 
+        holder.getmTxt_nombre().setText(listComment.get(position).getNombre());
+        holder.getmTxt_comment().setText(listComment.get(position).getComment());
+
+        if(listComment.get(position).getType_message().equals("2")){
+            holder.getmFotoMensaje().setVisibility(View.VISIBLE);
+            holder.getmTxt_comment().setVisibility(View.VISIBLE);
+            Glide.with(c).load(listComment.get(position).getUrlFoto()).into(holder.getmFotoMensaje());
+        }else{
+            holder.getmFotoMensaje().setVisibility(View.GONE);
+            holder.getmTxt_comment().setVisibility(View.VISIBLE);
+        }
+
+        if(listComment.get(position).getFotoPerfil().isEmpty()){
+            holder.getmFotoMensajePerfil().setImageResource(R.mipmap.ic_launcher);
+        }else {
+            Glide.with(c).load(listComment.get(position)).into(holder.getmFotoMensajePerfil());
+        }
+
+        Long codigohora = listComment.get(position).getHora();
+        Date d = new Date(codigohora);
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
+        holder.getmHora().setText(sdf.format(d));
     }
 
     @Override
     public int getItemCount() {
-        return listMensaje.size();
+        return listComment.size();
     }
 }

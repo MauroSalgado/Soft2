@@ -14,14 +14,16 @@ public class HolderComment extends RecyclerView.ViewHolder {
     private TextView mTxt_nombre;
     private TextView mTxt_comment;
     private TextView mHora;
-    private CircleImageView mFotoMensaje;
+    private CircleImageView mFotoMensajePerfil;
+    private ImageView mFotoMensaje;
 
     public HolderComment(View itemView) {
         super(itemView);
         mTxt_nombre = (TextView) itemView.findViewById(R.id.textVw_card_nombre);
         mTxt_comment = (TextView) itemView.findViewById(R.id.textVw_card_comment);
         mHora = (TextView) itemView.findViewById(R.id.texVw_card_hora);
-        mFotoMensaje = (CircleImageView) itemView.findViewById(R.id.foto_perfil_comment);
+        mFotoMensajePerfil = (CircleImageView) itemView.findViewById(R.id.foto_perfil_comment);
+        mFotoMensaje = (ImageView) itemView.findViewById(R.id.img_mensaje_foto);
     }
 
 
@@ -50,11 +52,19 @@ public class HolderComment extends RecyclerView.ViewHolder {
         this.mHora = mHora;
     }
 
-    public CircleImageView getmFotoMensaje() {
+    public CircleImageView getmFotoMensajePerfil() {
+        return mFotoMensajePerfil;
+    }
+
+    public void setmFotoMensajePerfil(CircleImageView mFotoMensajePerfil) {
+        this.mFotoMensajePerfil = mFotoMensajePerfil;
+    }
+
+    public ImageView getmFotoMensaje() {
         return mFotoMensaje;
     }
 
-    public void setmFotoMensaje(CircleImageView mFotoMensaje) {
+    public void setmFotoMensaje(ImageView mFotoMensaje) {
         this.mFotoMensaje = mFotoMensaje;
     }
 }

@@ -35,9 +35,12 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Date;
 import java.util.List;
 
+
 import activities.PostViewer;
 import activities.PostViewerFragment;
+import activities.CommentListActivity;
 import co.edu.konranlorenz.kpple.R;
+import co.edu.konranlorenz.kpple.TabPrincipalController;
 import entities.Post;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolder> {
@@ -134,6 +137,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 sendNotificationDesLike();
             }
         });
+
+        holder.imgComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, CommentListActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
+
         Glide.with(mContext)
                 .load(postCurrent.getUrlImage())
                 .into(holder.imgPost);
@@ -152,6 +164,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         public ImageView imgPost;
         public ImageView imgLike;
         public ImageView imgDislike;
+        public ImageView imgComment;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
@@ -162,6 +175,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             imgPost = itemView.findViewById(R.id.imgPost);
             imgLike = itemView.findViewById(R.id.imgLike);
             imgDislike = itemView.findViewById(R.id.imgDislike);
+            imgComment = itemView.findViewById(R.id.imgComment);
         }
     }
 

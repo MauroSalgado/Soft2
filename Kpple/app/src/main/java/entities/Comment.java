@@ -3,16 +3,24 @@ package entities;
 public class Comment {
     private String comment;
     private String nombre;
+    private String urlFoto;
     private String fotoPerfil;
     private String type_message;
-    private String hora;
 
-    public Comment(String comment, String nombre, String fotoPerfil, String type_message, String hora) {
+
+    public Comment(String comment, String nombre, String fotoPerfil, String type_message) {
         this.comment = comment;
         this.nombre = nombre;
         this.fotoPerfil = fotoPerfil;
         this.type_message = type_message;
-        this.hora = hora;
+    }
+
+    public Comment(String comment, String nombre, String urlFoto, String fotoPerfil, String type_message) {
+        this.comment = comment;
+        this.nombre = nombre;
+        this.urlFoto = urlFoto;
+        this.fotoPerfil = fotoPerfil;
+        this.type_message = type_message;
     }
 
     public Comment() {
@@ -50,11 +58,11 @@ public class Comment {
         this.type_message = type_message;
     }
 
-    public String getHora() {
-        return hora;
+    public String getUrlFoto() {
+        return urlFoto;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 }

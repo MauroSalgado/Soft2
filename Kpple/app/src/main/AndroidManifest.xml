@@ -89,6 +89,10 @@
             android:label="Friend Request"
             android:parentActivityName=".TabPrincipalController"/>
         <activity android:name="activities.ActivityRequest"></activity>
+
+        <activity
+            android:name="activities.CommentListActivity"
+            android:label="Comentarios"/>
     </application>
 
 </manifest>
