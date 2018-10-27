@@ -29,6 +29,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 import activities.PostViewerFragment;
 import activities.TabBlank;
+import entities.Request;
 
 public class FriendProfileController extends AppCompatActivity {
 
@@ -47,8 +48,8 @@ public class FriendProfileController extends AppCompatActivity {
     private ImageView imgFollow;
 
     private FirebaseDatabase database;
-    private DatabaseReference mDatabaseRef, followRef;
-    FirebaseAuth mAuth;
+    private DatabaseReference mDatabaseRef, followRef, friendRef;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -68,6 +69,8 @@ public class FriendProfileController extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         mDatabaseRef = database.getReference("User/" + userID);
         followRef = database.getReference("Following");
+        friendRef = FirebaseDatabase.getInstance().getReference("Friendship");
+        FirebaseUser user = mAuth.getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -93,7 +96,11 @@ public class FriendProfileController extends AppCompatActivity {
         imgFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseUser user = mAuth.getCurrentUser();
+                friendRef = FirebaseDatabase.getInstance().getReference("Couple");
+                Request reqFriend = new Request(user.getUid(),"No","2");
+                friendRef.child(userID).child(user.getUid()).setValue(reqFriend);
+                FancyToast.makeText(getBaseContext(), "Request couple send succesfully", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+                startActivity(new Intent(getBaseContext(), TabPrincipalController.class));
                 followRef.child(user.getUid()).child(userID).setValue("Yes");
                 FancyToast.makeText(getBaseContext(), "Now you are following", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
             }

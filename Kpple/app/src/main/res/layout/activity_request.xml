@@ -10,7 +10,7 @@
     tools:context="activities.ActivityRequest">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appBarReq"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:fitsSystemWindows="true"
@@ -47,10 +47,10 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtUser"
+                        android:id="@+id/txtUserReq"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Username"
+                        android:text="Solicitudes"
                         android:textColor="@android:color/white"
                         android:textSize="30dp" />
 

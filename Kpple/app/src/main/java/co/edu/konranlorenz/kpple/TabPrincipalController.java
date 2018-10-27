@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import activities.ActivityChat;
 import activities.ActivityRequest;
+import activities.ChatViewer;
 import activities.GalleryFragment;
 import activities.InfoFragment;
 import activities.LoginActivity;
@@ -72,15 +73,6 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ActivityChat.class);
-                startActivity(intent);
-            }
-        });
-
         ImageButton button_find = findViewById(R.id.btn_find);
         button_find.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +89,13 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
             }
         });
 
+        ImageButton btn_chat = findViewById(R.id.btn_chat);
+        btn_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), ActivityChat.class));
+            }
+        });
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]

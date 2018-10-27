@@ -104,8 +104,9 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
             @Override
             public void onClick(View view) {
                 final String user = mAuth.getCurrentUser().getUid();
-                final DatabaseReference refFriend = FirebaseDatabase.getInstance().getReference("Friendship/" + user);
-                refFriend.addListenerForSingleValueEvent(new ValueEventListener() {
+                final DatabaseReference refFriend = FirebaseDatabase.getInstance()
+                        .getReference("Friendship/" + userCurrent.getIdUser() + "/" + user);
+                refFriend.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Bundle extras = new Bundle();
@@ -115,16 +116,13 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
                         Intent friendIntent = new Intent(context, ActivityFriendRequest.class);
                         friendIntent.putExtras(extras);
                         if (dataSnapshot.exists()) {
-                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                if (ds.getChildren().toString().equals(userCurrent.getIdUser())) {
-                                    if (ds.child(userCurrent.getIdUser()).getValue().toString().equals("Yes")) {
-                                        Intent intent = new Intent(context, FriendProfileController.class);
-                                        intent.putExtra("iduser", userCurrent.getIdUser());
-                                        context.startActivity(intent);
-                                    }else{
-                                        context.startActivity(friendIntent);
-                                    }
-                                }
+                            DataSnapshot ds = dataSnapshot;
+                            if (ds.child("flag").getValue().toString().equals("Yes")) {
+                                Intent intent = new Intent(context, FriendProfileController.class);
+                                intent.putExtra("iduser", userCurrent.getIdUser());
+                                context.startActivity(intent);
+                            } else {
+                                context.startActivity(friendIntent);
                             }
                         } else {
                             context.startActivity(friendIntent);
@@ -137,8 +135,6 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
 
                     }
                 });
-                /**/
-
             }
         });
         Glide.with(mContext)

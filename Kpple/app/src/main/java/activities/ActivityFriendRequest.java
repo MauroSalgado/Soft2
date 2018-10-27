@@ -17,6 +17,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import co.edu.konranlorenz.kpple.R;
 import co.edu.konranlorenz.kpple.TabPrincipalController;
 import de.hdodenhof.circleimageview.CircleImageView;
+import entities.Request;
 
 public class ActivityFriendRequest extends AppCompatActivity {
 
@@ -41,7 +42,9 @@ public class ActivityFriendRequest extends AppCompatActivity {
             public void onClick(View v) {
                 friendRef = FirebaseDatabase.getInstance().getReference("Friendship");
                 FirebaseUser user = mAuth.getCurrentUser();
-                friendRef.child(extras.getString("ID")).child(user.getUid()).setValue("No");
+                //typeReq 1 -> Friend, 2-> Couple
+                Request reqFriend = new Request(user.getUid(),"No","1");
+                friendRef.child(extras.getString("ID")).child(user.getUid()).setValue(reqFriend);
                 FancyToast.makeText(getBaseContext(), "Request send succesfully", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
                 startActivity(new Intent(getBaseContext(), TabPrincipalController.class));
                 finish();
