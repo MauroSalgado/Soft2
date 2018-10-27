@@ -37,6 +37,9 @@
     <string name="masoquism">Masoquismo</string>
     <string name="exhibicionism">Exhibicionismo</string>
     <string name="Find">Buscar</string>
+    <string name="notif_title">Notificacion de Kpple</string>
+    <string name="notif_body">Notificacion de Kpple me gusta en la foto</string>
+    <string name="notif_body_intent">Notificacion de Kpple en POST</string>
 
     <string-array name="Intereses">
         <item>Trio</item>
@@ -177,6 +180,7 @@
     <string name="title_activity_tab_community_controller">TabCommunityController</string>
     <string name="comment_text_comments">Hola, es mi primer comentario.</string>
     <string name="txt_hora_comment">10:00</string>
+    <string name="title_activity_notify">NotifyActivity</string>
 
 
     <!--                             -->
