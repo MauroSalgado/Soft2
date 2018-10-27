@@ -37,9 +37,10 @@
     <string name="masoquism">Masoquismo</string>
     <string name="exhibicionism">Exhibicionismo</string>
     <string name="Find">Buscar</string>
-    <string name="notif_title">Notificacion de Kpple</string>
-    <string name="notif_body">Notificacion de Kpple me gusta en la foto</string>
-    <string name="notif_body_intent">Notificacion de Kpple en POST</string>
+    <string name="notif_title">Notificacion Kpple like</string>
+    <string name="notif_body">Notificacion Kpple Me gusta en Tu publicacion</string>
+    <string name="notif_titleD">Notificacion Kpple Deslike</string>
+    <string name="notif_bodyD">Notificacion Kpple No le gusta en Tu publicacion</string>
 
     <string-array name="Intereses">
         <item>Trio</item>

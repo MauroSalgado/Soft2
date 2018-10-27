@@ -121,7 +121,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 refPost.child(user).child(postID).child("like").setValue(addLike);
                 holder.txtLike.setText(String.valueOf(addLike));
                 setData(mPosts);
-                sendNotification();
+                sendNotificationLike();
             }
         });
         holder.imgDislike.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +131,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 refPost.child(user).child(postID).child("dislike").setValue(addDislike);
                 holder.txtDislike.setText(String.valueOf(addDislike));
                 setData(mPosts);
+                sendNotificationDesLike();
             }
         });
         Glide.with(mContext)
@@ -164,7 +165,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         }
     }
 
-    private void sendNotification(){
+    private void sendNotificationLike(){
         Intent intent = new Intent(mContext, PostViewerFragment.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -204,7 +205,46 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             notificationManager.notify(m, notificationBuilder.build());
         }
 
+    }
 
-
+    private void sendNotificationDesLike() {
+        Intent intent = new Intent(mContext, PostViewerFragment.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        int icon = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? R.mipmap.ic_launcher : R.mipmap.ic_launcher;
+        NotificationManager notificationManager =
+                (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelId = "default";
+            NotificationChannel channel = new NotificationChannel(channelId, mContext.getString(R.string.notif_title), NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(mContext.getString(R.string.notif_body));
+            channel.enableLights(true);
+            channel.setLightColor(Color.BLUE);
+            channel.setSound(defaultSoundUri, null);
+            channel.setShowBadge(true);
+            notificationManager.createNotificationChannel(channel);
+            Notification notification = new Notification.Builder(mContext, channelId)
+                    .setContentTitle(mContext.getString(R.string.notif_titleD))
+                    .setContentText(mContext.getString(R.string.notif_bodyD))
+                    .setSmallIcon(icon)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+                    .build();
+            notificationManager.notify(m, notification);
+        } else {
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mContext)
+                    .setSmallIcon(icon)
+                    .setContentTitle(mContext.getString(R.string.notif_title))
+                    .setContentText(mContext.getString(R.string.notif_body))
+                    .setAutoCancel(true)
+                    .setSound(defaultSoundUri)
+                    .setContentIntent(pendingIntent)
+                    .setLights(Color.BLUE, 3000, 3000);
+            notificationManager.notify(m, notificationBuilder.build());
+        }
     }
 }
