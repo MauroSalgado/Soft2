@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingVertical="10dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="60dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgTheirMsg"
+        android:layout_width="52dp"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="6dp"
+        android:elevation="2dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txtTheirMsgName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgTheirMsg"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/imgTheirMsg"
+        android:paddingBottom="4dp"
+        android:text="Other User" />
+
+    <TextView
+        android:id="@+id/txtTheirMsgBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTheirMsgName"
+        android:layout_alignStart="@+id/imgTheirMsg"
+        android:layout_alignLeft="@+id/txtTheirMsgName"
+        android:layout_marginStart="62dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/their_message"
+        android:elevation="2dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:text="Their message"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txtTheirMsgTime"
+        android:layout_width="59dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/txtTheirMsgBody"
+        android:layout_alignBottom="@+id/txtTheirMsgBody"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="-19dp"
+        android:layout_marginBottom="51dp"
+        android:layout_toEndOf="@+id/txtTheirMsgName"
+        android:text="10:10 pm"
+        android:textAlignment="center"
+        android:textSize="10sp" />
+
+    <ImageView
+        android:id="@+id/imgTheirPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:visibility="gone" />
+
+</RelativeLayout>
