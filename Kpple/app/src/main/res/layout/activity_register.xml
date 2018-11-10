@@ -88,33 +88,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="191dp"
         android:layout_marginTop="30dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:textAlignment="center"
         android:textSize="16sp">
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button_facebook"
-            android:layout_width="41dp"
-            android:layout_height="31dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:textAlignment="center" />
+            style="@style/FacebookLoginButton"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
-            android:layout_width="41dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="177dp"
+            android:layout_height="36dp"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold" />
 
         <com.twitter.sdk.android.core.identity.TwitterLoginButton
             android:id="@+id/button_twitter_login"
-            android:layout_width="41dp"
-            android:layout_height="31dp"
-            android:layout_centerInParent="true" />
+            android:layout_width="177dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
