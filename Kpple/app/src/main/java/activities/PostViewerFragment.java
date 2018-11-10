@@ -53,7 +53,7 @@ public class PostViewerFragment extends Fragment {
 
         mPosts = new ArrayList<>();
         Intent intent = getActivity().getIntent();
-        String userId = intent.getStringExtra(MESSAGE_KEY);
+        String userId = intent.getStringExtra("iduser");
         //String userId = "27M4a845YeRSWejMijro3FWGIRj2";
         if (userId == null) {
             FirebaseUser user = mAuth.getCurrentUser();

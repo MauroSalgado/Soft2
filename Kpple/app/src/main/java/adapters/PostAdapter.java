@@ -121,7 +121,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             @Override
             public void onClick(View view) {
                 int addLike = postCurrent.getLike() + 1;
-                refPost.child(user).child(postID).child("like").setValue(addLike);
+                refPost.child(postCurrent.getIdUser()).child(postID).child("like").setValue(addLike);
                 holder.txtLike.setText(String.valueOf(addLike));
                 setData(mPosts);
                 sendNotificationLike();
