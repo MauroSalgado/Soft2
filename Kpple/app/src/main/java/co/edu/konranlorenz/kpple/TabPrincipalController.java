@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -74,6 +76,9 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
         ImageButton button_find = findViewById(R.id.btn_find);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.lefttoright);
+        button_find.setAnimation(animation);
+
         button_find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +87,7 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
         });
 
         ImageButton btn_request = findViewById(R.id.btn_request);
+        btn_request.setAnimation(animation);
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +96,7 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
         });
 
         ImageButton btn_chat = findViewById(R.id.btn_chat);
+        btn_chat.setAnimation(animation);
         btn_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

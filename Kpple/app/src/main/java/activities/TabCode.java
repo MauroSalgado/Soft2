@@ -10,6 +10,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -43,6 +45,8 @@ public class TabCode extends android.support.v4.app.Fragment implements View.OnC
         txtCode = view.findViewById(R.id.txtCode);
         btnSaveCode = view.findViewById(R.id.btnSaveCode);
         btnSaveCode.setOnClickListener(this);
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.lefttoright);
+        btnSaveCode.setAnimation(animation);
 
         return view;
     }

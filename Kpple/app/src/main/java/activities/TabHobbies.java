@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,6 +61,8 @@ public class TabHobbies extends android.support.v4.app.Fragment implements View.
                 refUser.child("Swinger").child(user.getUid()).setValue(stcSwSwinger.getText());
 
                 FancyToast.makeText(getContext(), "Hobbies Saved. Please continue to Code", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
+                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.lefttoright);
+                btnSaveHobbies.startAnimation(animation);
                 btnSaveHobbies.setVisibility(View.INVISIBLE);
                 break;
         }

@@ -7,6 +7,8 @@ import android.support.design.widget.TextInputEditText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -85,6 +87,8 @@ public class TabProfile extends android.support.v4.app.Fragment implements View.
         User newUser = new User(id, city, country, sex, date, nick, name, language, "", false, urlImgProfile);
 
         refUser.child(id).setValue(newUser);
+        Animation animation = AnimationUtils.loadAnimation(getView().getContext(), R.anim.lefttoright);
+        btnSaveProfile.setAnimation(animation);
         btnSaveProfile.setVisibility(View.INVISIBLE);
         FancyToast.makeText(getContext(), "Profile Saved. Please continue to Interest", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
 

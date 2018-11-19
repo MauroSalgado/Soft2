@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,6 +63,8 @@ public class TabInterests extends android.support.v4.app.Fragment implements Vie
                 refUser.child("Exhibicionism").child(user.getUid()).setValue(stcExhibicionism.getText());
 
                 FancyToast.makeText(getContext(), "Interest Saved. Please continue to Hobbies", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
+                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.lefttoright);
+                btnSaveInterest.setAnimation(animation);
                 btnSaveInterest.setVisibility(View.INVISIBLE);
                 break;
         }
