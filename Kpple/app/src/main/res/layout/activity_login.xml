@@ -71,14 +71,9 @@
 
             <Button
                 android:id="@+id/singin_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorAccent"
+                style="@style/styleButtonLogin"
                 android:text="@string/action_log_in"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                 />
 
             <TextView
                 android:id="@+id/forgot_password"

@@ -57,15 +57,9 @@
 
     <Button
         android:id="@+id/btnSaveCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="78dp"
-        android:background="@color/colorPrimary"
+        style="@style/SaveCodeBtnStyle"
         android:text="@string/save"
-        android:textColor="@color/cardview_light_background"
-        android:textStyle="bold" />
+         />
 
 
 </RelativeLayout>

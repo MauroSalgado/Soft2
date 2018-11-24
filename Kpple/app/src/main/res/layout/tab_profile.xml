@@ -86,10 +86,7 @@
 
     <Button
         android:id="@+id/btnSaveProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        style="@style/buttonSaveProfileStyle"
         android:text="Save"
-        android:textColor="@color/cardview_light_background"
-        android:textStyle="bold" />
+        />
 </LinearLayout>
