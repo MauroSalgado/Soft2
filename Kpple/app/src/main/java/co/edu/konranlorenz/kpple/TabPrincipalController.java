@@ -83,6 +83,7 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getBaseContext(), FindController.class));
+                overridePendingTransition(R.anim.fui_slide_in_right,R.anim.fui_slide_out_left);
             }
         });
 
@@ -92,6 +93,7 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), ActivityRequest.class));
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             }
         });
 
@@ -101,6 +103,7 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), ActivityChat.class));
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             }
         });
         // [START initialize_auth]
@@ -128,6 +131,7 @@ public class TabPrincipalController extends AppCompatActivity implements Gallery
             signOut();
             Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.zoom_back_in,R.anim.zoom_back_out);
         }
         return super.onOptionsItemSelected(item_menu);
     }

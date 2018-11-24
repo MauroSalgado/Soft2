@@ -149,6 +149,13 @@ public class ActivityChat extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

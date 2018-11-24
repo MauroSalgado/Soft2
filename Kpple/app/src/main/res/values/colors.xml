@@ -4,11 +4,13 @@
     <color name="colorPrimaryDark">#7d156d</color>
     <color name="colorAccent">#d87ca1</color>
     <color name="colorDark">#073863</color>
+    <color name="colorPrimaryLight">#F6D8E7</color>
     <color name="colorSecondary">#ffd7f1</color>
     <color name="colorTerceary">#DBD5D7</color>
     <color name="colorQuarter">#F5EAEE</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="blackGrey">#393939</color>
     <color name="colorStickyBG">#00897B</color>
     <color name="colorSticky">#074d71</color>
     <color name="Cuarternary">#c0a7b1</color>

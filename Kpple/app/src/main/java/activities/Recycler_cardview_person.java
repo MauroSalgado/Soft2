@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,9 @@ import java.util.List;
 
 import adapters.PersonCardAdapter;
 import co.edu.konranlorenz.kpple.R;
+import entities.Block;
 import entities.User;
+import lib.FirebaseFunctions;
 
 public class Recycler_cardview_person extends Fragment {
 
@@ -35,6 +38,7 @@ public class Recycler_cardview_person extends Fragment {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     private List<User> mUser;
+    private List<Block> mBlockUsers;
     private final static String MESSAGE_KEY = "null";
 
     public Recycler_cardview_person() {
@@ -51,6 +55,7 @@ public class Recycler_cardview_person extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mUser = new ArrayList<>();
+        mBlockUsers = new ArrayList<>();
         Intent intent = getActivity().getIntent();
         String userId = intent.getStringExtra(MESSAGE_KEY);
         if (userId == null) {
@@ -58,14 +63,45 @@ public class Recycler_cardview_person extends Fragment {
             userId = user.getUid();
         }
 
+        // Consultar Bloqueados
+
+        FirebaseFunctions fbFunctions = new FirebaseFunctions();
+        String Uid = fbFunctions.getIdUsuarioFire();
+        DatabaseReference refBlockUser = fbFunctions.getReferenceBlockById(Uid);
+        refBlockUser.addValueEventListener(new ValueEventListener() {
+            ArrayList<String> userBlock= new ArrayList<>();
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()) {
+                    Block block1 = userSnapshot.getValue(Block.class);
+                    String idUBloc = block1.getIdUserBlock();
+                    userBlock.add(idUBloc);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        //  ------------------------------------------------
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("User");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                FirebaseFunctions fbFunctions = new FirebaseFunctions();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     User user = postSnapshot.getValue(User.class);
-                    mUser.add(user);
+                    if(!user.getIdUser().equals(fbFunctions.getIdUsuarioFire())){
+                        mUser.add(user);
+                    }
+
+
                 }
                 mAdapter = new PersonCardAdapter(getActivity(), mUser, getContext());
                 mRecyclerView.setAdapter(mAdapter);

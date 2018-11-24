@@ -120,6 +120,12 @@ public class ActivityRequest extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+    }
+
     private void initCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(" ");

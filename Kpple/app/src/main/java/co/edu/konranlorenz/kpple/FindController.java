@@ -69,6 +69,11 @@ public class FindController extends AppCompatActivity  {
         // [END initialize_auth]
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_in,R.anim.right_out);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

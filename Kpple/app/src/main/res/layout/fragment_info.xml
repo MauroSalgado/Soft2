@@ -1,294 +1,352 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="activities.InfoFragment">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:context="activities.InfoFragment">
+    <TextView
+        android:id="@+id/profile_text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:text="@string/info_profile_name"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/profile_txview_country"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/profile_txview_country"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_below="@+id/profile_text_name"
+        android:layout_marginStart="48dp"
+        android:gravity="center"
+        android:text="@string/info_label_country"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/profile_text_country"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UnknownId" />
 
-            <!-- TODO: Update blank fragment layout -->
-            <TextView
-                android:id="@+id/profile_text_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/default_double"
-                android:gravity="center"
-                android:text="@string/info_profile_name"
-                android:textSize="23sp"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/profile_textview_city"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_below="@+id/profile_txview_country"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="48dp"
+        android:gravity="center"
+        android:text="@string/info_label_city"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/profile_text_city"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/profile_txview_country"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_name"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/default_double"
-                android:gravity="center"
-                android:text="@string/info_label_country"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                tools:ignore="UnknownId" />
+    <TextView
+        android:id="@+id/profile_textview_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_below="@+id/profile_textview_city"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="48dp"
+        android:gravity="center"
+        android:text="@string/info_label_sex"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/profile_text_sex"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/profile_text_country"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_name"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/default_double"
-                android:layout_toRightOf="@+id/profile_txview_country"
-                android:gravity="center"
-                android:text="@string/info_text_country"
-                android:textSize="17sp" />
+    <TextView
+        android:id="@+id/profile_textview_birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_below="@+id/profile_textview_sex"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="48dp"
+        android:gravity="center"
+        android:text="@string/info_label_birthdate"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/profile_text_birthdate"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/profile_textview_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/profile_txview_country"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:gravity="center"
-                android:text="@string/info_label_city"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/profile_textview_languaje"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@+id/profile_textview_birthdate"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="48dp"
+        android:gravity="center"
+        android:text="@string/info_label_languaje"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/profile_text_languaje"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/profile_text_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_country"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_toRightOf="@+id/profile_textview_city"
-                android:gravity="center"
-                android:text="@string/info_text_city"
-                android:textSize="17sp" />
+    <TextView
+        android:id="@+id/profile_text_interest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_text_languaje"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="63dp"
+        android:text="@string/info_profile_interest"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/profile_text_hobby"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_birthdate"
+        app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/profile_textview_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/profile_textview_city"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:gravity="center"
-                android:text="@string/info_label_sex"
-                android:textSize="17sp"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/profile_text_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_city"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_toRightOf="@+id/profile_textview_sex"
-                android:gravity="center"
-                android:text="@string/info_text_sex"
-                android:textSize="17sp" />
+    <ImageView
+        android:id="@+id/info_icon_fetichismo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="180dp"
+        android:layout_toRightOf="@+id/info_icon_sadismo"
+        android:src="@drawable/icon_fetichismo"
+        app:layout_constraintBottom_toBottomOf="@+id/info_icon_exhibicionismo"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_voyerismo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_interest" />
 
-            <TextView
-                android:id="@+id/profile_textview_birthdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/profile_textview_sex"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:gravity="center"
-                android:text="@string/info_label_birthdate"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/info_icon_exhibicionismo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_masoquismo"
+        android:src="@drawable/icon_exhibiocismo"
+        app:layout_constraintBottom_toBottomOf="@+id/info_icon_sadismo"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_sadismo"
+        app:layout_constraintStart_toEndOf="@+id/info_icon_fetichismo"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_interest" />
 
-            <TextView
-                android:id="@+id/profile_text_birthdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_sex"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_toRightOf="@+id/profile_textview_birthdate"
-                android:gravity="center"
-                android:text="@string/info_text_birthdate"
-                android:textSize="17sp" />
+    <ImageView
+        android:id="@+id/info_icon_sadismo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_trio"
+        android:src="@drawable/icon_sadismo"
+        app:layout_constraintBottom_toBottomOf="@+id/info_icon_trio"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_trio"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_interest" />
 
-            <TextView
-                android:id="@+id/profile_textview_languaje"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/profile_textview_birthdate"
-                android:layout_marginLeft="30dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:gravity="center"
-                android:text="@string/info_label_languaje"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/info_icon_trio"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_voyerismo"
+        android:src="@drawable/icon_trio"
+        app:layout_constraintBottom_toBottomOf="@+id/info_icon_masoquismo"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_masoquismo"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_interest" />
 
-            <TextView
-                android:id="@+id/profile_text_languaje"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_birthdate"
-                android:layout_marginLeft="@dimen/default_double"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_toRightOf="@+id/profile_textview_languaje"
-                android:gravity="center"
-                android:text="@string/info_text_languaje"
-                android:textSize="17sp" />
+    <ImageView
+        android:id="@+id/info_icon_masoquismo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="44dp"
+        android:layout_toRightOf="@+id/info_icon_fetichismo"
+        android:src="@drawable/icon_masoquismo"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_text_hobby"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_voyerismo"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_interest" />
 
-            <TextView
-                android:id="@+id/profile_text_interest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_languaje"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="@dimen/default_7x_double"
-                android:layout_marginTop="@dimen/default_2x_double"
-                android:text="@string/info_profile_interest"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/info_icon_voyerismo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="70dp"
+        android:src="@drawable/icon_voyery"
+        app:layout_constraintBottom_toBottomOf="@+id/info_icon_masoquismo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/info_icon_fetichismo"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_interest" />
 
-            <RelativeLayout
-                android:id="@+id/info_relative_icon"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_centerInParent="true"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profile_text_interest">
 
-                <ImageView
-                    android:id="@+id/info_icon_voyerismo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/icon_voyery" />
+    <TextView
+        android:id="@+id/profile_text_hobby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_text_interest"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="138dp"
+        android:text="@string/info_profile_hobbies"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                <ImageView
-                    android:id="@+id/info_icon_trio"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_voyerismo"
-                    android:src="@drawable/icon_trio" />
+    <ImageView
+        android:id="@+id/info_icon_coffee"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="70dp"
+        android:src="@drawable/icon_cafe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_hobby" />
 
-                <ImageView
-                    android:id="@+id/info_icon_sadismo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_trio"
-                    android:src="@drawable/icon_sadismo" />
+    <ImageView
+        android:id="@+id/info_icon_trip"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_coffee"
+        android:src="@drawable/icon_trip"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_coffee"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_hobby" />
 
-                <ImageView
-                    android:id="@+id/info_icon_fetichismo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_sadismo"
-                    android:src="@drawable/icon_fetichismo" />
+    <ImageView
+        android:id="@+id/info_icon_cine"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_trip"
+        android:src="@drawable/icon_cine"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_trip"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_hobby" />
 
-                <ImageView
-                    android:id="@+id/info_icon_masoquismo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_fetichismo"
-                    android:src="@drawable/icon_masoquismo" />
+    <ImageView
+        android:id="@+id/info_icon_cam"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_cine"
+        android:src="@drawable/icon_web_cam"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_party"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_hobby" />
 
-                <ImageView
-                    android:id="@+id/info_icon_exhibicionismo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_masoquismo"
-                    android:src="@drawable/icon_exhibiocismo" />
-            </RelativeLayout>
+    <ImageView
+        android:id="@+id/info_icon_party"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_cam"
+        android:src="@drawable/icon_party"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_cine"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_hobby" />
 
-            <TextView
-                android:id="@+id/profile_text_hobby"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_text_interest"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="@dimen/default_7x_double"
-                android:layout_marginTop="@dimen/default_6x_double"
-                android:text="@string/info_profile_hobbies"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/info_icon_swinguer"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@+id/info_icon_party"
+        android:src="@drawable/icon_swiguer"
+        app:layout_constraintEnd_toStartOf="@+id/info_icon_cam"
+        app:layout_constraintTop_toBottomOf="@+id/profile_text_hobby" />
 
-            <RelativeLayout
-                android:id="@+id/info_relative_icon_hobbies"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_centerInParent="true"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_medium"
-                android:layout_below="@id/profile_text_hobby">
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="390dp" />
 
-                <ImageView
-                    android:id="@+id/info_icon_coffee"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/icon_cafe" />
+    <TextView
+        android:id="@+id/profile_text_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_text_city"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@+id/profile_textview_sex"
+        android:gravity="center"
+        android:text="@string/info_text_sex"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_textview_birthdate"
+        app:layout_constraintStart_toEndOf="@+id/profile_text_interest" />
 
-                <ImageView
-                    android:id="@+id/info_icon_trip"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_coffee"
-                    android:src="@drawable/icon_trip" />
+    <TextView
+        android:id="@+id/profile_text_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_text_country"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/profile_textview_city"
+        android:gravity="center"
+        android:text="@string/info_text_city"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_textview_sex"
+        app:layout_constraintStart_toEndOf="@+id/profile_text_interest" />
 
-                <ImageView
-                    android:id="@+id/info_icon_cine"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_trip"
-                    android:src="@drawable/icon_cine" />
+    <TextView
+        android:id="@+id/profile_text_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_text_name"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/profile_txview_country"
+        android:gravity="center"
+        android:text="@string/info_text_country"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_textview_city"
+        app:layout_constraintStart_toEndOf="@+id/profile_text_interest" />
 
-                <ImageView
-                    android:id="@+id/info_icon_cam"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_cine"
-                    android:src="@drawable/icon_web_cam" />
+    <TextView
+        android:id="@+id/profile_text_languaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_text_birthdate"
+        android:layout_marginStart="12dp"
+        android:layout_toRightOf="@+id/profile_textview_languaje"
+        android:gravity="center"
+        android:text="@string/info_text_languaje"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profile_text_interest"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436" />
 
-                <ImageView
-                    android:id="@+id/info_icon_party"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_cam"
-                    android:src="@drawable/icon_party" />
+    <TextView
+        android:id="@+id/profile_text_birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_text_sex"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/profile_textview_birthdate"
+        android:gravity="center"
+        android:text="@string/info_text_birthdate"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_textview_languaje"
+        app:layout_constraintStart_toEndOf="@+id/profile_text_interest" />
 
-                <ImageView
-                    android:id="@+id/info_icon_swinguer"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="@dimen/default_under_x2"
-                    android:layout_toRightOf="@+id/info_icon_party"
-                    android:src="@drawable/icon_swiguer" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </FrameLayout>
+</android.support.constraint.ConstraintLayout>
 
-</ScrollView>

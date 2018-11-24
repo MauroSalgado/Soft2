@@ -29,7 +29,9 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 import activities.PostViewerFragment;
 import activities.TabBlank;
+import entities.Block;
 import entities.Request;
+import lib.FirebaseFunctions;
 
 public class FriendProfileController extends AppCompatActivity {
 
@@ -46,6 +48,7 @@ public class FriendProfileController extends AppCompatActivity {
     private ImageView imgCouple;
     private TextView txtFriendName;
     private ImageView imgFollow;
+    private ImageView imgBlock;
 
     private FirebaseDatabase database;
     private DatabaseReference mDatabaseRef, followRef, friendRef;
@@ -92,6 +95,7 @@ public class FriendProfileController extends AppCompatActivity {
         imgCouple = findViewById(R.id.imgCouple);
         txtFriendName = findViewById(R.id.txtFriendName);
         imgFollow = findViewById(R.id.imgFollow);
+        imgBlock = (ImageView) findViewById(R.id.imgView_block);
 
         imgFollow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +107,18 @@ public class FriendProfileController extends AppCompatActivity {
                 startActivity(new Intent(getBaseContext(), TabPrincipalController.class));
                 followRef.child(user.getUid()).child(userID).setValue("Yes");
                 FancyToast.makeText(getBaseContext(), "Now you are following", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+            }
+        });
+
+        imgBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseFunctions fbFunctions = new FirebaseFunctions();
+                String idUser = fbFunctions.getIdUsuarioFire();
+                DatabaseReference refBlock = fbFunctions.getReferenceBlockByid(idUser);
+                FancyToast.makeText(getBaseContext(), "Has bloqueado al usuario", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,true).show();
+                Block block = new Block(idUser,userID,true);
+                refBlock.push().setValue(block);
             }
         });
 

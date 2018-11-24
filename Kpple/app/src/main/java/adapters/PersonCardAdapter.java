@@ -26,12 +26,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import activities.ActivityFriendRequest;
 import co.edu.konranlorenz.kpple.FriendProfileController;
 import co.edu.konranlorenz.kpple.R;
+import entities.Block;
 import entities.User;
+import lib.FirebaseFunctions;
 
 public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.ImageViewHolder> {
     private Context mContext;
@@ -42,6 +45,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
         this.mContext = mContext;
         this.mUser = mUser;
         this.context = context;
+
     }
 
 
@@ -55,6 +59,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.home_person_item, parent, false);
+
         return new ImageViewHolder(v);
     }
 
@@ -139,7 +144,9 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
 
                     }
                 });
+
             }
+
         });
         Glide.with(mContext)
                 .load(userCurrent.getUrlImgProfile())
@@ -181,6 +188,32 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
             txtName = itemView.findViewById(R.id.card_textview_name);
             imgCardPerson = itemView.findViewById(R.id.imagecardperson);
         }
+    }
+
+    public ArrayList<String> GetUserBlock(){
+        ArrayList<String> blockList = new ArrayList<>();
+        FirebaseFunctions fbFunctions = new FirebaseFunctions();
+        String Uid = fbFunctions.getIdUsuarioFire();
+        DatabaseReference refBlockUser = fbFunctions.getReferenceBlockById(Uid);
+        refBlockUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()) {
+                    Block block1 = userSnapshot.getValue(Block.class);
+                    String blockIdUser = block1.getIdUserBlock();
+
+                    blockList.add(blockIdUser);
+                    Log.i("PERSON_ONCREATE",blockIdUser);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return blockList;
     }
 }
 

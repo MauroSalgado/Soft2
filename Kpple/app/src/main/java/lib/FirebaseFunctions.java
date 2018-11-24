@@ -73,6 +73,13 @@ public class FirebaseFunctions {
         return refUser;
     }
 
+    // Éste método consigue la referencia de USER en firebase enviándole el id de usuario por parámetro
+    public DatabaseReference getReferenceBlockById(String id){
+        String url = "Block/"+id;
+        DatabaseReference refBlock = mDatabase.getReference(url);
+        return refBlock;
+    }
+
     // Éste método consigue la referencia de INTEREST en firebase
     public DatabaseReference getReferenceInterestCollection(){
         DatabaseReference refInterestCollection = mDatabase.getReference("Interest");
@@ -105,6 +112,12 @@ public class FirebaseFunctions {
         return refCommunity;
     }
 
+    public DatabaseReference getReferenceBlockByid(String id){
+        String url = "Block/"+id;
+        DatabaseReference refBlock = mDatabase.getReference(url);
+        return refBlock;
+    }
+
     public DatabaseReference getReferenceCommunityByID(String id){
         String url = "Community/"+id;
         DatabaseReference refCommunity = mDatabase.getReference(url);
@@ -115,6 +128,7 @@ public class FirebaseFunctions {
         StorageReference profImgref = mStorage.getReference("/" + this.getIdUsuarioFire()+ "/post");
         return profImgref;
     }
+
 
     public void InsertarComunity(Community community){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
