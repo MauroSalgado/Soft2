@@ -1,6 +1,7 @@
 package adapters;
 
 
+import android.animation.Animator;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -12,12 +13,14 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -151,6 +154,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 .into(holder.imgPost);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void onViewAttachedToWindow(ImageViewHolder viewHolder) {
+        super.onViewAttachedToWindow(viewHolder);
+        animateCircularReveal(viewHolder.itemView);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void animateCircularReveal(View view) {
+        int centerX = 0;
+        int centerY = 0;
+        int startRadius = 0;
+        int endRadius = Math.max(view.getWidth(), view.getHeight());
+        Animator animation = ViewAnimationUtils.createCircularReveal(view, centerX, centerY, startRadius, endRadius);
+        view.setVisibility(View.VISIBLE);
+        animation.start();
+    }
     @Override
     public int getItemCount() {
         return mPosts.size();

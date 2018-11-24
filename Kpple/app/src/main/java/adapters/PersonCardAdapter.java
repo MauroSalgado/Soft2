@@ -1,13 +1,17 @@
 package adapters;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -142,6 +146,23 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Im
                 .into(holder.imgCardPerson);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void onViewAttachedToWindow(ImageViewHolder viewHolder) {
+        super.onViewAttachedToWindow(viewHolder);
+        animateCircularReveal(viewHolder.itemView);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void animateCircularReveal(View view) {
+        int centerX = 0;
+        int centerY = 0;
+        int startRadius = 0;
+        int endRadius = Math.max(view.getWidth(), view.getHeight());
+        Animator animation = ViewAnimationUtils.createCircularReveal(view, centerX, centerY, startRadius, endRadius);
+        view.setVisibility(View.VISIBLE);
+        animation.start();
+    }
     @Override
     public int getItemCount() {
         return mUser.size();
